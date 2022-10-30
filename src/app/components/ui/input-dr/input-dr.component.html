@@ -1,0 +1,8 @@
+<form *ngIf="config && form" [formGroup]="form" class="upf-container">
+    <input *ngIf="config && config.label"
+      [type]="config.type"
+      formControlName="config.formControlName"
+      [readonly]="config.readOnly"
+      [placeholder]="config.label" />
+    <div *ngIf="config && config.type">{{getErrorMessage(config.type)}}</div>
+</form>

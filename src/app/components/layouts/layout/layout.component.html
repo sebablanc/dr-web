@@ -1,0 +1,10 @@
+<ion-header>
+    <app-header></app-header>
+</ion-header>
+
+<ion-content class="content">
+    <div class="routerOutlet" [ngClass]="{'routerOutlet-kids': sectionActive == sectionTypes.KIDS}">
+        <ng-content></ng-content>
+    </div>
+</ion-content>
+<app-footer></app-footer>

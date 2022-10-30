@@ -1,0 +1,13 @@
+.header-links {
+    padding: 4px 15px;
+    font-size: 17px;
+    border-radius: 15px 15px 0 0;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.isActive,
+.header-links:hover{
+    background: linear-gradient(black, red);
+}

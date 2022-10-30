@@ -1,0 +1,10 @@
+<app-layout-big-card>
+  <div class="dr-like-title dr-font">Consultas</div>
+  <form class="constulas-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!--app-input-dr [config]="nombreConfig" [form]="form"></app-input-dr-->
+    <label for="nombre">First Name: </label>
+    <input id="nombre" type="text" formControlName="nombre">
+    <p>Value: {{ nombre.value }}</p>
+    <button type="submit" [disabled]="!form.valid">Submit</button>
+  </form>
+</app-layout-big-card>

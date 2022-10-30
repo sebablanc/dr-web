@@ -1,0 +1,21 @@
+.footer-container {
+    background: linear-gradient(0deg, #000, red 43%);
+    color: #fff;
+    position: relative;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .logo-SB {
+        border-radius: 16px;
+        width: 50px;
+        justify-self: right;
+        align-self: center;
+    }
+
+    .SB-text {
+        align-self: center;
+        padding: 0 10px;
+        justify-self: left;
+    }
+}

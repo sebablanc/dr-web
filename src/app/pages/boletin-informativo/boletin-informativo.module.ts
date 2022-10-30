@@ -1,0 +1,24 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { IonicModule } from '@ionic/angular';
+
+import { BoletinInformativoPageRoutingModule } from './boletin-informativo-routing.module';
+
+import { BoletinInformativoPage } from './boletin-informativo.page';
+import { LayoutsModule } from 'src/app/components/layouts/layouts.module';
+import { UiModule } from 'src/app/components/ui/ui.module';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    BoletinInformativoPageRoutingModule,
+    LayoutsModule,
+    UiModule
+  ],
+  declarations: [BoletinInformativoPage]
+})
+export class BoletinInformativoPageModule {}

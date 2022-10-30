@@ -1,0 +1,6 @@
+<app-layout>
+  <div *ngIf="title && title.trim() !== ''" class="lbc-title">{{ title }}</div>
+  <div class="page-with-card card">
+    <ng-content></ng-content>
+  </div>
+</app-layout>

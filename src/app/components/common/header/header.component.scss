@@ -1,0 +1,40 @@
+.header-container {
+    height: 100px;
+    background: linear-gradient(90deg, #f29c07, #e69d77);
+    padding: 10px 10px 0;
+
+    .header-logo {
+        height: 90%;
+    }
+
+    .name-dr {
+        width: max-content;
+        margin: 0;
+        position: absolute;
+        top: 10px;
+        left: 90px;
+    }
+
+    .rs-container{
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+
+        .rs-label{
+            margin: 0 5px;
+        }
+
+        .rs-logo {
+            width: 25px;
+            margin: 0 5px;
+        }
+    }
+}
+
+.header-container-kids {
+    background: linear-gradient(90deg, #ff8000, #44ff17);
+}
