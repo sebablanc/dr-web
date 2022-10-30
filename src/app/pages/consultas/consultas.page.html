@@ -1,10 +1,22 @@
 <app-layout-big-card>
   <div class="dr-like-title dr-font">Consultas</div>
-  <form class="constulas-form" [formGroup]="form" (ngSubmit)="onSubmit()">
-    <!--app-input-dr [config]="nombreConfig" [form]="form"></app-input-dr-->
-    <label for="nombre">First Name: </label>
-    <input id="nombre" type="text" formControlName="nombre">
-    <p>Value: {{ nombre.value }}</p>
-    <button type="submit" [disabled]="!form.valid">Submit</button>
+  <form *ngIf="consultaForm" [formGroup]="consultaForm" class="constulas-form" (ngSubmit)="onSubmit()">
+    
+    <!-- N O M B R E -->
+    <app-input-dr [config]="nombreConfig" [form]="consultaForm"></app-input-dr>
+
+    <!-- A P E L L I D O -->
+    <app-input-dr [config]="apellidoConfig" [form]="consultaForm"></app-input-dr>
+
+    <!-- T E L E F O N O -->
+    <app-input-dr [config]="telefonoConfig" [form]="consultaForm"></app-input-dr>
+
+    <!-- E M A I L -->
+    <app-input-dr [config]="emailConfig" [form]="consultaForm"></app-input-dr>
+
+    <!-- C O N S U L T A -->
+    <app-text-area-dr [config]="consultaConfig" [form]="consultaForm"></app-text-area-dr>
+
+    <app-rounded-button [config]="buttonConsultaConfig" [disableButton]="!consultaForm.valid"></app-rounded-button>
   </form>
 </app-layout-big-card>

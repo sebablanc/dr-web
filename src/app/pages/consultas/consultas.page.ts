@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IInputConfig } from 'src/app/components/ui/input-dr/input-dr.component';
+import { IRoundedButtonConfig } from 'src/app/components/ui/rounded-button/rounded-button.component';
 import { ShareService } from 'src/app/services/share.service';
-import { NOMBRE_CONFIG } from './input-configs';
+import { APELLIDO_CONFIG, NOMBRE_CONFIG, TELEFONO_CONFIG, EMAIL_CONFIG, CONSULTA_CONFIG, BUTTON_SUBMIT_CONFIG } from './input-configs';
 
 @Component({
   selector: 'app-consultas',
@@ -10,15 +11,23 @@ import { NOMBRE_CONFIG } from './input-configs';
   styleUrls: ['./consultas.page.scss'],
 })
 export class ConsultasPage implements OnInit {
-  form: FormGroup = null;
+  consultaForm: FormGroup = null;
   nombreConfig: IInputConfig = NOMBRE_CONFIG;
+  apellidoConfig: IInputConfig = APELLIDO_CONFIG;
+  telefonoConfig: IInputConfig = TELEFONO_CONFIG;
+  emailConfig: IInputConfig = EMAIL_CONFIG;
+  consultaConfig: IInputConfig = CONSULTA_CONFIG;
+  buttonConsultaConfig: IRoundedButtonConfig = BUTTON_SUBMIT_CONFIG;
 
-  constructor(private shareSrv: ShareService) { }
+  constructor(private shareSrv: ShareService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.form = new FormGroup({
-      nombre: new FormControl('', Validators.required),
-      apellido: new FormControl('', Validators.required),
+    this.consultaForm = this.fb.group({
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      apellido: ['', [Validators.required, Validators.minLength(3)]],
+      telefono: ['', [Validators.required, Validators.minLength(10)]],
+      email: ['', [Validators.required, Validators.email]],
+      consulta: ['', [Validators.required]]
     })
   }
 
@@ -27,7 +36,7 @@ export class ConsultasPage implements OnInit {
   }
 
   getErrorMessage(){
-    this.shareSrv.getErrorMessage(this.form.get('nombre'));
+    this.shareSrv.getErrorMessage(this.consultaForm.get('nombre'));
   }
 
 }

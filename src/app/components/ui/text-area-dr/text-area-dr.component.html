@@ -1,12 +1,12 @@
 <form *ngIf="config && form"
   class="upf-container"
   [formGroup]="form">
-    <input *ngIf="config && config.label"
+    <textarea *ngIf="config && config.label"
       class="input-field"
-      [type]="config.type"
       [formControlName]="config.formControlName"
       [readonly]="config.readOnly"
-      [placeholder]="config.label" />
+      [placeholder]="config.label"
+      rows="10"></textarea>
     <div
       *ngIf="config && (field.invalid && field.dirty || field.touched)"
       class="error-input">{{getErrorMessage()}}</div>

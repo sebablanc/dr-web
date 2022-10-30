@@ -25,8 +25,8 @@ export class InputDrComponent implements OnInit {
     }
   }
 
-  getErrorMessage(type: any){
-    this.shareSrv.getErrorMessage(this.field);
+  getErrorMessage(){
+    return this.shareSrv.getErrorMessage(this.field);
   }
 
 }

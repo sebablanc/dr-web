@@ -10,6 +10,8 @@ import { PushButtonKeypadComponent } from './push-button-keypad/push-button-keyp
 import { NovedadCardComponent } from './novedad-card/novedad-card.component';
 import { InputDrComponent } from './input-dr/input-dr.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TextAreaDrComponent } from './text-area-dr/text-area-dr.component';
+import { RoundedButtonComponent } from './rounded-button/rounded-button.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     PushButtonComponent,
     PushButtonKeypadComponent,
     NovedadCardComponent,
-    InputDrComponent
+    InputDrComponent,
+    TextAreaDrComponent,
+    RoundedButtonComponent
   ],
   exports: [
     HeaderLinkKeypadComponent,
@@ -29,7 +33,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     PushButtonComponent,
     PushButtonKeypadComponent,
     NovedadCardComponent,
-    InputDrComponent
+    InputDrComponent,
+    TextAreaDrComponent,
+    RoundedButtonComponent
   ],
   imports: [
     CommonModule,
