@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SectionService } from 'src/app/services/section.service';
-import { NAV_ITEMS } from 'src/constants/items';
+import { NAV_ITEMS, RS_LINKS } from 'src/constants/items';
 import { INavItem } from '../../ui/header-link/header-link.component';
 
 @Component({
@@ -11,6 +11,7 @@ import { INavItem } from '../../ui/header-link/header-link.component';
 export class HeaderComponent implements OnInit {
 
   headerNavItems: Array<INavItem> = NAV_ITEMS;
+  headerRSItems: Array<any> = RS_LINKS;
   sectionActive: string = 'ADULTOS';
 
   constructor(private sectionSrv: SectionService) { }
@@ -21,6 +22,10 @@ export class HeaderComponent implements OnInit {
 
   getSectionActive(){
     this.sectionActive = this.sectionSrv.getSectionActive();
+  }
+
+  goTo(link: string){
+    window.open(link, '_blank');
   }
 
 }

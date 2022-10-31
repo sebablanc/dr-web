@@ -1,11 +1,9 @@
 <div class="header-container" [ngClass]="{'header-container-kids': sectionActive == 'KIDS'}">
   <img class="header-logo" src="assets/images/logos/logoDR.png" alt="">
-  <div class="name-dr dr-font"><span class="dr">DR</span> Computers</div>
+  <div class="name-dr dr-font"><span class="dr dr-font">DR</span> Computers</div>
   <div class="rs-container">
     <div class="rs-label">Contactanos</div>
-    <img class="rs-logo" src="assets/images/logos/facebook_logo.svg" />
-    <img class="rs-logo" src="assets/images/logos/instagram_logo.svg" />
-    <img class="rs-logo" src="assets/images/logos/whatsapp_logo.svg" />
+    <img *ngFor="let rs of headerRSItems" class="rs-logo" [src]="rs.logo" (click)="goTo(rs.link)" />
   </div>
   <app-header-link-keypad [headerNavItems]="headerNavItems"></app-header-link-keypad>
 </div>

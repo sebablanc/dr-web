@@ -1,2 +1,17 @@
 <app-layout-big-card [title]="titlePage">
+    <div class="premios-header-container premios-header">
+        <img alt="logoDR" class="header-logos" src="assets/images/logos/logoDR.png">
+        <span class="dr-font premios-title">¡¡Nuestros ganadores!!</span>
+        <img alt="logoDRKids" class="header-logos" src="assets/images/logos/logoDRKids.png">
+    </div>
+
+    <div class="premios-header-container premios-subtitle dr-font">Estas personas ganaron una cuota</div>
+    <div class="premio-cuota-container">
+        <app-premio-card *ngFor="let i of [1,1,1,1,1,1,1,1,1,1,1,1]"></app-premio-card>
+        <!--app-premio-card class="premios-cuotas-card" *ngFor="let premio of premiosCuotasList" [premio]="premio" [selected]="premioSelected && premioSelected.id === premio.id" (click)="selectPremio(premio)"></app-premio-card-->
+      </div>
+    <div class="premios-header-container premios-subtitle dr-font">Y esta persona se ganó una compu</div>
+    <div class="premio-pc-container">
+        <app-premio-card [showPC]="true"></app-premio-card>
+    </div>
 </app-layout-big-card>

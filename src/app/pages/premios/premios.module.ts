@@ -8,6 +8,7 @@ import { PremiosPageRoutingModule } from './premios-routing.module';
 
 import { PremiosPage } from './premios.page';
 import { LayoutsModule } from 'src/app/components/layouts/layouts.module';
+import { UiModule } from 'src/app/components/ui/ui.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { LayoutsModule } from 'src/app/components/layouts/layouts.module';
     FormsModule,
     IonicModule,
     PremiosPageRoutingModule,
-    LayoutsModule
+    LayoutsModule,
+    UiModule
   ],
   declarations: [PremiosPage]
 })
