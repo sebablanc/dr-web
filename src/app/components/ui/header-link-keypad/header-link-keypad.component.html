@@ -1,4 +1,9 @@
-<div class="header-links-container">
+<div class="header-links-burger" (click)="showLinks()" >
+  <hr class="burger-line" />
+  <hr class="burger-line" />
+  <hr class="burger-line" />
+</div>
+<div *ngIf="showLinksContainer" class="header-links-container">
   <div *ngFor="let navItem of headerNavItems">
     <app-header-link [navItem]="navItem" ></app-header-link>
   </div>

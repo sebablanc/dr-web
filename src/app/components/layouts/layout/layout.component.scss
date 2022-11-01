@@ -1,5 +1,5 @@
 .content{
-   height: calc(100vh - 170px);
+   height: calc(100vh - 188px);
    max-height: 100vh;
 }
 .routerOutlet {
@@ -8,9 +8,18 @@
     background: radial-gradient(circle, #fff, #f29c07 30%, #e69d77);
     color: #fff;
     padding: 10px 0;
-    min-height: calc(100vh - 170px);
+    min-height: calc(100vh - 188px);
 }
 
 .routerOutlet-kids {
     background: radial-gradient(circle, #fff, #ff8000 30%, #44ff17);
+}
+
+@media screen and (max-width: 962px) {
+    .content{
+        height: calc(100vh - 218px);
+     }
+    .routerOutlet {
+        min-height: calc(100vh - 218px);
+    }
 }

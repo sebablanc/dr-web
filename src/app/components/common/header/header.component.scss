@@ -1,10 +1,9 @@
 .header-container {
-    height: 100px;
     background: linear-gradient(90deg, #f29c07, #e69d77);
     padding: 10px 10px 0;
 
     .header-logo {
-        height: 90%;
+        height: 100px;
     }
 
     .name-dr {
@@ -38,4 +37,18 @@
 
 .header-container-kids {
     background: linear-gradient(90deg, #ff8000, #44ff17);
+}
+
+@media screen and (max-width: 962px) {
+    .header-container {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 515px) {
+    .header-container {
+        .rs-container{
+            top: 60px;
+        }
+    }
 }

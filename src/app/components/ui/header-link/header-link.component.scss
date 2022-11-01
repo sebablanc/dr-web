@@ -8,6 +8,12 @@
 }
 
 .isActive,
-.header-links:hover{
+.header-links:hover {
     background: linear-gradient(black, red);
+}
+
+@media screen and (max-width: 962px) {
+    .header-links {
+        border-radius: 0;
+    }
 }
