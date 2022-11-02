@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TextAreaDrComponent } from './text-area-dr/text-area-dr.component';
 import { RoundedButtonComponent } from './rounded-button/rounded-button.component';
 import { PremioCardComponent } from './premio-card/premio-card.component';
+import { RoundButtonComponent } from './round-button/round-button.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PremioCardComponent } from './premio-card/premio-card.component';
     InputDrComponent,
     TextAreaDrComponent,
     RoundedButtonComponent,
-    PremioCardComponent
+    PremioCardComponent,
+    RoundButtonComponent
   ],
   exports: [
     HeaderLinkKeypadComponent,
@@ -38,7 +40,8 @@ import { PremioCardComponent } from './premio-card/premio-card.component';
     InputDrComponent,
     TextAreaDrComponent,
     RoundedButtonComponent,
-    PremioCardComponent
+    PremioCardComponent,
+    RoundButtonComponent
   ],
   imports: [
     CommonModule,

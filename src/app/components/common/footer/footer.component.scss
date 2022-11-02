@@ -6,6 +6,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+
     .logo-SB {
         border-radius: 16px;
         width: 50px;

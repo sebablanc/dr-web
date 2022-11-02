@@ -1,12 +1,18 @@
 .push-button {
     text-align: center;
     cursor: pointer;
+    height: 100%;
     .push-button-container {
         padding: 20px;
         border: 1px solid gray;
         border-radius: 30px;
         margin-bottom: 10px;
         box-shadow: 4px 4px 7px grey;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
         img {
             max-height: 100px;
             min-height: 100px;

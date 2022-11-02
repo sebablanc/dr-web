@@ -1,0 +1,21 @@
+.round-button{
+    font-size: 30px;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    padding: 6px;
+    box-shadow: 2px 2px grey;
+    position: fixed;
+}
+
+.right-float-button{
+    position: fixed;
+    left: calc(100% - 55px);
+    top: 129px;
+}
+
+.left-float-button{
+    position: fixed;
+    left: 10px;
+    top: 129px;
+}
