@@ -14,9 +14,15 @@
         outline: none;
     }
 
+    .input-field-with-sufix,
     .input-field-with-prefix {
         display: inline-flex;
         width: 97%;
+    }
+
+    .input-field-with-both {
+        display: inline-flex;
+        width: 94%;
     }
 
     .error-input {

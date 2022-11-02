@@ -3,12 +3,13 @@
   [formGroup]="form">
   <ion-icon *ngIf="config && config.prefixIcon" class="icon-prefix" [name]="config.prefixIcon" (click)="prefixIconClicked.emit(true)"></ion-icon>
     <input *ngIf="config && config.label"
-      class="input-field input-field-with-prefix"
-      [ngClass]="{input-field-with-prefix: icon && icon == 'PREFIX'; input-field-with-sufix: icon && icon == 'SUFFIX'; input-field-with-both: icon && icon == 'BOTH'}"
+      class="input-field"
+      [ngClass]="{'input-field-with-prefix': (icon && icon == 'PREFIX'), 'input-field-with-sufix': (icon && icon == 'SUFFIX'), 'input-field-with-both': (icon && icon == 'BOTH')}"
       [type]="config.type"
       [formControlName]="config.formControlName"
       [readonly]="config.readOnly"
       [placeholder]="config.label" />
+      <ion-icon *ngIf="config && config.suffixIcon" class="icon-suffix" [name]="config.suffixIcon" (click)="suffixIconClicked.emit(true)"></ion-icon>
     <div
       *ngIf="config && (field.invalid && field.dirty || field.touched)"
       class="error-input">{{getErrorMessage()}}</div>

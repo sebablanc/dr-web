@@ -3,17 +3,19 @@
     <!-- N O M B R E -->
     <app-input-dr [config]="nombreConfig" [form]="cursoForm"></app-input-dr>
 
+    <!-- I M A G E N -->
+    
+    <!-- C A T E G O R I A -->
+    <app-select-dr [config]="categoriaConfig" [form]="cursoForm"></app-select-dr>
+
     <!-- V A L O R -->
     <app-input-dr [config]="valorConfig" [form]="cursoForm"></app-input-dr>
 
-    <!-- T E L E F O N O
-    <app-input-dr [config]="telefonoConfig" [form]="consultaForm"></app-input-dr>
+    <!-- D E S C R I P C I O N -->
+    <app-text-area-dr [config]="descripcionConfig" [form]="cursoForm"></app-text-area-dr>
 
-    E M A I L
-    <app-input-dr [config]="emailConfig" [form]="consultaForm"></app-input-dr>
-
-    C O N S U L T A
-    <app-text-area-dr [config]="consultaConfig" [form]="consultaForm"></app-text-area-dr>
-
-    <app-rounded-button [config]="buttonConsultaConfig" [disableButton]="!cursoForm.valid"></app-rounded-button>-->
+    <div class="botonera">
+      <app-rounded-button [config]="buttonCancelConfig"></app-rounded-button>
+      <app-rounded-button class="save-btn" [config]="buttonSendConfig" [disableButton]="!cursoForm.valid"></app-rounded-button>
+    </div>
   </form>

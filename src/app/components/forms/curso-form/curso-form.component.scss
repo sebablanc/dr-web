@@ -1,0 +1,9 @@
+.botonera {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin: 10px;
+
+    .save-btn{
+        grid-column: 6;
+    }
+}

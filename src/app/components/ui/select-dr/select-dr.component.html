@@ -1,12 +1,15 @@
 <form *ngIf="config && form"
   class="upf-container"
   [formGroup]="form">
-    <textarea *ngIf="config && config.label"
-      class="input-field"
+    <select
+      *ngIf="config && config.label"
       [formControlName]="config.formControlName"
-      [readonly]="config.readOnly"
-      [placeholder]="config.label"
-      rows="10"></textarea>
+      >
+      <option value="">Seleccione una opción</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
     <div
       *ngIf="config && field && (field.invalid && field.dirty || field.touched)"
       class="error-input">{{getErrorMessage()}}</div>

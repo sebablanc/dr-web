@@ -15,6 +15,7 @@ import { RoundedButtonComponent } from './rounded-button/rounded-button.componen
 import { PremioCardComponent } from './premio-card/premio-card.component';
 import { RoundButtonComponent } from './round-button/round-button.component';
 import { IonicModule } from '@ionic/angular';
+import { SelectDrComponent } from './select-dr/select-dr.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { IonicModule } from '@ionic/angular';
     TextAreaDrComponent,
     RoundedButtonComponent,
     PremioCardComponent,
-    RoundButtonComponent
+    RoundButtonComponent,
+    SelectDrComponent
   ],
   exports: [
     HeaderLinkKeypadComponent,
@@ -42,7 +44,8 @@ import { IonicModule } from '@ionic/angular';
     TextAreaDrComponent,
     RoundedButtonComponent,
     PremioCardComponent,
-    RoundButtonComponent
+    RoundButtonComponent,
+    SelectDrComponent
   ],
   imports: [
     CommonModule,

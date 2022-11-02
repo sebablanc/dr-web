@@ -35,10 +35,11 @@ export const VALOR_CONFIG: IInputConfig = {
     formControlName: 'valor',
     label: 'Valor',
     type: 'number',
-    prefixIcon: 'logo-usd'
-  };
+    prefixIcon: 'logo-usd',
+};
 
-export const BUTTON_SUBMIT_CONFIG: IRoundedButtonConfig = {
-    text: 'Consultar',
-    type: 'submit'
-}
+export const DESCRIPCION_CONFIG: IInputConfig = {
+    formControlName: 'descripcion',
+    label: 'Descripción',
+    type: 'text'
+};

@@ -7,7 +7,7 @@ import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 })
 export class RoundedButtonComponent implements OnInit {
   @Input() config: IRoundedButtonConfig;
-  @Input() disableButton: boolean = true;
+  @Input() disableButton: boolean = false;
   @Output('buttonClicked') buttonClicked: EventEmitter<boolean> = new EventEmitter;
   
   constructor() { }

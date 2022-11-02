@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { CursoFormComponent } from '../components/forms/curso-form/curso-form.component';
 import { CursoFormPage } from '../pages/curso-form/curso-form.page';
 
 @Injectable({
@@ -22,5 +23,6 @@ export class ModalService {
 
   async showCursoModal(title: string) {
     return await this.openModal(CursoFormPage, { title });
+    //return await this.openModal(CursoFormComponent, { title });
   }
 }
