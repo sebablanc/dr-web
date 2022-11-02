@@ -6,11 +6,16 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./round-button.component.scss'],
 })
 export class RoundButtonComponent implements OnInit {
-  @Input() name: string;
+  @Input() config: IRoundButtonConfig;
   @Output() roundButtonClicked: EventEmitter<boolean> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {}
 
+}
+
+export interface IRoundButtonConfig {
+  iconName: string;
+  extraClass: string;
 }

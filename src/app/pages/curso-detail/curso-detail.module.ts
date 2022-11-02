@@ -8,6 +8,7 @@ import { CursoDetailPageRoutingModule } from './curso-detail-routing.module';
 
 import { CursoDetailPage } from './curso-detail.page';
 import { LayoutsModule } from 'src/app/components/layouts/layouts.module';
+import { UiModule } from 'src/app/components/ui/ui.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { LayoutsModule } from 'src/app/components/layouts/layouts.module';
     FormsModule,
     IonicModule,
     CursoDetailPageRoutingModule,
-    LayoutsModule
+    LayoutsModule,
+    UiModule
   ],
   declarations: [CursoDetailPage]
 })

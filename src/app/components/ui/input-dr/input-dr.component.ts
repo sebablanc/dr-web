@@ -16,12 +16,22 @@ export class InputDrComponent implements OnInit {
   @Output('dataEmitKey') dataEmitKey: EventEmitter<any> = new EventEmitter();
 
   field: AbstractControl;
+  icon: string = null;
   
   constructor(private shareSrv: ShareService) { }
 
   ngOnInit() {
     if(this.config && this.form){
       this.field = this.form.controls[this.config.formControlName];
+
+      if(this.config.prefixIcon && this.config.suffixIcon){
+        this.icon = 'BOTH';
+      } else if(this.config.prefixIcon){
+        this.icon = 'PREFIX';
+      } else if(this.config.suffixIcon){
+        this.icon = 'SUFFIX';
+      }
+
     }
   }
 

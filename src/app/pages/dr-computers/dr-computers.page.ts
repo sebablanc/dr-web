@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IPushButtonItem } from 'src/app/components/ui/push-button/push-button.component';
+import { IRoundButtonConfig } from 'src/app/components/ui/round-button/round-button.component';
+import { ModalService } from 'src/app/services/modal.service';
+import { ROUNDED_BUTTONS_ICONS } from 'src/constants/items';
 
 @Component({
   selector: 'app-dr-computers',
@@ -8,6 +11,11 @@ import { IPushButtonItem } from 'src/app/components/ui/push-button/push-button.c
 })
 export class DrComputersPage implements OnInit {
 
+  roundButtonConfig: IRoundButtonConfig = {
+    iconName: ROUNDED_BUTTONS_ICONS.CREATE,
+    extraClass: null
+  }
+
   cursosAdultos: Array<IPushButtonItem> = [
     {label: 'Reparacion de PC I', image: 'assets/images/logos/logoDR.png'},
     {label: 'Reparacion de PC II', image: 'assets/images/logos/logoDR.png'},
@@ -15,9 +23,15 @@ export class DrComputersPage implements OnInit {
     {label: 'CorelDraw', image: 'assets/images/logos/logoDR.png'},
   ]
 
-  constructor() { }
+  constructor(private modalSrv: ModalService) { }
 
   ngOnInit() {
+  }
+
+  async showCreateModal(){
+    let algo = await this.modalSrv.showCursoModal('Crear nuevo curso');
+    console.log('algo');
+    console.log(algo);
   }
 
 }

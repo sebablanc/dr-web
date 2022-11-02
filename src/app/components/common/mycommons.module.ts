@@ -4,8 +4,6 @@ import { HeaderComponent } from './header/header.component';
 import { UiModule } from '../ui/ui.module';
 import { FooterComponent } from './footer/footer.component';
 
-
-
 @NgModule({
   declarations: [
     HeaderComponent,

@@ -31,6 +31,13 @@ export const CONSULTA_CONFIG: IInputConfig = {
     type: 'text'
 };
 
+export const VALOR_CONFIG: IInputConfig = {
+    formControlName: 'valor',
+    label: 'Valor',
+    type: 'number',
+    prefixIcon: 'logo-usd'
+  };
+
 export const BUTTON_SUBMIT_CONFIG: IRoundedButtonConfig = {
     text: 'Consultar',
     type: 'submit'

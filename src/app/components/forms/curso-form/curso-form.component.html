@@ -1,0 +1,19 @@
+<form *ngIf="cursoForm" [formGroup]="cursoForm" (ngSubmit)="onSubmit()">
+    
+    <!-- N O M B R E -->
+    <app-input-dr [config]="nombreConfig" [form]="cursoForm"></app-input-dr>
+
+    <!-- V A L O R -->
+    <app-input-dr [config]="valorConfig" [form]="cursoForm"></app-input-dr>
+
+    <!-- T E L E F O N O
+    <app-input-dr [config]="telefonoConfig" [form]="consultaForm"></app-input-dr>
+
+    E M A I L
+    <app-input-dr [config]="emailConfig" [form]="consultaForm"></app-input-dr>
+
+    C O N S U L T A
+    <app-text-area-dr [config]="consultaConfig" [form]="consultaForm"></app-text-area-dr>
+
+    <app-rounded-button [config]="buttonConsultaConfig" [disableButton]="!cursoForm.valid"></app-rounded-button>-->
+  </form>

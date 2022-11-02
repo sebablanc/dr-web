@@ -18,7 +18,7 @@ export class TextAreaDrComponent implements OnInit {
     this.field = this.form.controls[this.config.formControlName];
   }
 
-  getErrorMessage(type: any){
+  getErrorMessage(){
     return this.shareSrv.getErrorMessage(this.field);
   }
 

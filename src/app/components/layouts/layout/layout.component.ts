@@ -8,7 +8,7 @@ import { SECTION_TYPES } from 'src/constants/items';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
-  sectionTypes: Object = SECTION_TYPES;
+  sectionTypes = SECTION_TYPES;
   sectionActive: string = 'ADULTOS';
 
   constructor(private sectionSrv: SectionService) { }
