@@ -15,6 +15,6 @@ export class AppComponent {
   ngOnInit(){
     const app = initializeApp(environment.firebaseConfig);
     const analytics = getAnalytics(app);
-    this.navigationSrv.goTo('home');
+    this.navigationSrv.goTo('login');
   }
 }

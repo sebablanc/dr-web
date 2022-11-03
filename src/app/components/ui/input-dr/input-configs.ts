@@ -24,6 +24,12 @@ export const EMAIL_CONFIG: IInputConfig = {
     type: 'email'
 };
 
+export const PASSWORD_CONFIG: IInputConfig = {
+    formControlName: 'pass',
+    label: 'Contraseña',
+    type: 'password'
+};
+
 export const VALOR_CONFIG: IInputConfig = {
     formControlName: 'valor',
     label: 'Valor',

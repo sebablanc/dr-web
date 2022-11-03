@@ -4,15 +4,18 @@ import { MycommonsModule } from '../common/mycommons.module';
 import { LayoutComponent } from './layout/layout.component';
 import { LayoutBigCardComponent } from './layout-big-card/layout-big-card.component';
 import { IonicModule } from '@ionic/angular';
+import { LoginPageLayoutComponent } from './login-page-layout/login-page-layout.component';
 
 @NgModule({
   declarations: [
     LayoutComponent,
-    LayoutBigCardComponent
+    LayoutBigCardComponent,
+    LoginPageLayoutComponent
   ],
   exports: [
     LayoutComponent,
-    LayoutBigCardComponent
+    LayoutBigCardComponent,
+    LoginPageLayoutComponent
   ],
   imports: [
     CommonModule,

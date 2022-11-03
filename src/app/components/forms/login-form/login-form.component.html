@@ -1,0 +1,13 @@
+<form *ngIf="loginForm" class="curso-form-container" [formGroup]="loginForm" (ngSubmit)="closeForm(true)">
+    
+  <!-- E M A I L -->
+  <app-input-dr [config]="emailConfig" [form]="loginForm"></app-input-dr>
+
+  <!-- P A S S W O R D -->
+  <app-input-dr [config]="passwordConfig" [form]="loginForm"></app-input-dr>
+
+  <app-rounded-button [config]="buttonLoginConfig" [disableButton]="!loginForm.valid"></app-rounded-button>
+  <div class="login-olvidar-pass-container">
+    <a class="login-olvidar-pass-link" (click)="goTo('forgot-password')">¿Olvidaste tu contraseña?</a>
+  </div>
+</form>

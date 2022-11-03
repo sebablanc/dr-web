@@ -1,12 +1,16 @@
-.login-container {
-    display: flex;
-    justify-content: space-between;
+.login-form {
+    width: calc(50vw - 380px);
+}
 
-    .login-logoDr {
-        width: 150px;
+
+@media screen and (max-width: 950px) {
+    .login-form {
+        width: calc(80vw - 380px);
     }
+}
 
-    .login-logoDrKids {
-        width: 150px;
+@media screen and (max-width: 765px) {
+    .login-form {
+        width: 100%;
     }
 }
