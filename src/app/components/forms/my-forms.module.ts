@@ -6,19 +6,22 @@ import { UiModule } from '../ui/ui.module';
 import { NovedadFormComponent } from './novedad-form/novedad-form.component';
 import { PremioFormComponent } from './premio-form/premio-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 
 @NgModule({
   declarations: [
     CursoFormComponent,
     NovedadFormComponent,
     PremioFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ResetPasswordFormComponent
   ],
   exports: [
     CursoFormComponent,
     NovedadFormComponent,
     PremioFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ResetPasswordFormComponent
   ],
   imports: [
     CommonModule,

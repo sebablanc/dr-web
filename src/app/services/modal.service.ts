@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { CursoFormPage } from '../pages/curso-form/curso-form.page';
 import { NovedadFormLayoutPage } from '../pages/novedad-form-layout/novedad-form-layout.page';
 import { PremioFormLayoutPage } from '../pages/premio-form-layout/premio-form-layout.page';
+import { ResetPasswordPage } from '../pages/reset-password/reset-password.page';
 import { WarningPage } from '../pages/warning/warning.page';
 
 @Injectable({
@@ -39,6 +40,10 @@ export class ModalService {
 
   async showPremioModal(title: string, premio: any) {
     return await this.openModal(PremioFormLayoutPage, { title, premio }, 'basic-modal');
+  }
+
+  async showResetPasswordModal() {
+    return await this.openModal(ResetPasswordPage, null, 'basic-modal');
   }
 
   async dismissModal(data: any) {

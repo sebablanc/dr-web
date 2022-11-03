@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModalService } from 'src/app/services/modal.service';
 import { EMAIL_CONFIG, PASSWORD_CONFIG } from '../../ui/input-dr/input-configs';
 import { IInputConfig } from '../../ui/input-dr/input-dr.component';
 import { BUTTON_LOGIN_CONFIG } from '../../ui/rounded-button/button-configs';
@@ -17,7 +18,7 @@ export class LoginFormComponent implements OnInit {
   passwordConfig: IInputConfig = PASSWORD_CONFIG;
   buttonLoginConfig: IRoundedButtonConfig = BUTTON_LOGIN_CONFIG;
   
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private modalSrv: ModalService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -26,4 +27,9 @@ export class LoginFormComponent implements OnInit {
     })
   }
 
+  async openResetPassword(){
+    let resetPasswordResult = await this.modalSrv.showResetPasswordModal();
+    console.log('resetPasswordResult');
+    console.log(resetPasswordResult);
+  }
 }

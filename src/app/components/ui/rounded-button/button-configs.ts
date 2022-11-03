@@ -29,3 +29,9 @@ export const BUTTON_LOGIN_CONFIG: IRoundedButtonConfig = {
     type: 'submit',
     style: 'PRIMARY'
 }
+
+export const BUTTON_RESET_CONFIG: IRoundedButtonConfig = {
+    text: 'Reestablecer cuenta',
+    type: 'submit',
+    style: 'PRIMARY'
+}
