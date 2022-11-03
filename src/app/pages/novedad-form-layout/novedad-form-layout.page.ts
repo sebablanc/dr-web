@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { ModalService } from 'src/app/services/modal.service';
   styleUrls: ['./novedad-form-layout.page.scss'],
 })
 export class NovedadFormLayoutPage implements OnInit {
+  @Input() title: string;
+  @Input() novedad: any;
 
   constructor(private modalSrv: ModalService) { }
 
