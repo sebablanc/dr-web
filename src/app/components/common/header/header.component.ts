@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationService } from 'src/app/services/navigation.service';
 import { SectionService } from 'src/app/services/section.service';
 import { NAV_ITEMS, RS_LINKS } from 'src/constants/items';
 import { INavItem } from '../../ui/header-link/header-link.component';
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit {
   headerRSItems: Array<any> = RS_LINKS;
   sectionActive: string = 'ADULTOS';
 
-  constructor(private sectionSrv: SectionService) { }
+  constructor(private sectionSrv: SectionService, private navigationSrv: NavigationService) { }
 
   ngOnInit() {
     this.getSectionActive();
@@ -25,7 +26,11 @@ export class HeaderComponent implements OnInit {
   }
 
   goTo(link: string){
-    window.open(link, '_blank');
+    this.navigationSrv.goTo(link)
+  }
+
+  goToExternal(link: string){
+    this.navigationSrv.goToExternal(link);
   }
 
 }

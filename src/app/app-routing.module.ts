@@ -59,6 +59,10 @@ const routes: Routes = [
     path: 'premio-form-layout',
     loadChildren: () => import('./pages/premio-form-layout/premio-form-layout.module').then( m => m.PremioFormLayoutPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
 ];
 
 @NgModule({

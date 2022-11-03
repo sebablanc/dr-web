@@ -14,6 +14,10 @@ export class NavigationService {
     this.router.navigate([`/${link}`]);
   }
 
+  goToExternal(link: string){
+    window.open(link, '_blank');
+  }
+
   getLinkActive() {
     return this.linkActive;
   }

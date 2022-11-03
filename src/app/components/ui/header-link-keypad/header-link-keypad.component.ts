@@ -12,7 +12,9 @@ export class HeaderLinkKeypadComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.showLinksContainer = window.innerWidth > 962;
+    this.burgerIsPresent = window.innerWidth <= 962;
   }
+  burgerIsPresent = false;
   showLinksContainer = false
 
 
@@ -26,7 +28,7 @@ export class HeaderLinkKeypadComponent implements OnInit {
   }
 
   showLinks() {
-    this.showLinksContainer = !this.showLinksContainer;
+    if(this.burgerIsPresent) this.showLinksContainer = !this.showLinksContainer;
   }
 
 }
