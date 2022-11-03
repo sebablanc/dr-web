@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IRoundButtonConfig } from 'src/app/components/ui/round-button/round-button.component';
+import { ModalService } from 'src/app/services/modal.service';
 import { ROUNDED_BUTTONS_ICONS } from 'src/constants/items';
 
 @Component({
@@ -16,16 +17,18 @@ export class CursoDetailPage implements OnInit {
     iconName: ROUNDED_BUTTONS_ICONS.DELETE ,
     extraClass: 'second-button'
   }
-  constructor() { }
+  constructor(private modalSrv: ModalService) { }
 
   ngOnInit() {
   }
 
-  showEditModal() {
-    console.log('showEditModal');
+  async showEditModal(){
+    let algo = await this.modalSrv.showCursoModal('Editar curso', {nombre: 'programacion', categoria: '2', valor: 132, descripcion: 'algo'});
+    console.log('algo');
+    console.log(algo);
   }
 
-  deleteCurso() {
-    console.log('deleteCurso');
+  async deleteCurso() {
+    let algo = await this.modalSrv.showWarningModal('', '');
   }
 }

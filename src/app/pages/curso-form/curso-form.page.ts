@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-curso-form-page',
@@ -7,9 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CursoFormPage implements OnInit {
   @Input() title: string = '';
-  constructor() { }
+  @Input() curso: any;
+  
+  constructor(private modalSrv: ModalService) { }
 
   ngOnInit() {
+  }
+
+  handleFormData(event: any){
+    this.modalSrv.dismissModal(event);
   }
 
 }

@@ -3,6 +3,7 @@
   [formGroup]="form">
     <select
       *ngIf="config && config.label"
+      class="input-field"
       [formControlName]="config.formControlName"
       >
       <option value="">Seleccione una opción</option>

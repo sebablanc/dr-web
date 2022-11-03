@@ -38,6 +38,12 @@ export const VALOR_CONFIG: IInputConfig = {
     prefixIcon: 'logo-usd',
 };
 
+export const IMAGEN_CONFIG: IInputConfig = {
+    formControlName: 'imagen',
+    label: 'Imagen',
+    type: 'file'
+};
+
 export const DESCRIPCION_CONFIG: IInputConfig = {
     formControlName: 'descripcion',
     label: 'Descripción',

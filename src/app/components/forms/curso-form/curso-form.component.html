@@ -1,10 +1,11 @@
-<form *ngIf="cursoForm" [formGroup]="cursoForm" (ngSubmit)="onSubmit()">
+<form *ngIf="cursoForm" class="curso-form-container" [formGroup]="cursoForm" (ngSubmit)="closeForm(true)">
     
     <!-- N O M B R E -->
     <app-input-dr [config]="nombreConfig" [form]="cursoForm"></app-input-dr>
 
     <!-- I M A G E N -->
-    
+    <app-input-dr [config]="imagenConfig" [form]="cursoForm"></app-input-dr>
+
     <!-- C A T E G O R I A -->
     <app-select-dr [config]="categoriaConfig" [form]="cursoForm"></app-select-dr>
 
@@ -15,7 +16,7 @@
     <app-text-area-dr [config]="descripcionConfig" [form]="cursoForm"></app-text-area-dr>
 
     <div class="botonera">
-      <app-rounded-button [config]="buttonCancelConfig"></app-rounded-button>
+      <app-rounded-button [config]="buttonCancelConfig" (click)="closeForm(false)"></app-rounded-button>
       <app-rounded-button class="save-btn" [config]="buttonSendConfig" [disableButton]="!cursoForm.valid"></app-rounded-button>
     </div>
   </form>

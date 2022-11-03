@@ -1,2 +1,4 @@
-<p>{{ title }}</p>
-<app-curso-form></app-curso-form>
+<div class="cf-page-container">
+    <div class="cf-page-title">{{ title }}</div>
+    <app-curso-form [curso]="curso" (emitData)="handleFormData($event)"></app-curso-form>
+</div>

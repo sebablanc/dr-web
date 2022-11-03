@@ -47,6 +47,10 @@ const routes: Routes = [
     path: 'curso-form',
     loadChildren: () => import('./pages/curso-form/curso-form.module').then( m => m.CursoFormPageModule)
   },
+  {
+    path: 'warning',
+    loadChildren: () => import('./pages/warning/warning.module').then( m => m.WarningPageModule)
+  },
 ];
 
 @NgModule({
