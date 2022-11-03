@@ -297,13 +297,15 @@ body {
   text-decoration: none;
   outline: 0;
   color: #fff;
-  background-color: red;
-  border: none;
+  box-shadow: 5px 5px #666;
+  border-radius: 52px;
+  box-shadow: 4px 6px #999;
+  width: 100%;
+  padding: 5px 29px;
 }
 
 .button:active {
-  background-color: #ce2a2a;
-  box-shadow: 0 5px #666;
+  box-shadow: 2px 2px #666;
   transform: translateY(2px);
 }
 
@@ -312,22 +314,41 @@ body {
   cursor: not-allowed;
 }
 
-// IONIC ELEMENTS
-.curso-form-modal {
-  @media screen and (min-height: 600px) {
-    &::part(content) {
-      --height: 570px;
-      overflow-y: auto;
-      border-radius: 16px;
-      padding: 20px;
-    }
+.button-primary{
+  border: none;
+  background-color: #ff0000;
+}
+
+.button-primary:active {
+  background-color: #ce2a2a;
+}
+
+.button-secondary{
+  border: 1px solid #ff0000;
+  background-color: #ffffff;
+  color: #ff0000;
+}
+
+.button-secondary:active {
+  border: 1px solid #ce2a2a;
+  background-color: #fafafa;
+}
+
+.botonera {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  margin: 10px;
+
+  .save-btn{
+      grid-column: 6;
   }
 }
 
-.warning-modal {
+// IONIC ELEMENTS
+.basic-modal {
   @media screen and (min-height: 600px) {
     &::part(content) {
-      --height: 50px;
+      --height: auto;
       overflow-y: auto;
       border-radius: 16px;
       padding: 20px;

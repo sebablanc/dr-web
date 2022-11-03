@@ -10,7 +10,7 @@
 
 .right-float-button{
     position: fixed;
-    left: calc(100% - 55px);
+    left: calc(100% - 70px);
     top: 129px;
 }
 
@@ -22,4 +22,20 @@
 
 .second-button{
     top: 190px;
+}
+
+.small-botonera-button{
+    position: inherit !important;
+    display: inline-flex;
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid gray;
+}
+
+.small-left-btn{
+    border-radius: 50% 0 0 50%;
+}
+
+.small-right-btn {
+    border-radius: 0 50% 50% 0;
 }

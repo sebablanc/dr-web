@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'warning',
     loadChildren: () => import('./pages/warning/warning.module').then( m => m.WarningPageModule)
   },
+  {
+    path: 'novedad-form-layout',
+    loadChildren: () => import('./pages/novedad-form-layout/novedad-form-layout.module').then( m => m.NovedadFormLayoutPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IPushButtonItem } from 'src/app/components/ui/push-button/push-button.component';
+import { ROUND_BUTTON_CREATE_CONFIG } from 'src/app/components/ui/round-button/round-button-configs';
 import { IRoundButtonConfig } from 'src/app/components/ui/round-button/round-button.component';
 import { ModalService } from 'src/app/services/modal.service';
-import { ROUNDED_BUTTONS_ICONS } from 'src/constants/items';
 
 @Component({
   selector: 'app-dr-computers',
@@ -11,10 +11,7 @@ import { ROUNDED_BUTTONS_ICONS } from 'src/constants/items';
 })
 export class DrComputersPage implements OnInit {
 
-  roundButtonConfig: IRoundButtonConfig = {
-    iconName: ROUNDED_BUTTONS_ICONS.CREATE,
-    extraClass: null
-  }
+  roundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_CREATE_CONFIG;
 
   cursosAdultos: Array<IPushButtonItem> = [
     {label: 'Reparacion de PC I', image: 'assets/images/logos/logoDR.png'},

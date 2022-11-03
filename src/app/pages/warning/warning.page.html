@@ -1,9 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>warning</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+<div class="modal-warning-container">
+  <div class="modal-warning-icon">
+    <img src="assets/images/icons/alert-icon.svg" />
+  </div>
+  <div class="modal-warning-title">¡Cuidado!</div>
+  <div class="modal-warning-description">Estás por borrar <b>Reparación de PC I</b>. Si continuás con esta operación, no se puede deshacer. ¿Estás seguro de querer eliminar?</div>
+  <div class="botonera">
+    <app-rounded-button [config]="buttonCancelConfig" (click)="closeModal(false)"></app-rounded-button>
+    <app-rounded-button class="save-btn" [config]="buttonSendConfig" (click)="closeModal(true)"></app-rounded-button>
+  </div>
+</div>

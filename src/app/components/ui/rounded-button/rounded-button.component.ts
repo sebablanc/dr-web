@@ -19,6 +19,7 @@ export class RoundedButtonComponent implements OnInit {
 export interface IRoundedButtonConfig{
   text: string;
   type: string;
+  style: string;
   leftIcon?: string;
   rightIcon?: string;
 }

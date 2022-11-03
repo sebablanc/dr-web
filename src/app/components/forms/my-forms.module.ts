@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CursoFormComponent } from './curso-form/curso-form.component';
 import { UiModule } from '../ui/ui.module';
+import { NovedadFormComponent } from './novedad-form/novedad-form.component';
 
 @NgModule({
   declarations: [
-    CursoFormComponent
+    CursoFormComponent,
+    NovedadFormComponent
   ],
   exports: [
-    CursoFormComponent
+    CursoFormComponent,
+    NovedadFormComponent
   ],
   imports: [
     CommonModule,

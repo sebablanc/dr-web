@@ -18,4 +18,6 @@ export class RoundButtonComponent implements OnInit {
 export interface IRoundButtonConfig {
   iconName: string;
   extraClass: string;
+  lowerButton: boolean;
+  secondaryButton: boolean;
 }

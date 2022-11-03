@@ -1,0 +1,13 @@
+<form *ngIf="novedadForm" class="curso-form-container" [formGroup]="novedadForm" (ngSubmit)="closeForm(true)">
+    
+  <!-- T I T U L O -->
+  <app-input-dr [config]="tituloConfig" [form]="novedadForm"></app-input-dr>
+
+  <!-- M E N S A J E -->
+  <app-text-area-dr [config]="mensajeConfig" [form]="novedadForm"></app-text-area-dr>
+
+  <div class="botonera">
+    <app-rounded-button [config]="buttonCancelConfig" (click)="closeForm(false)"></app-rounded-button>
+    <app-rounded-button class="save-btn" [config]="buttonSendConfig" [disableButton]="!novedadForm.valid"></app-rounded-button>
+  </div>
+</form>

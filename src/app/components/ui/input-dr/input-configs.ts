@@ -22,13 +22,7 @@ export const TELEFONO_CONFIG: IInputConfig = {
 export const EMAIL_CONFIG: IInputConfig = {
     formControlName: 'email',
     label: 'E-Mail',
-    type: 'text'
-};
-
-export const CONSULTA_CONFIG: IInputConfig = {
-    formControlName: 'consulta',
-    label: 'Consulta',
-    type: 'text'
+    type: 'email'
 };
 
 export const VALOR_CONFIG: IInputConfig = {
@@ -44,8 +38,8 @@ export const IMAGEN_CONFIG: IInputConfig = {
     type: 'file'
 };
 
-export const DESCRIPCION_CONFIG: IInputConfig = {
-    formControlName: 'descripcion',
-    label: 'Descripción',
+export const TITULO_CONFIG: IInputConfig = {
+    formControlName: 'titulo',
+    label: 'Título',
     type: 'text'
 };

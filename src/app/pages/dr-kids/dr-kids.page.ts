@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IPushButtonItem } from 'src/app/components/ui/push-button/push-button.component';
+import { ROUND_BUTTON_CREATE_CONFIG } from 'src/app/components/ui/round-button/round-button-configs';
 import { IRoundButtonConfig } from 'src/app/components/ui/round-button/round-button.component';
-import { ROUNDED_BUTTONS_ICONS } from 'src/constants/items';
 
 @Component({
   selector: 'app-dr-kids',
@@ -10,10 +10,7 @@ import { ROUNDED_BUTTONS_ICONS } from 'src/constants/items';
 })
 export class DrKidsPage implements OnInit {
 
-  roundButtonConfig: IRoundButtonConfig = {
-    iconName: ROUNDED_BUTTONS_ICONS.CREATE,
-    extraClass: null
-  }
+  roundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_CREATE_CONFIG;
 
   cursosKids: Array<IPushButtonItem> = [
     {label: 'Operador Junior 4 años', image: 'assets/images/logos/logoDRKids.png'},
