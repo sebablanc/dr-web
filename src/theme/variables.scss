@@ -1,6 +1,17 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+@font-face {
+  font-family: segoeFont;
+  src: url('../assets/fonts/segoe/Segoe-UI.ttf');
+}
+
+@font-face {
+  font-family: mvBoliFont;
+  src: url('../assets/fonts/mvboli/mvboli.ttf');
+}
+
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
@@ -236,7 +247,7 @@
 }
 
 * {
-  font-family: "Segoe UI";
+  font-family: 'segoeFont';
 }
 
 body {
@@ -250,7 +261,7 @@ body {
 }
 
 .dr-font {
-  font-family: "MV Boli";
+  font-family: mvBoliFont;
   font-size: 25px;
 }
 

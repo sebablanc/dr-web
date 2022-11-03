@@ -16,17 +16,19 @@ export class CursoDetailPage implements OnInit {
   constructor(private modalSrv: ModalService) { }
 
   ngOnInit() {
+    this.editRoundButtonConfig.extraClass = null;
+    this.deleteRoundButtonConfig.extraClass = null;
     this.deleteRoundButtonConfig.lowerButton = true;
   }
 
   async showEditModal(){
-    let algo = await this.modalSrv.showCursoModal('Editar curso', {nombre: 'programacion', categoria: '2', valor: 132, descripcion: 'algo'});
+    let algo = await this.modalSrv.showCursoModal('Editar curso', {nombre: 'Reparación de PC I', categoria: '2', valor: 132, descripcion: 'algo'});
     console.log('edit');
     console.log(algo);
   }
 
   async deleteCurso() {
-    let algo = await this.modalSrv.showWarningModal('', '');
+    let algo = await this.modalSrv.showWarningModal('', 'Reparación de PC I');
     console.log('delete');
     console.log(algo);
   }

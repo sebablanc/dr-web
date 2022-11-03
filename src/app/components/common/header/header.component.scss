@@ -16,7 +16,6 @@
 
     .rs-container{
         position: absolute;
-        top: 10px;
         right: 20px;
         color: #FFFFFF;
         display: flex;
@@ -45,10 +44,10 @@
     }
 }
 
-@media screen and (max-width: 515px) {
+@media screen and (min-width: 515px) {
     .header-container {
         .rs-container{
-            bottom: 10px;
+            top: 10px;
         }
     }
 }

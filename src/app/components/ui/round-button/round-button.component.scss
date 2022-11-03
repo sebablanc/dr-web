@@ -6,6 +6,7 @@
     padding: 6px;
     box-shadow: 2px 2px grey;
     position: fixed;
+    z-index: 99;
 }
 
 .right-float-button{
@@ -38,4 +39,22 @@
 
 .small-right-btn {
     border-radius: 0 50% 50% 0;
+}
+
+@media screen and (max-width: 1050px) {
+    .right-float-button{
+        top: 160px;
+    }
+
+    .second-button{
+        top: 221px;
+    }
+}
+
+@media screen and (max-width: 515px) {
+    .header-container {
+        .rs-container{
+            bottom: 10px;
+        }
+    }
 }

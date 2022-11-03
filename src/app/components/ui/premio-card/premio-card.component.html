@@ -8,4 +8,5 @@
   </div>
   <img *ngIf="showPC" class="pc-winner" src="assets/images/PC-Escritorio.png">
   <div class="ganaste-label">¡¡ Ganaste !!</div>
+  <app-small-botonera class="premio-card-botonera" (leftButtonClicked)="openEditModal()" (rightButtonClicked)="openDeleteModal()"></app-small-botonera>
 </div>

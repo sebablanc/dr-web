@@ -55,6 +55,10 @@ const routes: Routes = [
     path: 'novedad-form-layout',
     loadChildren: () => import('./pages/novedad-form-layout/novedad-form-layout.module').then( m => m.NovedadFormLayoutPageModule)
   },
+  {
+    path: 'premio-form-layout',
+    loadChildren: () => import('./pages/premio-form-layout/premio-form-layout.module').then( m => m.PremioFormLayoutPageModule)
+  },
 ];
 
 @NgModule({

@@ -20,7 +20,7 @@ export class NovedadCardComponent implements OnInit {
   }
 
   async openDeleteModal() {
-    let algo = await this.modalSrv.showWarningModal('', '');
+    let algo = await this.modalSrv.showWarningModal('', 'Título Novedad');
     console.log('delete');
     console.log(algo);
   }

@@ -5,6 +5,6 @@
 </div>
 <div *ngIf="showLinksContainer" class="header-links-container">
   <div *ngFor="let navItem of headerNavItems">
-    <app-header-link [navItem]="navItem" ></app-header-link>
+    <app-header-link [navItem]="navItem" (navItemClicked)="showLinksContainer=false" ></app-header-link>
   </div>
 </div>

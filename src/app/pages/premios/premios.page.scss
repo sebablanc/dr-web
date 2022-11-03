@@ -48,6 +48,12 @@
     }
 }
 
+@media screen and (max-width: 450px) {
+    .header-logos {
+        display: none;
+    }
+}
+
 .premio-pc-container {
     margin: 20px 0 15px;
     ::ng-deep .premio-card{

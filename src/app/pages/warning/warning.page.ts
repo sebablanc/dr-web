@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BUTTON_CANCEL_CONFIG, BUTTON_DELETE_CONFIG } from 'src/app/components/ui/rounded-button/button-configs';
 import { IRoundedButtonConfig } from 'src/app/components/ui/rounded-button/rounded-button.component';
 import { ModalService } from 'src/app/services/modal.service';
@@ -9,6 +9,7 @@ import { ModalService } from 'src/app/services/modal.service';
   styleUrls: ['./warning.page.scss'],
 })
 export class WarningPage implements OnInit {
+  @Input() toDelete: string;
   buttonSendConfig: IRoundedButtonConfig = BUTTON_DELETE_CONFIG;
   buttonCancelConfig: IRoundedButtonConfig = BUTTON_CANCEL_CONFIG;
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { SectionService } from 'src/app/services/section.service';
 
@@ -9,6 +9,7 @@ import { SectionService } from 'src/app/services/section.service';
 })
 export class HeaderLinkComponent implements OnInit {
   @Input() navItem: INavItem = null;
+  @Output() navItemClicked: EventEmitter<boolean> = new EventEmitter();
   linkActive: string = '';
   constructor(
     private navigationSrv: NavigationService,
@@ -19,8 +20,9 @@ export class HeaderLinkComponent implements OnInit {
   }
 
   goTo(){
-    this.navigationSrv.goTo(this.navItem.link);
+    this.navItemClicked.emit(true);
     this.sectionSrv.setSectionActive(this.navItem.section);
+    this.navigationSrv.goTo(this.navItem.link);
   }
 
   getLinkActive(){

@@ -27,8 +27,6 @@ export class HeaderLinkKeypadComponent implements OnInit {
 
   showLinks() {
     this.showLinksContainer = !this.showLinksContainer;
-    console.log(this.showLinksContainer);
-    //this.linkContainer.nativeElement.style.display = this.showLinksContainer ? 'inline-flex' : 'block';
   }
 
 }
