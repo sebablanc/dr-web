@@ -1,6 +1,10 @@
 <div class="header-container" [ngClass]="{'header-container-kids': sectionActive == 'KIDS'}">
   <img class="header-logo" src="assets/images/logos/logoDR.png" alt="">
   <div class="name-dr dr-font"><span class="dr dr-font">DR</span> Computers</div>
+  <div class="login-options">
+    <div class="login-buttons ingresar-button" (click)="goTo('login')">Ingresar</div>
+    <app-rounded-button [config]="roundedButtonConfig" (buttonClicked)="goTo('register')"></app-rounded-button>
+  </div>
   <div class="rs-container">
     <div class="rs-label">Contactanos</div>
     <img *ngFor="let rs of headerRSItems" class="rs-logo" [src]="rs.logo" (click)="goTo(rs.link)" />
