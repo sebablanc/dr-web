@@ -32,4 +32,9 @@ export class LoginFormComponent implements OnInit {
     console.log('resetPasswordResult');
     console.log(resetPasswordResult);
   }
+
+  closeForm(create: boolean){
+    let data = create ? this.loginForm.value : null;
+    this.emitData.emit(data);
+  }
 }

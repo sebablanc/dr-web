@@ -24,4 +24,9 @@ export class ResetPasswordFormComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]]
     })
   }
+
+  closeForm(create: boolean){
+    let data = create ? this.resetPasswordForm.value : null;
+    this.emitData.emit(data);
+  }
 }

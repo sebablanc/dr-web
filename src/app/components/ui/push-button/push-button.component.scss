@@ -19,3 +19,13 @@
         }
     }
 }
+
+
+@media screen and (max-width: 591px) {
+    .push-button {
+        .push-button-container {
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+    }
+  }
