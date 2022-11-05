@@ -3,6 +3,7 @@ import { NavigationService } from './services/navigation.service';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { environment } from 'src/environments/environment';
+import { UserLoggedService } from './services/user-logged.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,15 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private navigationSrv: NavigationService) {}
+  constructor(private navigationSrv: NavigationService,
+    private userLoggedSrv: UserLoggedService) {}
 
   ngOnInit(){
     const app = initializeApp(environment.firebaseConfig);
     const analytics = getAnalytics(app);
+
+    this.userLoggedSrv.checkUserIsLogged();
+
     this.navigationSrv.goTo('home');
   }
 }

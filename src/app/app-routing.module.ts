@@ -49,7 +49,7 @@ const routes: Routes = [
   },
   {
     path: 'warning',
-    loadChildren: () => import('./pages/warning/warning.module').then( m => m.WarningPageModule)
+    loadChildren: () => import('./pages/delete-messages/delete-messages.module').then( m => m.WarningPageModule)
   },
   {
     path: 'novedad-form-layout',
@@ -66,7 +66,7 @@ const routes: Routes = [
   {
     path: 'reset-password',
     loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
-  },
+  }
 ];
 
 @NgModule({

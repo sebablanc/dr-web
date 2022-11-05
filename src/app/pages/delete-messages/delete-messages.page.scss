@@ -1,5 +1,5 @@
-.modal-warning-container{
-    .modal-warning-icon{
+.modal-delete-messages-container{
+    .modal-delete-messages-icon{
         width: 100%;
         margin-bottom: 16px;
         text-align: center;
@@ -11,14 +11,21 @@
         }
     }
 
-    .modal-warning-title{
+    .modal-delete-messages-title{
         font-size: 32px;
         font-weight: 700;
         margin-bottom: 16px;
         text-align: center;
     }
 
-    .modal-warning-description{
+    .modal-delete-messages-description{
         margin-bottom: 24px;
+    }
+
+    .botonera-one-button{
+        grid-template-columns: repeat(3, 1fr);
+        .close-btn{
+            grid-column: 2;
+        }
     }
 }

@@ -366,3 +366,39 @@ body {
     }
   }
 }
+
+.loading-modal{
+  &::part(content) {
+    --height: auto;
+    --width: auto;
+    overflow-y: auto;
+    border-radius: 16px;
+    padding: 20px;
+  }
+}
+
+
+/** ANIMACIONES  */
+/* The typing effect */
+@keyframes typing {
+  from {
+      width: 0
+  }
+
+  to {
+      width: 100%
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+
+  from,
+  to {
+      border-color: transparent
+  }
+
+  50% {
+      border-color: orange;
+  }
+}

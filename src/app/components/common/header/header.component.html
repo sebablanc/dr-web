@@ -2,7 +2,8 @@
   <img class="header-logo" src="assets/images/logos/logoDR.png" alt="">
   <div class="name-dr dr-font"><span class="dr dr-font">DR</span> Computers</div>
   <div class="login-options">
-    <div class="login-buttons ingresar-button" (click)="goTo('login')">Ingresar</div>
+    <div *ngIf="!userLogged" class="login-buttons ingresar-button" (click)="goTo('login')">Ingresar</div>
+    <div *ngIf="userLogged" class="login-buttons ingresar-button" (click)="logout()">Salir</div>
   </div>
   <div class="rs-container">
     <div class="rs-label">Contactanos</div>

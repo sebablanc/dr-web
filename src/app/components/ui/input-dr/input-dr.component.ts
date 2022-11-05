@@ -14,6 +14,7 @@ export class InputDrComponent implements OnInit {
   @Output('prefixIconClicked') prefixIconClicked: EventEmitter<boolean> = new EventEmitter();
   @Output('dataEmit') dataEmit: EventEmitter<any> = new EventEmitter();
   @Output('dataEmitKey') dataEmitKey: EventEmitter<any> = new EventEmitter();
+  @Output('onChangeEmit') onChangeEmit: EventEmitter<boolean> = new EventEmitter();
 
   field: AbstractControl;
   icon: string = null;
@@ -45,6 +46,7 @@ export interface IInputConfig {
   formControlName: string;
   label: string;
   type: string;
+  lastElement: boolean;
   prefixIcon?: string;
   suffixIcon?: string;
   readOnly?: boolean;

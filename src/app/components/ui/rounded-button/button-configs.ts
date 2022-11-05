@@ -24,6 +24,12 @@ export const BUTTON_CANCEL_CONFIG: IRoundedButtonConfig = {
     style: 'SECONDARY'
 }
 
+export const BUTTON_CLOSE_CONFIG: IRoundedButtonConfig = {
+    text: 'Cerrar',
+    type: 'button',
+    style: 'PRIMARY'
+}
+
 export const BUTTON_LOGIN_CONFIG: IRoundedButtonConfig = {
     text: 'Ingresar',
     type: 'submit',

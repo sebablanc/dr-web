@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MESSAGES_TYPES } from 'src/app/pages/delete-messages/delete-messages.page';
 import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { ModalService } from 'src/app/services/modal.service';
   styleUrls: ['./novedad-card.component.scss'],
 })
 export class NovedadCardComponent implements OnInit {
-
+  @Input() showBotonera: boolean = false;
   constructor(private modalSrv: ModalService) { }
 
   ngOnInit() {}
@@ -20,7 +21,7 @@ export class NovedadCardComponent implements OnInit {
   }
 
   async openDeleteModal() {
-    let algo = await this.modalSrv.showWarningModal('', 'Título Novedad');
+    let algo = await this.modalSrv.showWarningModal('', MESSAGES_TYPES.WARNING, 'Título Novedad');
     console.log('delete');
     console.log(algo);
   }

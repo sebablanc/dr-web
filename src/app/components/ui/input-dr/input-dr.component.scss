@@ -24,9 +24,13 @@
         display: inline-flex;
         width: 94%;
     }
-
+    
     .error-input {
         font-size: 12px;
         color: #FF0000;
     }
+}
+
+.input-last-field{
+    margin-bottom: 0;
 }

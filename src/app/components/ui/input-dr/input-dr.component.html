@@ -1,5 +1,6 @@
 <form *ngIf="config && form"
   class="upf-container"
+  [ngClass]="{'input-last-field': config.lastElement}"
   [formGroup]="form">
   <ion-icon *ngIf="config && config.prefixIcon" class="icon-prefix" [name]="config.prefixIcon" (click)="prefixIconClicked.emit(true)"></ion-icon>
     <input *ngIf="config && config.label"

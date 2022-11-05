@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { WarningPageRoutingModule } from './warning-routing.module';
+import { DeleteMessagesPageRoutingModule } from './delete-messages-routing.module';
 
-import { WarningPage } from './warning.page';
+import { DeleteMessagesPage } from './delete-messages.page';
 import { UiModule } from 'src/app/components/ui/ui.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { UiModule } from 'src/app/components/ui/ui.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    WarningPageRoutingModule,
+    DeleteMessagesPageRoutingModule,
     UiModule
   ],
-  declarations: [WarningPage]
+  declarations: [DeleteMessagesPage]
 })
 export class WarningPageModule {}

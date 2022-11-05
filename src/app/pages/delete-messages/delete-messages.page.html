@@ -1,0 +1,12 @@
+<div class="modal-delete-messages-container">
+  <div class="modal-delete-messages-icon">
+    <img src="assets/images/icons/{{icon}}" />
+  </div>
+  <div class="modal-delete-messages-title">{{ title }}</div>
+  <div class="modal-delete-messages-description" [innerHTML]="message"></div>
+  <div class="botonera" [ngClass]="{'botonera-one-button': 2 > showButtons.length}">
+    <app-rounded-button *ngIf="showButtons.includes('cancel')" [config]="buttonCancelConfig" (click)="closeModal(false)"></app-rounded-button>
+    <app-rounded-button *ngIf="showButtons.includes('close')" class="close-btn" [config]="buttonCloseConfig" (click)="closeModal(false)"></app-rounded-button>
+    <app-rounded-button *ngIf="showButtons.includes('send')" class="save-btn" [config]="buttonSendConfig" (click)="closeModal(true)"></app-rounded-button>
+  </div>
+</div>

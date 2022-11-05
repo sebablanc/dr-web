@@ -3,31 +3,36 @@ import { IInputConfig } from "src/app/components/ui/input-dr/input-dr.component"
 export const NOMBRE_CONFIG: IInputConfig = {
     formControlName: 'nombre',
     label: 'Nombre',
-    type: 'text'
+    type: 'text',
+    lastElement: false
 };
 
 export const APELLIDO_CONFIG: IInputConfig = {
     formControlName: 'apellido',
     label: 'Apellido',
-    type: 'text'
+    type: 'text',
+    lastElement: false
 };
 
 export const TELEFONO_CONFIG: IInputConfig = {
     formControlName: 'telefono',
     label: 'Teléfono',
-    type: 'text'
+    type: 'text',
+    lastElement: false
 };
 
 export const EMAIL_CONFIG: IInputConfig = {
     formControlName: 'email',
     label: 'E-Mail',
-    type: 'email'
+    type: 'email',
+    lastElement: false
 };
 
 export const PASSWORD_CONFIG: IInputConfig = {
-    formControlName: 'pass',
+    formControlName: 'password',
     label: 'Contraseña',
-    type: 'password'
+    type: 'password',
+    lastElement: true
 };
 
 export const VALOR_CONFIG: IInputConfig = {
@@ -35,46 +40,54 @@ export const VALOR_CONFIG: IInputConfig = {
     label: 'Valor',
     type: 'number',
     prefixIcon: 'logo-usd',
+    lastElement: false
 };
 
 export const IMAGEN_CONFIG: IInputConfig = {
     formControlName: 'imagen',
     label: 'Imagen',
-    type: 'file'
+    type: 'file',
+    lastElement: false
 };
 
 export const TITULO_CONFIG: IInputConfig = {
     formControlName: 'titulo',
     label: 'Título',
-    type: 'text'
+    type: 'text',
+    lastElement: false
 };
 
 export const FECHA_SORTEO_CONFIG: IInputConfig = {
     formControlName: 'fechaSorteo',
     label: 'Fecha de sorteo',
-    type: 'date'
+    type: 'date',
+    lastElement: false
 };
 
 export const NUMERO_CUPON_CONFIG: IInputConfig = {
     formControlName: 'numeroCupon',
     label: 'Número de cupón',
-    type: 'number'
+    type: 'number',
+    lastElement: false
 };
 
 export const NOMBRE_FAVORECIDO_CONFIG: IInputConfig = {
     formControlName: 'nombreFavorecido',
     label: 'Nombre del alumno favorecido',
-    type: 'text'
+    type: 'text',
+    lastElement: false
 };
 
 export const NOMBRE_RETIRO_CONFIG: IInputConfig = {
     formControlName: 'nombreRetiro',
     label: 'Nombre del alumno que retiró el cupón',
-    type: 'text'
+    type: 'text',
+    lastElement: false
 };
 
 export const HORARIO_EXTRACCION_CONFIG: IInputConfig = {
     formControlName: 'horarioExtraccion',
     label: 'Horario en que se extrajo el cupón',
-    type: 'time'
+    type: 'time',
+    lastElement: false
 };

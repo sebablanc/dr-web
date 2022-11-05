@@ -3,5 +3,5 @@
   <div class="novedad-card-description">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta sed tempore suscipit dignissimos debitis quibusdam magnam expedita atque sint nam eos magni placeat, rerum veritatis nulla velit officiis iste corrupti?
   </div>
-  <app-small-botonera (leftButtonClicked)="openEditModal()" (rightButtonClicked)="openDeleteModal()"></app-small-botonera>
+  <app-small-botonera *ngIf="showBotonera" (leftButtonClicked)="openEditModal()" (rightButtonClicked)="openDeleteModal()"></app-small-botonera>
 </div>

@@ -6,8 +6,12 @@
   <!-- P A S S W O R D -->
   <app-input-dr [config]="passwordConfig" [form]="loginForm"></app-input-dr>
 
+  <div class="credentials-error">
+    <span *ngIf="errorCredentials">El email o la contraseña son inválidas. ¡Intentalo de nuevo!</span>
+  </div>
+
   <app-rounded-button [config]="buttonLoginConfig" [disableButton]="!loginForm.valid"></app-rounded-button>
   <div class="login-olvidar-pass-container">
-    <a class="login-olvidar-pass-link" (click)="openResetPassword();">¿Olvidaste tu contraseña?</a>
+    <a class="login-olvidar-pass-link" (click)="emitResetPassword.emit(true);">¿Olvidaste tu contraseña?</a>
   </div>
 </form>

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ROUND_BUTTON_DELETE_CONFIG, ROUND_BUTTON_EDIT_CONFIG } from 'src/app/components/ui/round-button/round-button-configs';
 import { IRoundButtonConfig } from 'src/app/components/ui/round-button/round-button.component';
 import { ModalService } from 'src/app/services/modal.service';
+import { UserLoggedService } from 'src/app/services/user-logged.service';
+import { MESSAGES_TYPES } from '../delete-messages/delete-messages.page';
 
 @Component({
   selector: 'app-curso-detail',
@@ -12,13 +15,22 @@ export class CursoDetailPage implements OnInit {
 
   editRoundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_EDIT_CONFIG;
   deleteRoundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_DELETE_CONFIG;
+  subscriber: Subscription;
+  userLogged: boolean;
 
-  constructor(private modalSrv: ModalService) { }
+  constructor(private modalSrv: ModalService, private userLoggedSrv: UserLoggedService) { }
 
   ngOnInit() {
     this.editRoundButtonConfig.extraClass = null;
     this.deleteRoundButtonConfig.extraClass = null;
     this.deleteRoundButtonConfig.lowerButton = true;
+    this.subscriber = this.userLoggedSrv.isUserLogged$().subscribe((value: boolean)=>{
+      this.userLogged = value;
+    });
+  }
+
+  ngOnDestroy(){
+    this.subscriber.unsubscribe();
   }
 
   async showEditModal(){
@@ -28,8 +40,11 @@ export class CursoDetailPage implements OnInit {
   }
 
   async deleteCurso() {
-    let algo = await this.modalSrv.showWarningModal('', 'Reparación de PC I');
+    let deleteCurso = await this.modalSrv.showWarningModal('', MESSAGES_TYPES.WARNING, 'Reparación de PC I');
     console.log('delete');
-    console.log(algo);
+    console.log(deleteCurso);
+    if(deleteCurso.role === 'confirm'){
+      this.modalSrv.showWarningModal('', MESSAGES_TYPES.ERROR, 'Reparación de PC I')
+    }
   }
 }

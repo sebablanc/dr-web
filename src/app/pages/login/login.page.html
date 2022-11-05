@@ -1,3 +1,7 @@
 <app-login-page-layout>
-    <app-login-form class="login-form"></app-login-form>
+    <app-login-form
+        class="login-form"
+        [errorCredentials]="errorLogin"
+        (emitData)="login($event)"
+        (emitResetPassword)="openResetPassword()"></app-login-form>
 </app-login-page-layout>

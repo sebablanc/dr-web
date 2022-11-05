@@ -4,7 +4,7 @@ import { CursoFormPage } from '../pages/curso-form/curso-form.page';
 import { NovedadFormLayoutPage } from '../pages/novedad-form-layout/novedad-form-layout.page';
 import { PremioFormLayoutPage } from '../pages/premio-form-layout/premio-form-layout.page';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password.page';
-import { WarningPage } from '../pages/warning/warning.page';
+import { DeleteMessagesPage } from '../pages/delete-messages/delete-messages.page';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +30,8 @@ export class ModalService {
     return await this.openModal(CursoFormPage, { title, curso }, 'basic-modal');
   }
 
-  async showWarningModal(title: string, toDelete: string) {
-    return await this.openModal(WarningPage, { title, toDelete }, 'basic-modal');
+  async showWarningModal(title: string, type: string, toDelete: string) {
+    return await this.openModal(DeleteMessagesPage, { title, type, toDelete }, 'basic-modal');
   }
 
   async showNovedadModal(title: string, novedad: any) {
