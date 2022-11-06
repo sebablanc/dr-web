@@ -3,7 +3,13 @@ import { BUTTON_CANCEL_CONFIG, BUTTON_CLOSE_CONFIG, BUTTON_DELETE_CONFIG } from 
 import { IRoundedButtonConfig } from 'src/app/components/ui/rounded-button/rounded-button.component';
 import { ModalService } from 'src/app/services/modal.service';
 
-export const  MESSAGES_TYPES = {
+export const OPERATION_TYPES = {
+  DELETE: 'DELETE',
+  SAVE: 'SAVE',
+  MODIFY: 'MODIFY',
+}
+
+export const  RESULTS_TYPES = {
   WARNING: 'WARNING',
   SUCCESS: 'SUCCESS',
   ERROR: 'ERROR',
@@ -16,9 +22,11 @@ const TITLES = {
 }
 
 const MESSAGES = {
-  WARNING: 'Estás por borrar <b>{{ toDelete }}</b>. Si continuás con esta operación, no se puede deshacer. ¿Estás seguro de querer eliminar?',
-  SUCCESS: 'Se borró <b>{{ toDelete }}</b> con éxito.',
-  ERROR: 'Tuvimos un error al intentar borrar <b>{{ toDelete }}</b>. Intentalo más tarde'
+  DELETE_WARNING: 'Estás por borrar <b>{{ toDelete }}</b>. Si continuás con esta operación, no se puede deshacer. ¿Estás seguro de querer eliminar?',
+  DELETE_SUCCESS: 'Se borró <b>{{ toDelete }}</b> con éxito.',
+  DELETE_ERROR: 'Tuvimos un error al intentar borrar <b>{{ toDelete }}</b>. Intentalo más tarde',
+  SAVE_SUCCESS: 'Se guardó <b>{{ toDelete }}</b> exitosamente.',
+  SAVE_ERROR: 'Tuvimos un error al intentar guardar <b>{{ toDelete }}</b>. Intentalo más tarde'
 }
 
 const ICONS = {
@@ -40,7 +48,8 @@ const BUTTONS = {
 })
 export class DeleteMessagesPage implements OnInit {
   @Input() toDelete: string;
-  @Input() type: string = MESSAGES_TYPES.WARNING;
+  @Input() resultType: string = RESULTS_TYPES.WARNING;
+  @Input() operationType: string = OPERATION_TYPES.DELETE;
   title: string = '';
   message: string = '';
   icon: string = '';
@@ -52,13 +61,13 @@ export class DeleteMessagesPage implements OnInit {
   constructor(private modalSrv: ModalService) { }
 
   ngOnInit() {
-    let typeUpperCase = this.type.toUpperCase();
-    console.log(typeUpperCase);
+    let resultTypeUpperCase = this.resultType.toUpperCase();
+    let operationTypeUpperCase = this.operationType.toUpperCase();
     
-    this.icon = ICONS[typeUpperCase];
-    this.title = TITLES[typeUpperCase];
-    this.showButtons = BUTTONS[typeUpperCase];
-    this.message = MESSAGES[typeUpperCase];
+    this.icon = ICONS[resultTypeUpperCase];
+    this.title = TITLES[resultTypeUpperCase];
+    this.showButtons = BUTTONS[resultTypeUpperCase];
+    this.message = MESSAGES[operationTypeUpperCase + '_' + resultTypeUpperCase];
     this.message = this.message.replace('{{ toDelete }}', this.toDelete);
   }
 

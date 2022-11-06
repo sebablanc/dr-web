@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MESSAGES_TYPES } from 'src/app/pages/delete-messages/delete-messages.page';
+import { OPERATION_TYPES, RESULTS_TYPES } from 'src/app/pages/delete-messages/delete-messages.page';
 import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class PremioCardComponent implements OnInit {
   }
 
   async openDeleteModal() {
-    let algo = await this.modalSrv.showWarningModal('', MESSAGES_TYPES.WARNING, 'Premio');
+    let algo = await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, RESULTS_TYPES.WARNING, 'Premio');
     console.log('delete');
     console.log(algo);
   }

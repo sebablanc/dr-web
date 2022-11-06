@@ -30,8 +30,8 @@ export class ModalService {
     return await this.openModal(CursoFormPage, { title, curso }, 'basic-modal');
   }
 
-  async showWarningModal(title: string, type: string, toDelete: string) {
-    return await this.openModal(DeleteMessagesPage, { title, type, toDelete }, 'basic-modal');
+  async showDeleteMessagesModal(operationType: string, resultType: string, toDelete: string) {
+    return await this.openModal(DeleteMessagesPage, { operationType, resultType, toDelete }, 'basic-modal');
   }
 
   async showNovedadModal(title: string, novedad: any) {
@@ -48,6 +48,6 @@ export class ModalService {
 
   async dismissModal(data: any) {
     let role = !data ? 'cancel' : 'confirm';
-    this.modal.dismiss(data, role);
+    await this.modal.dismiss(data, role);
   }
 }

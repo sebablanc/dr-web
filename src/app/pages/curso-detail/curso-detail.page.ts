@@ -4,7 +4,7 @@ import { ROUND_BUTTON_DELETE_CONFIG, ROUND_BUTTON_EDIT_CONFIG } from 'src/app/co
 import { IRoundButtonConfig } from 'src/app/components/ui/round-button/round-button.component';
 import { ModalService } from 'src/app/services/modal.service';
 import { UserLoggedService } from 'src/app/services/user-logged.service';
-import { MESSAGES_TYPES } from '../delete-messages/delete-messages.page';
+import { OPERATION_TYPES, RESULTS_TYPES } from '../delete-messages/delete-messages.page';
 
 @Component({
   selector: 'app-curso-detail',
@@ -40,11 +40,10 @@ export class CursoDetailPage implements OnInit {
   }
 
   async deleteCurso() {
-    let deleteCurso = await this.modalSrv.showWarningModal('', MESSAGES_TYPES.WARNING, 'Reparación de PC I');
-    console.log('delete');
-    console.log(deleteCurso);
+    let deleteCurso = await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, RESULTS_TYPES.WARNING, 'Reparación de PC I');
     if(deleteCurso.role === 'confirm'){
-      this.modalSrv.showWarningModal('', MESSAGES_TYPES.ERROR, 'Reparación de PC I')
+      //TODO: BORRAR CURSO
+      this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, RESULTS_TYPES.SUCCESS, 'Reparación de PC I')
     }
   }
 }

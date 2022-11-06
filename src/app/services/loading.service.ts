@@ -6,19 +6,21 @@ import { LoadingComponent } from '../components/common/loading/loading.component
   providedIn: 'root'
 })
 export class LoadingService {
-  private modal: HTMLIonModalElement;
+  private modalLoading: HTMLIonModalElement;
   
   constructor(private modalCtrl: ModalController) { }
 
   private async openModal(component: any) {
-    this.modal = await this.modalCtrl.create({
+    this.modalLoading = await this.modalCtrl.create({
       component,
       cssClass: 'loading-modal'
     });
 
-    this.modal.present();
+    this.modalLoading.present();
 
-    return await this.modal.onWillDismiss();
+    return this.modalLoading;
+    //return await this.modalLoading.onWillDismiss();
+
   }
 
   async showDRLoading() {
@@ -26,6 +28,6 @@ export class LoadingService {
   }
 
   async dismissLoading() {
-    this.modal.dismiss();
+    await this.modalLoading.dismiss();
   }
 }

@@ -37,9 +37,7 @@ export class DrComputersPage implements OnInit {
   }
 
   async showCreateModal(){
-    let algo = await this.modalSrv.showCursoModal('Crear nuevo curso', null);
-    console.log('algo');
-    console.log(algo);
+    await this.modalSrv.showCursoModal('Crear nuevo curso', null);
   }
 
 }
