@@ -3,14 +3,8 @@
     <!-- N O M B R E -->
     <app-input-dr [config]="nombreConfig" [form]="cursoForm"></app-input-dr>
 
-    <!-- I M A G E N -->
-    <app-input-dr [config]="imagenConfig" [form]="cursoForm"></app-input-dr>
-
     <!-- C A T E G O R I A -->
-    <app-select-dr [config]="categoriaConfig" [form]="cursoForm"></app-select-dr>
-
-    <!-- V A L O R -->
-    <app-input-dr [config]="valorConfig" [form]="cursoForm"></app-input-dr>
+    <app-select-dr [config]="categoriaConfig" [form]="cursoForm" [list]="categorias"></app-select-dr>
 
     <!-- D E S C R I P C I O N -->
     <app-text-area-dr [config]="descripcionConfig" [form]="cursoForm"></app-text-area-dr>

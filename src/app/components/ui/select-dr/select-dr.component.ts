@@ -10,6 +10,7 @@ import { ShareService } from 'src/app/services/share.service';
 export class SelectDrComponent implements OnInit {
   @Input() config: ISelectConfig;
   @Input() form: FormGroup;
+  @Input() list: Array<IList> = [];
 
   field: AbstractControl;
   
@@ -31,4 +32,9 @@ export interface ISelectConfig {
   formControlName: string;
   label: string;
   readOnly?: boolean;
+}
+
+export interface IList{
+  value: any;
+  label: string;
 }

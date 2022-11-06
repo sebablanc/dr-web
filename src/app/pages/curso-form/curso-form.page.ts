@@ -24,9 +24,9 @@ export class CursoFormPage implements OnInit {
 
   async handleFormData(event: any){
     let result = false;
-    console.log(event);
+    this.modalSrv.dismissModal(result);
+    if(!event) return;
     try{
-      this.modalSrv.dismissModal(result);
       await this.loadingSrv.showDRLoading();
       let resultCrear = await this.cursosSrv.crear_curso(event);
       let operationResult = resultCrear && resultCrear.id !== null && resultCrear.id.trim() !== '' ? RESULTS_TYPES.SUCCESS : RESULTS_TYPES.ERROR; 

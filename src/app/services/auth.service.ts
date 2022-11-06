@@ -28,6 +28,15 @@ export class AuthService {
     }
   }
 
+  async resetPassword(email: string){
+    try{
+      await this.auth.sendPasswordResetEmail(email);
+      return true;
+    } catch(e){
+      return false;
+    }
+  }
+
   async logout() {
     this.localStorageSrv.removeItems();
     await this.auth.signOut();

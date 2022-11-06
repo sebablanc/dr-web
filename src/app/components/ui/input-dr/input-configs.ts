@@ -35,21 +35,6 @@ export const PASSWORD_CONFIG: IInputConfig = {
     lastElement: true
 };
 
-export const VALOR_CONFIG: IInputConfig = {
-    formControlName: 'valor',
-    label: 'Valor',
-    type: 'number',
-    prefixIcon: 'logo-usd',
-    lastElement: false
-};
-
-export const IMAGEN_CONFIG: IInputConfig = {
-    formControlName: 'imagen',
-    label: 'Imagen',
-    type: 'file',
-    lastElement: false
-};
-
 export const TITULO_CONFIG: IInputConfig = {
     formControlName: 'titulo',
     label: 'Título',

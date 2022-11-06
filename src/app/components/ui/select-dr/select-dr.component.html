@@ -1,15 +1,12 @@
-<form *ngIf="config && form"
+<form *ngIf="config && form && list.length > 0"
   class="upf-container"
   [formGroup]="form">
     <select
       *ngIf="config && config.label"
       class="input-field"
       [formControlName]="config.formControlName"
-      >
-      <option value="">Seleccione una opción</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+    >
+      <option *ngFor="let option of list" [value]="option.value" [disabled]="option.value == ''">{{ option.label }}</option>
     </select>
     <div
       *ngIf="config && field && (field.invalid && field.dirty || field.touched)"
