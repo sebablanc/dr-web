@@ -28,8 +28,16 @@ export class DrComputersPage implements OnInit {
     private cursosListSrv: CursosListService) { }
 
   ngOnInit() {
+    this.checkingUserLogged();
+    this.gettingCursos();
+  }
+
+  checkingUserLogged(){
     this.userLogged$ = this.userLoggedSrv.isUserLogged$();
     this.userLogged$.subscribe(isLogged => this.userLogged = isLogged);
+  }
+
+  gettingCursos(){
     this.cursos$ = this.cursosListSrv.getCursos$();
     this.cursos$.subscribe(cursos => {
       this.cursosAdultos = cursos.filter(c => c.categoria == SECTION_TYPES.ADULTOS);

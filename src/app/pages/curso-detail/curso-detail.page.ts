@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ROUND_BUTTON_DELETE_CONFIG, ROUND_BUTTON_EDIT_CONFIG } from 'src/app/components/ui/round-button/round-button-configs';
 import { IRoundButtonConfig } from 'src/app/components/ui/round-button/round-button.component';
+import { ICursoData } from 'src/app/interfaces/cursoData';
+import { CursosService } from 'src/app/services/cursos.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { UserLoggedService } from 'src/app/services/user-logged.service';
+import { SECTION_TYPES } from 'src/constants/items';
 import { OPERATION_TYPES, RESULTS_TYPES } from '../delete-messages/delete-messages.page';
 
 @Component({
@@ -15,28 +19,41 @@ export class CursoDetailPage implements OnInit {
 
   editRoundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_EDIT_CONFIG;
   deleteRoundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_DELETE_CONFIG;
-  subscriber: Subscription;
+  sectionsTypes = SECTION_TYPES;
+  curso: ICursoData = null;
   userLogged: boolean;
+  private userLogged$: Observable<boolean>;
 
-  constructor(private modalSrv: ModalService, private userLoggedSrv: UserLoggedService) { }
+  constructor(
+    private modalSrv: ModalService,
+    private userLoggedSrv: UserLoggedService,
+    private cursosSrv: CursosService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.editingButtonsConfig();
+    this.checkingUserLogged();
+    this.findCurso();
+  }
+  
+  findCurso(){
+    const cursoId = this.route.snapshot.paramMap.get('id');
+    this.curso = this.cursosSrv.obtener_curso_id(cursoId);
+  }
+
+  checkingUserLogged(){
+    this.userLogged$ = this.userLoggedSrv.isUserLogged$();
+    this.userLogged$.subscribe(isLogged => this.userLogged = isLogged);
+  }
+  
+  editingButtonsConfig(){
     this.editRoundButtonConfig.extraClass = null;
     this.deleteRoundButtonConfig.extraClass = null;
     this.deleteRoundButtonConfig.lowerButton = true;
-    this.subscriber = this.userLoggedSrv.isUserLogged$().subscribe((value: boolean)=>{
-      this.userLogged = value;
-    });
-  }
-
-  ngOnDestroy(){
-    this.subscriber.unsubscribe();
   }
 
   async showEditModal(){
-    let algo = await this.modalSrv.showCursoModal('Editar curso', {nombre: 'Reparación de PC I', categoria: '2', valor: 132, descripcion: 'algo'});
-    console.log('edit');
-    console.log(algo);
+    await this.modalSrv.showCursoModal('Editar curso', this.curso);
   }
 
   async deleteCurso() {
