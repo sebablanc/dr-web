@@ -5,6 +5,7 @@ import { getAnalytics } from "firebase/analytics";
 import { environment } from 'src/environments/environment';
 import { UserLoggedService } from './services/user-logged.service';
 import { LoadingService } from './services/loading.service';
+import { CursosService } from './services/cursos.service';
 
 @Component({
   selector: 'app-root',
@@ -15,14 +16,16 @@ export class AppComponent {
   constructor(
     private navigationSrv: NavigationService,
     private userLoggedSrv: UserLoggedService,
-    private loadingSrv: LoadingService) {}
+    private loadingSrv: LoadingService,
+    private cursosSrv: CursosService) {}
 
-  ngOnInit(){
-    this.loadingSrv.showDRLoading();
+  async ngOnInit(){
+    await this.loadingSrv.showDRLoading();
     const app = initializeApp(environment.firebaseConfig);
     const analytics = getAnalytics(app);
 
     this.userLoggedSrv.checkUserIsLogged();
+    await this.cursosSrv.obtener_cursos();
     setTimeout(() => {
       this.loadingSrv.dismissLoading();
     }, 1000);

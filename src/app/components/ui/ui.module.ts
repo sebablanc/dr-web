@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderLinkComponent } from './header-link/header-link.component';
 import { HeaderLinkKeypadComponent } from './header-link-keypad/header-link-keypad.component';
-import { SwiperModule } from 'swiper/angular';
-import { SwiperComponent } from './swiper/swiper.component';
+import { MySwiperComponent } from './swiper/my-swiper.component';
 import { HomeCarouselComponent } from './home-carousel/home-carousel.component';
 import { PushButtonComponent } from './push-button/push-button.component';
 import { PushButtonKeypadComponent } from './push-button-keypad/push-button-keypad.component';
@@ -17,12 +16,13 @@ import { RoundButtonComponent } from './round-button/round-button.component';
 import { IonicModule } from '@ionic/angular';
 import { SelectDrComponent } from './select-dr/select-dr.component';
 import { SmallBotoneraComponent } from './small-botonera/small-botonera.component';
+import { SwiperModule } from "swiper/angular";
 
 @NgModule({
   declarations: [
     HeaderLinkComponent,
     HeaderLinkKeypadComponent,
-    SwiperComponent,
+    MySwiperComponent,
     HomeCarouselComponent,
     PushButtonComponent,
     PushButtonKeypadComponent,
@@ -37,7 +37,7 @@ import { SmallBotoneraComponent } from './small-botonera/small-botonera.componen
   ],
   exports: [
     HeaderLinkKeypadComponent,
-    SwiperComponent,
+    MySwiperComponent,
     HomeCarouselComponent,
     PushButtonComponent,
     PushButtonKeypadComponent,
@@ -53,8 +53,8 @@ import { SmallBotoneraComponent } from './small-botonera/small-botonera.componen
   imports: [
     CommonModule,
     IonicModule,
-    SwiperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SwiperModule
   ]
 })
 export class UiModule { }
