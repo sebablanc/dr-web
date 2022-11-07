@@ -8,7 +8,11 @@ export class FirestoreService {
 
   constructor(private angularFriestore: AngularFirestore) { }
 
-  crear(collectionName, element) {
+  crear(collectionName: string, element: any) {
     return this.angularFriestore.collection(collectionName).add(element);
+  }
+
+  obtener_todos(collectionName: string){
+    return this.angularFriestore.collection(collectionName).snapshotChanges();
   }
 }

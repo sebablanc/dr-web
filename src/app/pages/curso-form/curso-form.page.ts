@@ -28,17 +28,14 @@ export class CursoFormPage implements OnInit {
     if(!event) return;
     try{
       await this.loadingSrv.showDRLoading();
-      //let resultCrear = await this.cursosSrv.crear_curso(event);
-      //let operationResult = resultCrear && resultCrear.id !== null && resultCrear.id.trim() !== '' ? RESULTS_TYPES.SUCCESS : RESULTS_TYPES.ERROR; 
-      //this.loadingSrv.dismissLoading();
-      
-      //borrar y descomentar lo de arriba
-      setTimeout(() => {
-        this.cursosSrv.crear_curso(event);
-        let operationResult = RESULTS_TYPES.SUCCESS
-        this.loadingSrv.dismissLoading();
-        this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.SAVE, operationResult, event.nombre);
-      }, 1000);
+      let resultCrear = await this.cursosSrv.crear_curso(event);
+      let operationResult = resultCrear && resultCrear.id !== null && resultCrear.id.trim() !== '' ? RESULTS_TYPES.SUCCESS : RESULTS_TYPES.ERROR; 
+
+      if(operationResult){
+        // TODO: Buscar cursos
+      }
+      this.loadingSrv.dismissLoading();
+      this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.SAVE, operationResult, event.nombre);
     } catch(e){
       this.loadingSrv.dismissLoading();
       throw new Error("Error de creacion de curso");
