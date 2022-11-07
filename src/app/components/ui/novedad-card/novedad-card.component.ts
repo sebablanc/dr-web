@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { INovedadData } from 'src/app/interfaces/novedadData';
 import { OPERATION_TYPES, RESULTS_TYPES } from 'src/app/pages/delete-messages/delete-messages.page';
 import { ModalService } from 'src/app/services/modal.service';
+import { NavigationService } from 'src/app/services/navigation.service';
+import { NovedadesService } from 'src/app/services/novedades.service';
 
 @Component({
   selector: 'app-novedad-card',
@@ -9,21 +12,30 @@ import { ModalService } from 'src/app/services/modal.service';
 })
 export class NovedadCardComponent implements OnInit {
   @Input() showBotonera: boolean = false;
-  constructor(private modalSrv: ModalService) { }
+  @Input() novedad: INovedadData;
+  
+  constructor(
+    private modalSrv: ModalService,
+    private navigationSrv: NavigationService,
+    private novedadSrv: NovedadesService) { }
 
   ngOnInit() {}
 
   async openEditModal(){
-    console.log('openEditModal')
-    let algo = await this.modalSrv.showNovedadModal('Editar novedad', {titulo: 'Nueva novedad', mensaje: 'Esta es la nueva novedad'});
-    console.log('edit');
-    console.log(algo);
+    await this.modalSrv.showNovedadModal('Editar novedad', this.novedad);
   }
 
   async openDeleteModal() {
-    let algo = await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, RESULTS_TYPES.WARNING, 'Título Novedad');
-    console.log('delete');
-    console.log(algo);
+    let deleteNovedad = await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, RESULTS_TYPES.WARNING, this.novedad.titulo);
+    if(deleteNovedad.role === 'confirm'){
+      const result = this.novedadSrv.eliminar_novedad(this.novedad.id);
+      const resultType = result ? RESULTS_TYPES.SUCCESS : RESULTS_TYPES.ERROR;
+      await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, resultType, this.novedad.titulo);
+    }
+  }
+
+  goTo(link: string){
+    this.navigationSrv.goToExternal(link);
   }
 
 }

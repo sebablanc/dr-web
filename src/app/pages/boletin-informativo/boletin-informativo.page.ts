@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ROUND_BUTTON_CREATE_CONFIG } from 'src/app/components/ui/round-button/round-button-configs';
 import { IRoundButtonConfig } from 'src/app/components/ui/round-button/round-button.component';
+import { INovedadData } from 'src/app/interfaces/novedadData';
 import { ModalService } from 'src/app/services/modal.service';
+import { NovedadesListService } from 'src/app/services/novedades-list.service';
 import { UserLoggedService } from 'src/app/services/user-logged.service';
 
 @Component({
@@ -12,26 +14,33 @@ import { UserLoggedService } from 'src/app/services/user-logged.service';
 })
 export class BoletinInformativoPage implements OnInit {
   roundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_CREATE_CONFIG;
-  subscriber: Subscription;
   userLogged: boolean;
-  novedadesList: Array<number> = [1, 1, 1, 1];
+  private userLogged$: Observable<boolean>;
+  novedadesList: Array<INovedadData>;
+  private novedades$: Observable<INovedadData[]>;
   
-  constructor(private modalSrv: ModalService, private userLoggedSrv: UserLoggedService) { }
+  constructor(
+    private modalSrv: ModalService,
+    private userLoggedSrv: UserLoggedService,
+    private novedadesListSrv: NovedadesListService) { }
 
   ngOnInit() {
-    this.subscriber = this.userLoggedSrv.isUserLogged$().subscribe((value: boolean)=>{
-      this.userLogged = value;
-    });
+    this.checkingUserLogged();
+    this.gettingNovedades();
   }
 
-  ngOnDestroy(){
-    this.subscriber.unsubscribe();
+  checkingUserLogged(){
+    this.userLogged$ = this.userLoggedSrv.isUserLogged$();
+    this.userLogged$.subscribe(isLogged => this.userLogged = isLogged);
+  }
+
+  gettingNovedades(){
+    this.novedades$ = this.novedadesListSrv.getNovedades$();
+    this.novedades$.subscribe(novedades => this.novedadesList = novedades);
   }
 
   async showCreateModal(){
-    let algo = await this.modalSrv.showNovedadModal('Agregar Novedad', null);
-    console.log('algo');
-    console.log(algo);
+    await this.modalSrv.showNovedadModal('Agregar nueva novedad', null);
   }
 
 }

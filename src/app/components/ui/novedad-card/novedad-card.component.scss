@@ -13,5 +13,15 @@
 
     .novedad-card-description {
         margin: 10px;
+        display: inline-block;
+    }
+
+    .novedad-card-link {
+        cursor: pointer;
+        font-size: 11px;
+    }
+
+    .novedad-card-link:hover{
+        text-decoration: underline;
     }
 }

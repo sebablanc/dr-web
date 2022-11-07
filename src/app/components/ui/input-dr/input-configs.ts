@@ -42,6 +42,13 @@ export const TITULO_CONFIG: IInputConfig = {
     lastElement: false
 };
 
+export const LINK_CONFIG: IInputConfig = {
+    formControlName: 'link',
+    label: 'Link',
+    type: 'text',
+    lastElement: false
+};
+
 export const FECHA_SORTEO_CONFIG: IInputConfig = {
     formControlName: 'fechaSorteo',
     label: 'Fecha de sorteo',

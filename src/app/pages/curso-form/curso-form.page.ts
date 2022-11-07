@@ -29,16 +29,18 @@ export class CursoFormPage implements OnInit {
     try{
       await this.loadingSrv.showDRLoading();
       let success = false;
+      let operationType = OPERATION_TYPES.MODIFY;
       if(event.id !== null){
         success = this.cursosSrv.editar_curso(event);
       } else {
         const resultCrear = await this.cursosSrv.crear_curso(event);
         success = resultCrear && resultCrear.id !== null && resultCrear.id.trim() !== '';
+        operationType = OPERATION_TYPES.SAVE;
       }
       let operationResult = success ? RESULTS_TYPES.SUCCESS : RESULTS_TYPES.ERROR; 
       setTimeout(() => {
         this.loadingSrv.dismissLoading();
-        this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.SAVE, operationResult, event.nombre);
+        this.modalSrv.showDeleteMessagesModal(operationType, operationResult, event.nombre);
       }, 10);
     } catch(e){
       this.loadingSrv.dismissLoading();
