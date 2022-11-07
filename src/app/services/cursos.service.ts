@@ -16,12 +16,23 @@ const CURSOS_PRUEBA = [
 })
 export class CursosService {
 
-  collectionName = 'Cursos';
+  private collectionName = 'Cursos';
 
   constructor(private firestoreSrv: FirestoreService, private cursosListSrv: CursosListService) { }
 
   crear_curso(element) {
+    delete element.id;
     return this.firestoreSrv.crear(this.collectionName, element);
+  }
+
+  editar_curso(element) {
+    const id = element.id;
+    delete element.id;
+    return this.firestoreSrv.editar(this.collectionName, id, element);
+  }
+
+  eliminar_curso(id: string){
+    return this.firestoreSrv.eliminar(this.collectionName, id);
   }
 
   async obtener_cursos() {

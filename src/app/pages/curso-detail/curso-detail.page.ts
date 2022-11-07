@@ -7,6 +7,7 @@ import { ICursoData } from 'src/app/interfaces/cursoData';
 import { CursosListService } from 'src/app/services/cursos-list.service';
 import { CursosService } from 'src/app/services/cursos.service';
 import { ModalService } from 'src/app/services/modal.service';
+import { NavigationService } from 'src/app/services/navigation.service';
 import { UserLoggedService } from 'src/app/services/user-logged.service';
 import { SECTION_TYPES } from 'src/constants/items';
 import { OPERATION_TYPES, RESULTS_TYPES } from '../delete-messages/delete-messages.page';
@@ -29,8 +30,10 @@ export class CursoDetailPage implements OnInit {
   constructor(
     private modalSrv: ModalService,
     private cursosListSrv: CursosListService,
+    private cursoSrv: CursosService,
     private userLoggedSrv: UserLoggedService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private navigationSrv: NavigationService) { }
 
   ngOnInit() {
     this.editingButtonsConfig();
@@ -46,6 +49,7 @@ export class CursoDetailPage implements OnInit {
     this.cursos$ = this.cursosListSrv.getCursos$();
     this.cursos$.subscribe(cursos => {
       this.curso = cursos.find(c => c.id == cursoId);
+      if(!this.curso) this.navigationSrv.goBack();
     });
   }
 
@@ -65,10 +69,12 @@ export class CursoDetailPage implements OnInit {
   }
 
   async deleteCurso() {
-    let deleteCurso = await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, RESULTS_TYPES.WARNING, 'Reparación de PC I');
+    let deleteCurso = await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, RESULTS_TYPES.WARNING, this.curso.nombre);
     if(deleteCurso.role === 'confirm'){
-      //TODO: BORRAR CURSO
-      this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, RESULTS_TYPES.SUCCESS, 'Reparación de PC I')
+      const result = this.cursoSrv.eliminar_curso(this.curso.id);
+      const resultType = result ? RESULTS_TYPES.SUCCESS : RESULTS_TYPES.ERROR;
+      await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, resultType, this.curso.nombre);
+      this.navigationSrv.goBack();
     }
   }
 }

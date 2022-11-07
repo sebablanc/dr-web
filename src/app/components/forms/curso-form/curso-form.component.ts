@@ -33,6 +33,7 @@ export class CursoFormComponent implements OnInit {
       this.categorias.push({value: section, label: section})
     }
     this.cursoForm = this.fb.group({
+      id: [this.curso && this.curso.id ? this.curso.id : null],
       nombre: [this.curso && this.curso.nombre ? this.curso.nombre : '', [Validators.required, Validators.minLength(3)]],
       descripcion: [this.curso && this.curso.descripcion ? this.curso.descripcion : '', [Validators.required]],
       categoria: [this.curso && this.curso.categoria ? this.curso.categoria : '', Validators.required]
