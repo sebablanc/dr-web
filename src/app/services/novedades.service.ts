@@ -2,13 +2,6 @@ import { Injectable } from '@angular/core';
 import { FirestoreService } from './firestore.service';
 import { NovedadesListService } from './novedades-list.service';
 
-const NOVEDADES_PRUEBA = [
-  { id: '1', titulo: 'Novedad I', mensaje: 'DESCRIPCION DE LA NOVEDAD I', link: 'http://facebook.com/sebablanc' },
-  { id: '2', titulo: 'Novedad II', mensaje: 'DESCRIPCION DE LA NOVEDAD II', link: '' },
-  { id: '3', titulo: 'Nueva novedad', mensaje: 'DESCRIPCION DE LA <b>NUEVA NOVEDAD</b>', link: null },
-  { id: '4', titulo: 'Novedad', mensaje: 'DESCRIPCION DE LA NOVEDAD', link: 'http://facebook.com/sebablanc' },
-];
-
 @Injectable({
   providedIn: 'root'
 })
