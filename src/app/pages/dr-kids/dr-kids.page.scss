@@ -1,0 +1,16 @@
+.dr-kids-text {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    font-size: 14px;
+
+    img {
+        justify-self: center;
+    }
+}
+
+.dr-kids-cursos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+    grid-gap: 20px;
+}

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IPushButtonItem } from '../push-button/push-button.component';
+import { ICursoData } from 'src/app/interfaces/cursoData';
 
 @Component({
   selector: 'app-push-button-keypad',
@@ -7,7 +7,7 @@ import { IPushButtonItem } from '../push-button/push-button.component';
   styleUrls: ['./push-button-keypad.component.scss'],
 })
 export class PushButtonKeypadComponent implements OnInit {
-  @Input() items: Array<IPushButtonItem> = [];
+  @Input() items: Array<ICursoData> = [];
 
   constructor() { }
 

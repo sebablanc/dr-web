@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { SectionService } from 'src/app/services/section.service';
@@ -16,9 +16,11 @@ export class HeaderComponent implements OnInit {
 
   headerNavItems: Array<INavItem> = NAV_ITEMS;
   headerRSItems: Array<any> = RS_LINKS;
-  sectionActive: string = 'ADULTOS';
-  subscriber: Subscription;
+  sectionActive: string;
+  private sectionActive$: Observable<string>;
   userLogged: boolean;
+  private userLogged$: Observable<boolean>;
+  
   constructor(
     private sectionSrv: SectionService,
     private navigationSrv: NavigationService,
@@ -27,18 +29,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getSectionActive();
-    this.subscriber = this.userLoggedSrv.isUserLogged$().subscribe((value: boolean)=>{
-      this.userLogged = value;
-    });
-  }
-
-  ngOnDestroy(){
-    this.subscriber.unsubscribe();
-  }
-
-  getSectionActive() {
-    this.sectionActive = this.sectionSrv.getSectionActive();
+    this.userLogged$ = this.userLoggedSrv.isUserLogged$();
+    this.userLogged$.subscribe(isLogged => this.userLogged = isLogged);
+    this.sectionActive$ = this.sectionSrv.getSectionActive$();
+    this.sectionActive$.subscribe(sectionActive => this.sectionActive = sectionActive);
   }
 
   goTo(link: string) {

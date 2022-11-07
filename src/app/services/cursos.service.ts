@@ -21,10 +21,10 @@ export class CursosService {
 
   obtener_cursos(){
     let cursos: Array<ICursoData> = [
-      {nombre: 'Reparacion de PC I', categoria: 'ADULTOS', descripcion: 'DESCRIPCION DEL CURSO'},
-      {nombre: 'Reparacion de PC II', categoria: 'ADULTOS', descripcion: 'DESCRIPCION DEL CURSO'},
-      {nombre: 'Windows, Word y Excel', categoria: 'ADULTOS', descripcion: 'DESCRIPCION DEL CURSO'},
-      {nombre: 'CorelDraw', categoria: 'ADULTOS', descripcion: 'DESCRIPCION DEL CURSO'},
+      {id: '1', nombre: 'Reparacion de PC I', categoria: 'ADULTOS', descripcion: 'DESCRIPCION DEL CURSO'},
+      {id: '2', nombre: 'Reparacion de PC II', categoria: 'ADULTOS', descripcion: 'DESCRIPCION DEL CURSO'},
+      {id: '3', nombre: 'Windows, Word y Excel', categoria: 'KIDS', descripcion: 'DESCRIPCION DEL CURSO'},
+      {id: '4', nombre: 'CorelDraw', categoria: 'ADULTOS', descripcion: 'DESCRIPCION DEL CURSO'},
     ];
     setTimeout(() => {
       this.cursosListSrv.agregarCursos(cursos);

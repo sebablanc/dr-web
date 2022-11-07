@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ICursoData } from 'src/app/interfaces/cursoData';
 import { NavigationService } from 'src/app/services/navigation.service';
+import { SectionService } from 'src/app/services/section.service';
+import { SECTION_TYPES } from 'src/constants/items';
 
 @Component({
   selector: 'app-push-button',
@@ -7,19 +10,19 @@ import { NavigationService } from 'src/app/services/navigation.service';
   styleUrls: ['./push-button.component.scss'],
 })
 export class PushButtonComponent implements OnInit {
-  @Input() item: IPushButtonItem = null;
+  @Input() item: ICursoData = null;
+  sectionsTypes = SECTION_TYPES;
 
-  constructor(private navigationSrv: NavigationService) { }
+  constructor(
+    private navigationSrv: NavigationService,
+    private sectionSrv: SectionService) { }
 
   ngOnInit() {}
 
   goTo(){
-    this.navigationSrv.goTo('curso-detail');
+    this.sectionSrv.setSectionActive(this.item.categoria == this.sectionsTypes.ADULTOS ? this.sectionsTypes.ADULTOS : this.sectionsTypes.KIDS);
+    const link = this.item.categoria == this.sectionsTypes.ADULTOS ? 'dr-computers' : 'dr-kids';
+    this.navigationSrv.goTo(`${link}/${this.item.id}`);
   }
 
-}
-
-export interface IPushButtonItem{
-  image: string,
-  label: string
 }

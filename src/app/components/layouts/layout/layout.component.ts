@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { SectionService } from 'src/app/services/section.service';
 import { SECTION_TYPES } from 'src/constants/items';
 
@@ -9,15 +10,13 @@ import { SECTION_TYPES } from 'src/constants/items';
 })
 export class LayoutComponent implements OnInit {
   sectionTypes = SECTION_TYPES;
-  sectionActive: string = 'ADULTOS';
+  sectionActive: string;
+  private sectionActive$: Observable<string>;
 
   constructor(private sectionSrv: SectionService) { }
 
   ngOnInit() {
-    this.getSectionActive();
-  }
-
-  getSectionActive() {
-    this.sectionActive = this.sectionSrv.getSectionActive();
+    this.sectionActive$ = this.sectionSrv.getSectionActive$();
+    this.sectionActive$.subscribe(sectionActive => this.sectionActive = sectionActive);
   }
 }

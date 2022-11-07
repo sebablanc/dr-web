@@ -7,6 +7,9 @@ const routes: Routes = [
   {
     path: '',
     component: DrKidsPage
+  }, {
+    path: ':id',
+    loadChildren: () => import('../curso-detail/curso-detail.module').then( m => m.CursoDetailPageModule)
   }
 ];
 

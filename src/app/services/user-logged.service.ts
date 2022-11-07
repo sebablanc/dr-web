@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import calculateDifferenceInDays from './dateUtils';
 import { LocalstorageService } from './localstorage.service';
 
@@ -8,31 +8,28 @@ import { LocalstorageService } from './localstorage.service';
 })
 export class UserLoggedService {
 
-  private userLogged: boolean;
-  private userLoggedObservable = new Observable((observer) => {
-    // observable execution
-    observer.next(this.userLogged);
-    observer.complete();
-  })
+  private userLogged: boolean = false;
+  private userLogged$ = new BehaviorSubject<boolean>(this.userLogged);
   
   constructor(private localStorageSrv: LocalstorageService) { }
 
-  isUserLogged$() {
-    return this.userLoggedObservable;
+  isUserLogged$(): Observable<boolean> {
+    return this.userLogged$.asObservable();
   }
 
-  isUserLogged(){
-    return this.userLogged;
+  setUserLogged(userLogged: boolean){
+    this.userLogged = userLogged;
+    this.userLogged$.next(this.userLogged);
   }
 
   async checkUserIsLogged() {
     let loginDate: string = this.localStorageSrv.getItem('loginDate');
     var difference = calculateDifferenceInDays(loginDate);
     if (difference > 3) {
-      this.userLogged = false;
       this.localStorageSrv.removeItems();
+      this.setUserLogged(false);
     } else {
-      this.userLogged = true;
+      this.setUserLogged(true);
     }
   }
 }

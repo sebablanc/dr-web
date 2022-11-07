@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable,  Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ICursoData } from '../interfaces/cursoData';
 
 @Injectable({
@@ -8,6 +8,7 @@ import { ICursoData } from '../interfaces/cursoData';
 export class CursosListService {
   private cursosList: Array<ICursoData> = [];
   private cursos$ = new BehaviorSubject<ICursoData[]>(this.cursosList);
+  
   constructor() { }
 
   agregarCursos(cursos: Array<ICursoData>){
