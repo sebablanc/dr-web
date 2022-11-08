@@ -24,3 +24,30 @@ export const ROUNDED_BUTTONS_ICONS = {
     EDIT: 'pencil',
     DELETE: 'trash'
 }
+
+export const MESES_ITEMS = [
+    {value: '', label: '-- Seleccione un mes --'},
+    {value: 'ENERO', label: 'Enero'},
+    {value: 'FEBRERO', label: 'Febrero'},
+    {value: 'MARZO', label: 'Marzo'},
+    {value: 'ABRIL', label: 'Abril'},
+    {value: 'MAYO', label: 'Mayo'},
+    {value: 'JUNIO', label: 'Junio'},
+    {value: 'JULIO', label: 'Julio'},
+    {value: 'AGOSTO', label: 'Agosto'},
+    {value: 'SEPTIEMBRE', label: 'Septiembre'},
+    {value: 'OCTUBRE', label: 'Agosto'},
+    {value: 'NOVIEMBRE', label: 'Noviembre'},
+    {value: 'DICIEMBRE', label: 'Diciembre'}
+]
+
+export const SORTEOS_TYPE = {
+    CUOTA: 'CUOTA',
+    COMPUTADORA: 'COMPUTADORA'
+}
+
+export const TIPO_SORTEO_LIST = [
+    {value: '', label: '-- Seleccione un tipo de sorteo --'},
+    {value: 'CUOTA', label: 'Cuota'},
+    {value: 'COMPUTADORA', label: 'Computadora'},
+]

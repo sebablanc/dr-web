@@ -1,7 +1,10 @@
 <form *ngIf="premioForm" class="curso-form-container" [formGroup]="premioForm" (ngSubmit)="closeForm(true)">
     
-  <!-- F E C H A   S O R T E O -->
-  <app-input-dr [config]="fechaSorteoConfig" [form]="premioForm"></app-input-dr>
+  <!-- A Ñ O -->
+  <app-select-dr [config]="yearConfig" [form]="premioForm" [list]="yearsList"></app-select-dr>
+
+  <!-- M E S -->
+  <app-select-dr [config]="mesConfig" [form]="premioForm" [list]="mesesList"></app-select-dr>
 
   <!-- N U M E R O   C U P O N -->
   <app-input-dr [config]="numeroCuponConfig" [form]="premioForm"></app-input-dr>
@@ -16,7 +19,7 @@
    <app-input-dr [config]="horarioExtraccionConfig" [form]="premioForm"></app-input-dr>
 
    <!-- T I P O   S O R T E O -->
-   <app-select-dr [config]="tipoSorteoConfig" [form]="premioForm"></app-select-dr>
+   <app-select-dr [config]="tipoSorteoConfig" [form]="premioForm" [list]="tipoSorteoList"></app-select-dr>
 
    <div class="botonera">
     <app-rounded-button [config]="buttonCancelConfig" (click)="closeForm(false)"></app-rounded-button>

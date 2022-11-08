@@ -1,10 +1,10 @@
-<div class="premio-card">
+<div *ngIf="premio" class="premio-card">
   <div class="premio-card-info">
-    <div class="cupon-number-label">Nº: 1234</div>
-    <div class="alumno-favorecido">Favorecido, alumno</div>
-    <div class="mes-label">Enero</div>
-    <div class="alumno-retiro">Retiró: Extractor, alumno</div>
-    <div class="horario-label">Horario: 21.45hs</div>
+    <div class="cupon-number-label">Nº: {{ premio.numeroCupon }}</div>
+    <div class="alumno-favorecido">{{ premio.nombreFavorecido }}</div>
+    <div class="mes-label">{{ premio.mes }}</div>
+    <div class="alumno-retiro">Retiró: {{ premio.nombreRetiro }}</div>
+    <div class="horario-label">Horario: {{ premio.horarioExtraccion }}hs</div>
   </div>
   <img *ngIf="showPC" class="pc-winner" src="assets/images/PC-Escritorio.png">
   <div class="ganaste-label">¡¡ Ganaste !!</div>

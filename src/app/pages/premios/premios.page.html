@@ -7,12 +7,12 @@
     </div>
 
     <div class="premios-header-container premios-subtitle dr-font">Estas personas ganaron una cuota</div>
+    <app-select-dr [config]="yearConfig" [form]="premiosForm" [list]="years"></app-select-dr>
     <div class="premio-cuota-container">
-        <app-premio-card *ngFor="let i of [1,1,1,1,1,1,1,1,1,1,1,1]" [showBotonera]="userLogged"></app-premio-card>
-        <!--app-premio-card class="premios-cuotas-card" *ngFor="let premio of premiosCuotasList" [premio]="premio" [selected]="premioSelected && premioSelected.id === premio.id" (click)="selectPremio(premio)"></app-premio-card-->
+        <app-premio-card *ngFor="let premio of premiosCuotas" [premio]="premio" [showBotonera]="userLogged"></app-premio-card>
       </div>
     <div class="premios-header-container premios-subtitle dr-font">Y esta persona se ganó una compu</div>
     <div class="premio-pc-container">
-        <app-premio-card [showPC]="true" [showBotonera]="userLogged"></app-premio-card>
+        <app-premio-card [premio]="premioComputadora" [showPC]="true" [showBotonera]="userLogged"></app-premio-card>
     </div>
 </app-layout-big-card>

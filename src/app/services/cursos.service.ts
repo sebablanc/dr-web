@@ -27,7 +27,7 @@ export class CursosService {
   }
 
   async obtener_cursos() {
-    /*this.firestoreSrv.obtener_todos(this.collectionName).subscribe(data => {
+    this.firestoreSrv.obtener_todos(this.collectionName).subscribe(data => {
       const cursos = data.map(c => {
         return {
           id: c.payload.doc.id,
@@ -37,6 +37,6 @@ export class CursosService {
         };
       });
       this.cursosListSrv.agregarCursos(cursos);
-    })*/
+    })
   }
 }

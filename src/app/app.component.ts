@@ -7,6 +7,7 @@ import { UserLoggedService } from './services/user-logged.service';
 import { LoadingService } from './services/loading.service';
 import { CursosService } from './services/cursos.service';
 import { NovedadesService } from './services/novedades.service';
+import { PremiosService } from './services/premios.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ export class AppComponent {
     private userLoggedSrv: UserLoggedService,
     private loadingSrv: LoadingService,
     private cursosSrv: CursosService,
-    private novedadesSrv: NovedadesService) {}
+    private novedadesSrv: NovedadesService,
+    private premiosSrv: PremiosService) {}
 
   async ngOnInit(){
     await this.loadingSrv.showDRLoading();
@@ -29,6 +31,7 @@ export class AppComponent {
     this.userLoggedSrv.checkUserIsLogged();
     await this.cursosSrv.obtener_cursos();
     await this.novedadesSrv.obtener_novedades();
+    await this.premiosSrv.obtener_premios(null);
     setTimeout(() => {
       this.loadingSrv.dismissLoading();
     }, 1000);
