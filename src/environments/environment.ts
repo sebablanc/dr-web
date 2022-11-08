@@ -4,6 +4,10 @@
 
 export const environment = {
   production: false,
+  instituteEmail: 'institutodrcomputers@gmail.com',
+  instituteFB: 'https://es-la.facebook.com/drcomputers.institutodecomputacion/',
+  instituteInstagram: 'https://www.instagram.com/institutodrcomputers/?hl=es',
+  instituteWApp: 'https://wa.me/5493442406293?text=¡Hola! ¿Cómo estás?',
   firebaseConfig: {
     apiKey: "AIzaSyD5QgHXSruW9TvsZCUpAfxuwB71bgLWh2E",
     authDomain: "dr-test-c1037.firebaseapp.com",

@@ -1,3 +1,5 @@
+import { environment } from "src/environments/environment";
+
 export const SECTION_TYPES = {
     ADULTOS: 'ADULTOS',
     KIDS: 'KIDS'
@@ -14,9 +16,11 @@ export const NAV_ITEMS = [
 ];
 
 export const RS_LINKS = [
-    {logo: 'assets/images/logos/facebook_logo.svg', link: 'https://es-la.facebook.com/drcomputers.institutodecomputacion/'},
-    {logo: 'assets/images/logos/instagram_logo.svg', link: 'https://www.instagram.com/institutodrcomputers/?hl=es'},
-    {logo: 'assets/images/logos/whatsapp_logo.svg', link: 'https://walink.co/c26624'},
+    {logo: 'assets/images/logos/facebook_logo.svg', link: environment.instituteFB},
+    {logo: 'assets/images/logos/instagram_logo.svg', link: environment.instituteInstagram},
+    {logo: 'assets/images/logos/whatsapp_logo.svg', link: environment.instituteWApp},
+    {logo: 'assets/images/logos/gmail_logo.svg', link: `https://mail.google.com/mail/?view=cm&fs=1&to=${environment.instituteEmail}&su=Consulta para el Instituto DR Computers&body=¡Saludos!`},
+    {logo: 'assets/images/logos/email_logo.svg', link: `mailto://${environment.instituteEmail}?Subject=Consulta para el Instituto DR Computers&body=¡Saludos!`},
 ];
 
 export const ROUNDED_BUTTONS_ICONS = {

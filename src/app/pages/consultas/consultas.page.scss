@@ -1,0 +1,14 @@
+.rs-container{
+    right: 20px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    justify-content: space-evenly;
+
+    .rs-logo {
+        width: 100px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+}

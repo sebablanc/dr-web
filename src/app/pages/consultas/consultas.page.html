@@ -1,3 +1,10 @@
 <app-layout-big-card>
-  <div class="dr-like-title dr-font">Consultas</div>
+  <div class="dr-like-title dr-font">
+    Para mayor información o cualquier tipo de consultas, comunicate con nosotros a través de nuestros distintos canales
+  </div>
+  <div class="rs-container">
+    <a class="rs-logo" *ngFor="let rs of headerRSItems" [href]="rs.link">
+      <img [src]="rs.logo" alt="">
+    </a>
+  </div>
 </app-layout-big-card>
