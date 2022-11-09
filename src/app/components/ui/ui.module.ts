@@ -17,6 +17,7 @@ import { IonicModule } from '@ionic/angular';
 import { SelectDrComponent } from './select-dr/select-dr.component';
 import { SmallBotoneraComponent } from './small-botonera/small-botonera.component';
 import { SwiperModule } from "swiper/angular";
+import { MyPipesModule } from 'src/app/pipes/my-pipes.module';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { SwiperModule } from "swiper/angular";
     CommonModule,
     IonicModule,
     ReactiveFormsModule,
-    SwiperModule
+    SwiperModule,
+    MyPipesModule
   ]
 })
 export class UiModule { }

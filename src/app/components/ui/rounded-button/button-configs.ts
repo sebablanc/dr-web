@@ -18,6 +18,12 @@ export const BUTTON_DELETE_CONFIG: IRoundedButtonConfig = {
     style: 'PRIMARY'
 }
 
+export const BUTTON_UPLOAD_CONFIG: IRoundedButtonConfig = {
+    text: 'Cargar',
+    type: 'button',
+    style: 'PRIMARY'
+}
+
 export const BUTTON_CANCEL_CONFIG: IRoundedButtonConfig = {
     text: 'Cancelar',
     type: 'button',

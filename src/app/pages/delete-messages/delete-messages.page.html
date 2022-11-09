@@ -8,5 +8,6 @@
     <app-rounded-button *ngIf="showButtons.includes('cancel')" [config]="buttonCancelConfig" (click)="closeModal(false)"></app-rounded-button>
     <app-rounded-button *ngIf="showButtons.includes('close')" class="close-btn" [config]="buttonCloseConfig" (click)="closeModal(false)"></app-rounded-button>
     <app-rounded-button *ngIf="showButtons.includes('send')" class="save-btn" [config]="buttonSendConfig" (click)="closeModal(true)"></app-rounded-button>
+    <app-rounded-button *ngIf="showButtons.includes('upload')" class="save-btn" [config]="buttonUploadConfig" (click)="closeModal(true)"></app-rounded-button>
   </div>
 </div>

@@ -1,8 +1,8 @@
 export interface IPremioData {
     id: string,
-    year: string,
+    year: number,
     mes: string,
-    numeroCupon: string,
+    numeroCupon: number,
     nombreFavorecido: string,
     nombreRetiro: string,
     horarioExtraccion: string,

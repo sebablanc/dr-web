@@ -16,12 +16,22 @@ export class PremiosService {
 
   crear_premio(element) {
     delete element.id;
+    element = {
+      ...element,
+      year: parseInt(element.year),
+      numeroCupon: parseInt(element.numeroCupon),
+    }
     return this.firestoreSrv.crear(this.collectionName, element);
   }
 
   editar_premio(element) {
     const id = element.id;
     delete element.id;
+    element = {
+      ...element,
+      year: parseInt(element.year),
+      numeroCupon: parseInt(element.numeroCupon),
+    }
     return this.firestoreSrv.editar(this.collectionName, id, element);
   }
 
@@ -29,10 +39,10 @@ export class PremiosService {
     return this.firestoreSrv.eliminar(this.collectionName, id);
   }
 
-  async obtener_premios(year: string) {
-    if(year == null) year = new Date().getFullYear().toString();
+  async obtener_premios(year: number) {
+    if(year == null) year = new Date().getFullYear();
     this.firestoreSrv.get_collection_by_field(this.collectionName, 'year', year).subscribe(data => {
-      console.log(data);
+      data.sort((a, b) => parseInt(a['mes']) > parseInt(b['mes']) ? 1 : -1);
       this.premiosListSrv.agregarPremios(data as Array<IPremioData>);
     })
   }

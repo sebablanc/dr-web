@@ -27,7 +27,7 @@ export class PremioFormComponent implements OnInit {
   tipoSorteoConfig: ISelectConfig = TIPO_SORTEO_CONFIG;
   buttonSendConfig: IRoundedButtonConfig = BUTTON_SAVE_CONFIG;
   buttonCancelConfig: IRoundedButtonConfig = BUTTON_CANCEL_CONFIG;
-  yearsList = [{value: '', label: '-- Seleccione un año --'}];
+  yearsList = [{value: 0, label: '-- Seleccione un año --'}];
   mesesList = MESES_ITEMS;
   tipoSorteoList = TIPO_SORTEO_LIST;
 
@@ -37,14 +37,14 @@ export class PremioFormComponent implements OnInit {
     this.createForm();
     const year = new Date().getFullYear();
     for (let index = year; index > 1996; index--) {
-      this.yearsList.push({value: index.toString(), label: index.toString()});
+      this.yearsList.push({value: index, label: index.toString()});
     }
   }
 
   createForm(){
     this.premioForm = this.fb.group({
       id: [this.premio && this.premio.id ? this.premio.id : null],
-      year: [this.premio && this.premio.year ? this.premio.year : '', Validators.required],
+      year: [this.premio && this.premio.year ? this.premio.year : 0, [Validators.required, Validators.min(1997)]],
       mes: [this.premio && this.premio.mes ? this.premio.mes : '', Validators.required],
       numeroCupon: [this.premio && this.premio.numeroCupon ? this.premio.numeroCupon : '', Validators.required],
       nombreFavorecido: [this.premio && this.premio.nombreFavorecido ? this.premio.nombreFavorecido : '', Validators.required],

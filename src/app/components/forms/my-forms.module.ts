@@ -7,6 +7,7 @@ import { NovedadFormComponent } from './novedad-form/novedad-form.component';
 import { PremioFormComponent } from './premio-form/premio-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
+import { ExcelFormComponent } from './excel-form/excel-form.component';
 
 @NgModule({
   declarations: [
@@ -14,14 +15,16 @@ import { ResetPasswordFormComponent } from './reset-password-form/reset-password
     NovedadFormComponent,
     PremioFormComponent,
     LoginFormComponent,
-    ResetPasswordFormComponent
+    ResetPasswordFormComponent,
+    ExcelFormComponent
   ],
   exports: [
     CursoFormComponent,
     NovedadFormComponent,
     PremioFormComponent,
     LoginFormComponent,
-    ResetPasswordFormComponent
+    ResetPasswordFormComponent,
+    ExcelFormComponent
   ],
   imports: [
     CommonModule,

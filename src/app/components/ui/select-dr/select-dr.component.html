@@ -6,7 +6,7 @@
       class="input-field"
       [formControlName]="config.formControlName"
     >
-      <option *ngFor="let option of list" [value]="option.value" [disabled]="option.value == ''">{{ option.label }}</option>
+      <option *ngFor="let option of list" [value]="option.value" [disabled]="option.value == '' || option.value == '0'">{{ option.label }}</option>
     </select>
     <div
       *ngIf="config && field && (field.invalid && field.dirty || field.touched)"

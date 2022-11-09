@@ -5,6 +5,7 @@ import { NovedadFormLayoutPage } from '../pages/novedad-form-layout/novedad-form
 import { PremioFormLayoutPage } from '../pages/premio-form-layout/premio-form-layout.page';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password.page';
 import { DeleteMessagesPage } from '../pages/delete-messages/delete-messages.page';
+import { PremioExcelLayoutPage } from '../pages/premio-excel-layout/premio-excel-layout.page';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,10 @@ export class ModalService {
 
   async showResetPasswordModal() {
     return await this.openModal(ResetPasswordPage, null, 'basic-modal');
+  }
+
+  async showExcelModal(title: string) {
+    return await this.openModal(PremioExcelLayoutPage, { title }, 'basic-modal');
   }
 
   async dismissModal(data: any) {

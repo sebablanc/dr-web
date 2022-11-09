@@ -2,7 +2,7 @@
   <div class="premio-card-info">
     <div class="cupon-number-label">Nº: {{ premio.numeroCupon }}</div>
     <div class="alumno-favorecido">{{ premio.nombreFavorecido }}</div>
-    <div class="mes-label">{{ premio.mes }}</div>
+    <div class="mes-label">{{ premio.mes | meses }}</div>
     <div class="alumno-retiro">Retiró: {{ premio.nombreRetiro }}</div>
     <div class="horario-label">Horario: {{ premio.horarioExtraccion }}hs</div>
   </div>

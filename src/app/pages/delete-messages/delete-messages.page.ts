@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BUTTON_CANCEL_CONFIG, BUTTON_CLOSE_CONFIG, BUTTON_DELETE_CONFIG } from 'src/app/components/ui/rounded-button/button-configs';
+import { BUTTON_CANCEL_CONFIG, BUTTON_CLOSE_CONFIG, BUTTON_DELETE_CONFIG, BUTTON_UPLOAD_CONFIG } from 'src/app/components/ui/rounded-button/button-configs';
 import { IRoundedButtonConfig } from 'src/app/components/ui/rounded-button/rounded-button.component';
 import { ModalService } from 'src/app/services/modal.service';
 
@@ -8,10 +8,12 @@ export const OPERATION_TYPES = {
   SAVE: 'SAVE',
   MODIFY: 'MODIFY',
   RESET_PASSWORD: 'RESET_PASSWORD',
+  EXCEL_LOAD: 'EXCEL_LOAD'
 }
 
 export const  RESULTS_TYPES = {
   WARNING: 'WARNING',
+  WARNING_EXCEL: 'WARNING_EXCEL',
   SUCCESS: 'SUCCESS',
   ERROR: 'ERROR',
   MODIFY: 'MODIFY'
@@ -19,6 +21,7 @@ export const  RESULTS_TYPES = {
 
 const TITLES = {
   WARNING: '¡Cuidado!',
+  WARNING_EXCEL: '¡Cuidado!',
   SUCCESS: '¡Genial!',
   ERROR: '¡Lo sentimos!',
   MODIFY: '¡Excelente!'
@@ -34,16 +37,19 @@ const MESSAGES = {
   RESET_PASSWORD_ERROR: 'Tuvimos un error al intentar reestablecer tu contraseña. Intentalo más tarde',
   MODIFY_SUCCESS: 'Se editó <b>{{ toDelete }}</b> exitosamente.',
   MODIFY_ERROR: 'Tuvimos un error al intentar editar <b>{{ toDelete }}</b>. Intentalo más tarde',
+  EXCEL_LOAD_WARNING_EXCEL: '¿Seguro desea cargar el archivo <b>{{ toDelete }}</b>?'
 }
 
 const ICONS = {
   WARNING: 'alert-icon.svg',
+  WARNING_EXCEL: 'alert-icon.svg',
   SUCCESS: 'confirm-icon.svg',
   ERROR: 'cancel-icon.svg'
 }
 
 const BUTTONS = {
   WARNING: ['cancel', 'send'],
+  WARNING_EXCEL: ['cancel', 'upload'],
   SUCCESS: ['close'],
   ERROR: ['close']
 }
@@ -62,6 +68,7 @@ export class DeleteMessagesPage implements OnInit {
   icon: string = '';
   showButtons = [];
   buttonSendConfig: IRoundedButtonConfig = BUTTON_DELETE_CONFIG;
+  buttonUploadConfig: IRoundedButtonConfig = BUTTON_UPLOAD_CONFIG;
   buttonCancelConfig: IRoundedButtonConfig = BUTTON_CANCEL_CONFIG;
   buttonCloseConfig: IRoundedButtonConfig = BUTTON_CLOSE_CONFIG;
 

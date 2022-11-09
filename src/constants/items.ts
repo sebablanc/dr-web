@@ -25,24 +25,25 @@ export const RS_LINKS = [
 
 export const ROUNDED_BUTTONS_ICONS = {
     CREATE: 'add',
+    CREATE_MULTIPLE: 'document-text',
     EDIT: 'pencil',
     DELETE: 'trash'
 }
 
 export const MESES_ITEMS = [
     {value: '', label: '-- Seleccione un mes --'},
-    {value: 'ENERO', label: 'Enero'},
-    {value: 'FEBRERO', label: 'Febrero'},
-    {value: 'MARZO', label: 'Marzo'},
-    {value: 'ABRIL', label: 'Abril'},
-    {value: 'MAYO', label: 'Mayo'},
-    {value: 'JUNIO', label: 'Junio'},
-    {value: 'JULIO', label: 'Julio'},
-    {value: 'AGOSTO', label: 'Agosto'},
-    {value: 'SEPTIEMBRE', label: 'Septiembre'},
-    {value: 'OCTUBRE', label: 'Agosto'},
-    {value: 'NOVIEMBRE', label: 'Noviembre'},
-    {value: 'DICIEMBRE', label: 'Diciembre'}
+    {value: 1, label: 'Enero'},
+    {value: 2, label: 'Febrero'},
+    {value: 3, label: 'Marzo'},
+    {value: 4, label: 'Abril'},
+    {value: 5, label: 'Mayo'},
+    {value: 6, label: 'Junio'},
+    {value: 7, label: 'Julio'},
+    {value: 8, label: 'Agosto'},
+    {value: 9, label: 'Septiembre'},
+    {value: 10, label: 'Agosto'},
+    {value: 11, label: 'Noviembre'},
+    {value: 12, label: 'Diciembre'}
 ]
 
 export const SORTEOS_TYPE = {

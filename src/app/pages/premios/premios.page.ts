@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { ROUND_BUTTON_CREATE_CONFIG } from 'src/app/components/ui/round-button/round-button-configs';
+import { ROUND_BUTTON_CREATE_CONFIG, ROUND_BUTTON_EXCEL_CONFIG } from 'src/app/components/ui/round-button/round-button-configs';
 import { IRoundButtonConfig } from 'src/app/components/ui/round-button/round-button.component';
 import { YEAR_CONFIG } from 'src/app/components/ui/select-dr/select-configs';
 import { ISelectConfig } from 'src/app/components/ui/select-dr/select-dr.component';
@@ -24,6 +24,7 @@ export class PremiosPage implements OnInit {
   yearConfig: ISelectConfig = YEAR_CONFIG;
   years = [{value: '', label: '-- Seleccione un año --'}];
   roundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_CREATE_CONFIG;
+  excelButtonConfig: IRoundButtonConfig = ROUND_BUTTON_EXCEL_CONFIG;
 
   userLogged: boolean;
   private userLogged$: Observable<boolean>;
@@ -40,8 +41,14 @@ export class PremiosPage implements OnInit {
     private premiosSrv: PremiosService) { }
 
   ngOnInit() {
+    this.editingButtonsConfig();
     this.createForm();
     this.checkingUserLogged();
+  }
+
+  editingButtonsConfig(){
+    this.excelButtonConfig.extraClass = null;
+    this.excelButtonConfig.lowerButton = true;
   }
 
   checkingUserLogged(){
@@ -58,7 +65,7 @@ export class PremiosPage implements OnInit {
     }
 
     this.premiosForm.valueChanges.subscribe(() =>{
-      this.searchPremios(this.premiosForm.value.year);
+      this.searchPremios(parseInt(this.premiosForm.value.year));
     })
   }
 
@@ -70,11 +77,15 @@ export class PremiosPage implements OnInit {
     });
   }
 
-  searchPremios(year: string){
+  searchPremios(year: number){
     this.premiosSrv.obtener_premios(year);
   }
 
   async showCreateModal(){
     await this.modalSrv.showPremioModal('Agregar nuevo sorteo', null);
+  }
+
+  async showExcelModal(){
+    await this.modalSrv.showExcelModal('Importar archivo Excel');
   }
 }

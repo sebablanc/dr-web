@@ -8,7 +8,7 @@ export class FirestoreService {
 
   constructor(private angularFirestore: AngularFirestore) { }
 
-  get_collection_by_field(collectionName: string, field: string, searchElement: string) {
+  get_collection_by_field(collectionName: string, field: string, searchElement?: any) {
     return this.angularFirestore.collection(collectionName, ref => {
       let query : CollectionReference | Query = ref;
       if (field && searchElement) { query = ref.where(field, '==', searchElement) };

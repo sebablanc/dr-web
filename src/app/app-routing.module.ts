@@ -63,6 +63,10 @@ const routes: Routes = [
     path: 'reset-password',
     loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
+  {
+    path: 'premio-excel-layout',
+    loadChildren: () => import('./pages/premio-excel-layout/premio-excel-layout.module').then( m => m.PremioExcelLayoutPageModule)
+  },
 ];
 
 @NgModule({

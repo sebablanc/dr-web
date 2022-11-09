@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IPremioData } from 'src/app/interfaces/premioData';
 import { LoadingService } from 'src/app/services/loading.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { PremiosService } from 'src/app/services/premios.service';
@@ -21,7 +22,7 @@ export class PremioFormLayoutPage implements OnInit {
   ngOnInit() {
   }
 
-  async handleFormData(event: any){
+  async handleFormData(event: IPremioData){
     this.modalSrv.dismissModal(false);
     if(!event) return;
     try{

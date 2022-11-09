@@ -1,0 +1,6 @@
+<input type="file" class="form-control" placeholder="Upload file" #inputFile
+accept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+<div class="botonera">
+  <app-rounded-button [config]="buttonCancelConfig" (click)="closeForm(false)"></app-rounded-button>
+  <app-rounded-button class="save-btn" [config]="buttonSendConfig" (click)="closeForm(true)"></app-rounded-button>
+</div>
