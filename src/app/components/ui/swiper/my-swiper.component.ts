@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, Input, HostListener } from '@angular/core';
+import { SECTION_TYPES } from 'src/constants/items';
 import { SwiperComponent } from 'swiper/angular';
 @Component({
   selector: 'app-my-swiper',
@@ -9,6 +10,7 @@ import { SwiperComponent } from 'swiper/angular';
 export class MySwiperComponent implements OnInit {
   @ViewChild("swiper") swiper: SwiperComponent;
   @Input() items: Array<any>;
+  sectionsTypes = SECTION_TYPES;
   slidesPerView: number = 3;
 
   @HostListener('window:resize', ['$event'])

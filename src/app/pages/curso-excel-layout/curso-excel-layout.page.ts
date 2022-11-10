@@ -1,24 +1,23 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ICursoData } from 'src/app/interfaces/cursoData';
+import { CursosService } from 'src/app/services/cursos.service';
+import { LoadingService } from 'src/app/services/loading.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { OPERATION_TYPES, RESULTS_TYPES } from '../delete-messages/delete-messages.page';
 import * as XLSX from 'xlsx';
-import { LoadingService } from 'src/app/services/loading.service';
-import { PremiosService } from 'src/app/services/premios.service';
-import { IPremioData } from 'src/app/interfaces/premioData';
 
 @Component({
-  selector: 'app-premio-excel-layout',
-  templateUrl: './premio-excel-layout.page.html',
-  styleUrls: ['./premio-excel-layout.page.scss'],
+  selector: 'app-curso-excel-layout',
+  templateUrl: './curso-excel-layout.page.html',
+  styleUrls: ['./curso-excel-layout.page.scss'],
 })
-export class PremioExcelLayoutPage implements OnInit {
+export class CursoExcelLayoutPage implements OnInit {
   @Input() title: string;
   
-
   constructor(
     private modalSrv: ModalService,
     private loadingSrv: LoadingService,
-    private premiosSrv: PremiosService) { }
+    private cursosSrv: CursosService) { }
 
   ngOnInit() {
   }
@@ -33,7 +32,7 @@ export class PremioExcelLayoutPage implements OnInit {
 
     //si selecciona cancelar vuelvo al modal de carga
     if (!algo.data) {
-      this.modalSrv.showPremioExcelModal('Importar archivo Excel');
+      this.modalSrv.showCursoExcelModal('Importar archivo Excel');
       return;
     }
 
@@ -54,15 +53,22 @@ export class PremioExcelLayoutPage implements OnInit {
       var workbook = XLSX.read(bstr, {type:"binary"});
       var first_sheet_name = workbook.SheetNames[0];
       var worksheet = workbook.Sheets[first_sheet_name];
-      var arraylist = XLSX.utils.sheet_to_json(worksheet,{raw:true}) as Array<IPremioData>;
-      arraylist.forEach(async el => {
-        await this.premiosSrv.crear_premio(el);
+      var arraylist = XLSX.utils.sheet_to_json(worksheet,{raw:true}) as Array<ICursoData>;
+      arraylist.forEach(async curso => {
+        let obj: ICursoData = {
+          categoria: '',
+          descripcion: '',
+          id: '',
+          nombre: ''
+        }
+       Object.assign(obj, curso);
+       if(obj.categoria !== '' && obj.descripcion !== '' && obj.nombre !== ''){
+        await this.cursosSrv.crear_curso(curso);
+       }   
       });
-      await this.premiosSrv.obtener_premios(2022);
       setTimeout(() => {
         this.loadingSrv.dismissLoading();
       }, 1000)
     }
   }
-
 }

@@ -2,6 +2,7 @@
     text-align: center;
     cursor: pointer;
     height: 100%;
+
     .push-button-container {
         padding: 20px;
         border: 1px solid gray;
@@ -13,13 +14,13 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+
         img {
-            max-height: 100px;
-            min-height: 100px;
+            max-width: 100px;
+            min-width: 100px;
         }
     }
 }
-
 
 @media screen and (max-width: 591px) {
     .push-button {
@@ -28,4 +29,4 @@
             justify-content: space-evenly;
         }
     }
-  }
+}

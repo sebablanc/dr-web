@@ -6,6 +6,8 @@ import { PremioFormLayoutPage } from '../pages/premio-form-layout/premio-form-la
 import { ResetPasswordPage } from '../pages/reset-password/reset-password.page';
 import { DeleteMessagesPage } from '../pages/delete-messages/delete-messages.page';
 import { PremioExcelLayoutPage } from '../pages/premio-excel-layout/premio-excel-layout.page';
+import { CursoExcelLayoutPage } from '../pages/curso-excel-layout/curso-excel-layout.page';
+import { BoletinInformativoExcelLayoutPage } from '../pages/boletin-informativo-excel-layout/boletin-informativo-excel-layout.page';
 
 @Injectable({
   providedIn: 'root'
@@ -47,8 +49,16 @@ export class ModalService {
     return await this.openModal(ResetPasswordPage, null, 'basic-modal');
   }
 
-  async showExcelModal(title: string) {
+  async showPremioExcelModal(title: string) {
     return await this.openModal(PremioExcelLayoutPage, { title }, 'basic-modal');
+  }
+
+  async showCursoExcelModal(title: string) {
+    return await this.openModal(CursoExcelLayoutPage, { title }, 'basic-modal');
+  }
+
+  async showNovedadesExcelModal(title: string) {
+    return await this.openModal(BoletinInformativoExcelLayoutPage, { title }, 'basic-modal');
   }
 
   async dismissModal(data: any) {

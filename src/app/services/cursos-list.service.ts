@@ -12,7 +12,8 @@ export class CursosListService {
   constructor() { }
 
   agregarCursos(cursos: Array<ICursoData>){
-    this.cursosList = cursos;
+    var collator = new Intl.Collator(undefined, {numeric: true, sensitivity: 'base'});
+    this.cursosList = cursos.sort((a,b) => collator.compare(a.nombre, b.nombre));
     this.cursos$.next(this.cursosList);
   }
 

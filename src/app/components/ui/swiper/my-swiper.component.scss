@@ -1,15 +1,19 @@
-.swiper-card {
-    background-color: #ffffff;
-    color: #000000;
-    border-radius: 16px;
-    padding: 20px 0;
-    text-align: center;
+.banner-slides {
+    margin-bottom: 20px;
 
-    .swiper-img {
-        width: 100px;
-    }
+    .swiper-card {
+        background-color: #ffffff;
+        color: #000000;
+        border-radius: 16px;
+        padding: 20px 0;
+        text-align: center;
 
-    .swiper-label {
-        font-weight: bold;
+        .swiper-img {
+            width: 100px;
+        }
+
+        .swiper-label {
+            font-weight: bold;
+        }
     }
 }

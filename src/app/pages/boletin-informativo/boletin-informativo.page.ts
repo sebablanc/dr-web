@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ROUND_BUTTON_CREATE_CONFIG } from 'src/app/components/ui/round-button/round-button-configs';
+import { ROUND_BUTTON_CREATE_CONFIG, ROUND_BUTTON_EXCEL_CONFIG } from 'src/app/components/ui/round-button/round-button-configs';
 import { IRoundButtonConfig } from 'src/app/components/ui/round-button/round-button.component';
 import { INovedadData } from 'src/app/interfaces/novedadData';
 import { ModalService } from 'src/app/services/modal.service';
@@ -14,6 +14,7 @@ import { UserLoggedService } from 'src/app/services/user-logged.service';
 })
 export class BoletinInformativoPage implements OnInit {
   roundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_CREATE_CONFIG;
+  excelButtonConfig: IRoundButtonConfig = ROUND_BUTTON_EXCEL_CONFIG;
   userLogged: boolean;
   private userLogged$: Observable<boolean>;
   novedadesList: Array<INovedadData>;
@@ -27,6 +28,7 @@ export class BoletinInformativoPage implements OnInit {
   ngOnInit() {
     this.checkingUserLogged();
     this.gettingNovedades();
+    this.editingButtonsConfig();
   }
 
   checkingUserLogged(){
@@ -39,8 +41,16 @@ export class BoletinInformativoPage implements OnInit {
     this.novedades$.subscribe(novedades => this.novedadesList = novedades);
   }
 
+  editingButtonsConfig(){
+    this.excelButtonConfig.extraClass = null;
+    this.excelButtonConfig.lowerButton = true;
+  }
+
   async showCreateModal(){
     await this.modalSrv.showNovedadModal('Agregar nueva novedad', null);
   }
 
+  async showExcelModal(){
+    await this.modalSrv.showNovedadesExcelModal('Importar archivo Excel');
+  }
 }

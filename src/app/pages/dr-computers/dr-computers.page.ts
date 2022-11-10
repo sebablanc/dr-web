@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ROUND_BUTTON_CREATE_CONFIG } from 'src/app/components/ui/round-button/round-button-configs';
+import { ROUND_BUTTON_CREATE_CONFIG, ROUND_BUTTON_EXCEL_CONFIG } from 'src/app/components/ui/round-button/round-button-configs';
 import { IRoundButtonConfig } from 'src/app/components/ui/round-button/round-button.component';
 import { ICursoData } from 'src/app/interfaces/cursoData';
 import { CursosListService } from 'src/app/services/cursos-list.service';
@@ -16,6 +16,7 @@ import { SECTION_TYPES } from 'src/constants/items';
 export class DrComputersPage implements OnInit {
 
   roundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_CREATE_CONFIG;
+  excelButtonConfig: IRoundButtonConfig = ROUND_BUTTON_EXCEL_CONFIG;
   userLogged: boolean;
   private userLogged$: Observable<boolean>;
 
@@ -30,6 +31,12 @@ export class DrComputersPage implements OnInit {
   ngOnInit() {
     this.checkingUserLogged();
     this.gettingCursos();
+    this.editingButtonsConfig();
+  }
+
+  editingButtonsConfig(){
+    this.excelButtonConfig.extraClass = null;
+    this.excelButtonConfig.lowerButton = true;
   }
 
   checkingUserLogged(){
@@ -46,6 +53,10 @@ export class DrComputersPage implements OnInit {
 
   async showCreateModal(){
     await this.modalSrv.showCursoModal('Crear nuevo curso', null);
+  }
+
+  async showExcelModal(){
+    await this.modalSrv.showCursoExcelModal('Importar archivo Excel');
   }
 
 }

@@ -67,6 +67,14 @@ const routes: Routes = [
     path: 'premio-excel-layout',
     loadChildren: () => import('./pages/premio-excel-layout/premio-excel-layout.module').then( m => m.PremioExcelLayoutPageModule)
   },
+  {
+    path: 'curso-excel-layout',
+    loadChildren: () => import('./pages/curso-excel-layout/curso-excel-layout.module').then( m => m.CursoExcelLayoutPageModule)
+  },
+  {
+    path: 'boletin-informativo-excel-layout',
+    loadChildren: () => import('./pages/boletin-informativo-excel-layout/boletin-informativo-excel-layout.module').then( m => m.BoletinInformativoExcelLayoutPageModule)
+  },
 ];
 
 @NgModule({

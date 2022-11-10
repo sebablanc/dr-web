@@ -86,6 +86,6 @@ export class PremiosPage implements OnInit {
   }
 
   async showExcelModal(){
-    await this.modalSrv.showExcelModal('Importar archivo Excel');
+    await this.modalSrv.showPremioExcelModal('Importar archivo Excel');
   }
 }
