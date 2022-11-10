@@ -56,3 +56,8 @@ export const TIPO_SORTEO_LIST = [
     {value: 'CUOTA', label: 'Cuota'},
     {value: 'COMPUTADORA', label: 'Computadora'},
 ]
+
+export const LOGOS_URLS = {
+  ADULTOS: '/assets/images/logos/logoDR.png',
+  KIDS: '/assets/images/logos/logoDRKids.png'
+}

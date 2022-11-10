@@ -49,6 +49,13 @@ export const LINK_CONFIG: IInputConfig = {
     lastElement: false
 };
 
+export const IMAGEN_URL_CONFIG: IInputConfig = {
+    formControlName: 'imagen',
+    label: 'Link a la imagen',
+    type: 'text',
+    lastElement: false
+};
+
 export const FECHA_SORTEO_CONFIG: IInputConfig = {
     formControlName: 'fechaSorteo',
     label: 'Fecha de sorteo',

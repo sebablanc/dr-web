@@ -9,6 +9,9 @@
     <!-- D E S C R I P C I O N -->
     <app-text-area-dr [config]="descripcionConfig" [form]="cursoForm"></app-text-area-dr>
 
+    <!-- I M A G E N -->
+    <app-input-dr [config]="imagenUrlConfig" [form]="cursoForm"></app-input-dr>
+
     <div class="botonera">
       <app-rounded-button [config]="buttonCancelConfig" (click)="closeForm(false)"></app-rounded-button>
       <app-rounded-button class="save-btn" [config]="buttonSendConfig" [disableButton]="!cursoForm.valid"></app-rounded-button>

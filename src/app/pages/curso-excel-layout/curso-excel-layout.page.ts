@@ -59,7 +59,8 @@ export class CursoExcelLayoutPage implements OnInit {
           categoria: '',
           descripcion: '',
           id: '',
-          nombre: ''
+          nombre: '',
+          imagen: ''
         }
        Object.assign(obj, curso);
        if(obj.categoria !== '' && obj.descripcion !== '' && obj.nombre !== ''){

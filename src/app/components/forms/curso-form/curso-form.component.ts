@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NOMBRE_CONFIG } from 'src/app/components/ui/input-dr/input-configs';
+import { IMAGEN_URL_CONFIG, NOMBRE_CONFIG } from 'src/app/components/ui/input-dr/input-configs';
 import { SECTION_TYPES } from 'src/constants/items';
 import { IInputConfig } from '../../ui/input-dr/input-dr.component';
 import { BUTTON_CANCEL_CONFIG, BUTTON_SAVE_CONFIG } from '../../ui/rounded-button/button-configs';
@@ -20,6 +20,7 @@ export class CursoFormComponent implements OnInit {
   @Output() emitData: EventEmitter<any> = new EventEmitter();
   cursoForm: FormGroup = null;
   nombreConfig: IInputConfig = NOMBRE_CONFIG;
+  imagenUrlConfig: IInputConfig = IMAGEN_URL_CONFIG;
   descripcionConfig: ITextAreaConfig = DESCRIPCION_CONFIG;
   categoriaConfig: ISelectConfig = CATEGORIA_CONFIG;
   buttonSendConfig: IRoundedButtonConfig = BUTTON_SAVE_CONFIG;
@@ -36,7 +37,8 @@ export class CursoFormComponent implements OnInit {
       id: [this.curso && this.curso.id ? this.curso.id : null],
       nombre: [this.curso && this.curso.nombre ? this.curso.nombre : '', [Validators.required, Validators.minLength(3)]],
       descripcion: [this.curso && this.curso.descripcion ? this.curso.descripcion : '', [Validators.required]],
-      categoria: [this.curso && this.curso.categoria ? this.curso.categoria : '', Validators.required]
+      categoria: [this.curso && this.curso.categoria ? this.curso.categoria : '', Validators.required],
+      imagen: [this.curso && this.curso.imagen ? this.curso.imagen : '']
     })
   }
 

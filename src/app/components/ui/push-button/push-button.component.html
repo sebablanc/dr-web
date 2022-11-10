@@ -1,6 +1,6 @@
 <div *ngIf="item" class="push-button" (click)="goTo()">
   <div class="push-button-container">
-    <img [src]="'/assets/images/logos/' + (item.categoria == sectionsTypes.ADULTOS ? 'logoDR.png' : 'logoDRKids.png')">
+    <img [src]="item && item.imagen ? item.imagen : logosUrls[item.categoria]" />
     <div class="push-button-text">{{ item.nombre }}</div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 <swiper class="banner-slides" [initialSlide]="1" [slidesPerView]="slidesPerView" [spaceBetween]="20" #swiper>
 <ng-template class="swiper-card" *ngFor="let item of items; index as i" swiperSlide>
-  <img class="swiper-img" [src]="'/assets/images/logos/' + (item.categoria == sectionsTypes.ADULTOS ? 'logoDR.png' : 'logoDRKids.png')" />
+  <img class="swiper-img" [src]="item && item.imagen ? item.imagen : logosUrls[item.categoria]" />
   <h2 class="swiper-label">{{item.nombre}}</h2>
 </ng-template>
 </swiper>

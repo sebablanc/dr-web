@@ -12,7 +12,7 @@ export class HomeCarouselComponent implements OnInit {
 
   ngOnInit() {
     this.showSlides(this.slideIndex);
-   /* setInterval(() => {
+    /*setInterval(() => {
       this.plusSlides(1);
     }, 5000);*/
   }
@@ -42,7 +42,7 @@ export class HomeCarouselComponent implements OnInit {
     }
 
     if (slides[this.slideIndex - 1]) {
-      slides[this.slideIndex - 1]['style'].display = "block";
+      slides[this.slideIndex - 1]['style'].display = "grid";
       dots[this.slideIndex - 1].className += " active";
     }
   }

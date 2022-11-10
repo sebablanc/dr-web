@@ -74,7 +74,6 @@ export class CursoDetailPage implements OnInit {
       const result = this.cursoSrv.eliminar_curso(this.curso.id);
       const resultType = result ? RESULTS_TYPES.SUCCESS : RESULTS_TYPES.ERROR;
       await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, resultType, this.curso.nombre);
-      this.navigationSrv.goBack();
     }
   }
 }
