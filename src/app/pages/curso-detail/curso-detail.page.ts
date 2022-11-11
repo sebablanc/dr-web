@@ -9,7 +9,7 @@ import { CursosService } from 'src/app/services/cursos.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { UserLoggedService } from 'src/app/services/user-logged.service';
-import { SECTION_TYPES } from 'src/constants/items';
+import { LOGOS_URLS, SECTION_TYPES } from 'src/constants/items';
 import { OPERATION_TYPES, RESULTS_TYPES } from '../delete-messages/delete-messages.page';
 
 @Component({
@@ -22,6 +22,7 @@ export class CursoDetailPage implements OnInit {
   editRoundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_EDIT_CONFIG;
   deleteRoundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_DELETE_CONFIG;
   sectionsTypes = SECTION_TYPES;
+  logosUrls = LOGOS_URLS;
   curso: ICursoData = null;
   userLogged: boolean;
   private userLogged$: Observable<boolean>;

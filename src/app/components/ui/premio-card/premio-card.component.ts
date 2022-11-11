@@ -21,7 +21,7 @@ export class PremioCardComponent implements OnInit {
   ngOnInit() { }
 
   async openEditModal() {
-    await this.modalSrv.showPremioModal('Editar novedad', this.premio);
+    await this.modalSrv.showPremioModal('Editar sorteo', this.premio);
   }
 
   async openDeleteModal() {

@@ -4,7 +4,7 @@
   <div *ngIf="curso" class="info-container">
     <div class="dr-like-title dr-font">{{ curso.nombre }}</div>
     <div class="img-container">
-      <img [src]="'/assets/images/logos/' + (curso.categoria == sectionsTypes.ADULTOS ? 'logoDR.png' : 'logoDRKids.png')">
+      <img [src]="curso && curso.imagen ? curso.imagen : logosUrls[curso.categoria]" />
     </div>
     <div [innerHTML]="curso.descripcion"></div>
   </div>
