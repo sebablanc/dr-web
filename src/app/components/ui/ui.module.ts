@@ -18,6 +18,7 @@ import { SelectDrComponent } from './select-dr/select-dr.component';
 import { SmallBotoneraComponent } from './small-botonera/small-botonera.component';
 import { SwiperModule } from "swiper/angular";
 import { MyPipesModule } from 'src/app/pipes/my-pipes.module';
+import { MesesPipe } from 'src/app/pipes/meses.pipe';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,9 @@ import { MyPipesModule } from 'src/app/pipes/my-pipes.module';
     ReactiveFormsModule,
     SwiperModule,
     MyPipesModule
+  ],
+  providers: [
+    MesesPipe
   ]
 })
 export class UiModule { }

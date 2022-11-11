@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IPremioData } from 'src/app/interfaces/premioData';
 import { OPERATION_TYPES, RESULTS_TYPES } from 'src/app/pages/delete-messages/delete-messages.page';
+import { MesesPipe } from 'src/app/pipes/meses.pipe';
 import { ModalService } from 'src/app/services/modal.service';
 import { PremiosService } from 'src/app/services/premios.service';
 
@@ -16,7 +17,8 @@ export class PremioCardComponent implements OnInit {
 
   constructor(
     private modalSrv: ModalService,
-    private premioSrv: PremiosService) { }
+    private premioSrv: PremiosService,
+    private mesesPipe: MesesPipe) { }
 
   ngOnInit() { }
 
@@ -25,7 +27,7 @@ export class PremioCardComponent implements OnInit {
   }
 
   async openDeleteModal() {
-    let title = 'Premio ' + this.premio.tipoSorteo + ' que corresponde a ' + this.premio.mes + ' de ' + this.premio.year;
+    let title = 'Premio ' + this.premio.tipoSorteo + ' que corresponde a ' + this.mesesPipe.transform(this.premio.mes) + ' de ' + this.premio.year;
     let deletePremio = await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, RESULTS_TYPES.WARNING, title);
     if (deletePremio.role === 'confirm') {
       const result = this.premioSrv.eliminar_premio(this.premio.id)
