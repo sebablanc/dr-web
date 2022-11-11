@@ -5,7 +5,7 @@ export const SECTION_TYPES = {
     KIDS: 'KIDS'
 }
 export const NAV_ITEMS = [
-    { text: 'Home', link: 'home', section: SECTION_TYPES.ADULTOS },
+    { text: 'Inicio', link: 'home', section: SECTION_TYPES.ADULTOS },
     { text: 'Quiénes somos', link: 'about-us', section: SECTION_TYPES.ADULTOS },
     { text: 'DR Computers', link: 'dr-computers', section: SECTION_TYPES.ADULTOS },
     { text: 'DR Kids', link: 'dr-kids', section: SECTION_TYPES.KIDS },
