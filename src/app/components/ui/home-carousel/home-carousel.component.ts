@@ -12,9 +12,9 @@ export class HomeCarouselComponent implements OnInit {
 
   ngOnInit() {
     this.showSlides(this.slideIndex);
-    /*setInterval(() => {
+    setInterval(() => {
       this.plusSlides(1);
-    }, 5000);*/
+    }, 5000);
   }
 
 
