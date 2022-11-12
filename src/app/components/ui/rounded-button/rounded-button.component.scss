@@ -1,14 +1,13 @@
+.shrink {
+    display: flex;
+    width: max-content;
+    margin: 0 auto;
 
-/*.button {
-    border-radius: 52px;
-    box-shadow: 4px 6px #999;
-    width: 100%;
-    padding: 5px 29px;
-    .btn-text {
-        max-width: max-content;
-        display: inline-flex;
-        vertical-align: top;
-        margin-right: 8px;
-        margin-left: 3px;
+    .left-icon{
+        margin-right: 10px;
     }
-}*/
+
+    .right-icon{
+        margin-left: 10px;
+    }
+}

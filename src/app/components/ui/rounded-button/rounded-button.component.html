@@ -1,5 +1,5 @@
-<button *ngIf="config" class="button" [ngClass]="{'button-primary': config.style == 'PRIMARY', 'button-secondary': config.style == 'SECONDARY' }" [type]="config.type" [disabled]="disableButton" (click)="buttonClicked.emit(true)">
-  <ion-icon *ngIf="config && config.leftIcon" class="drop-arrow-icon" [name]="config.leftIcon"></ion-icon>
+<button *ngIf="config" class="button shrink" [ngClass]="{'button-primary': config.style == 'PRIMARY', 'button-secondary': config.style == 'SECONDARY' }" [type]="config.type" [disabled]="disableButton" (click)="buttonClicked.emit(true)">
+  <ion-icon *ngIf="config && config.leftIcon" class="left-icon" [name]="config.leftIcon"></ion-icon>
   <div *ngIf="config && config.text" class="btn-text">{{ config.text }}</div>
-  <ion-icon *ngIf="config && config.rightIcon" class="drop-arrow-icon" [name]="config.rightIcon"></ion-icon>
+  <ion-icon *ngIf="config && config.rightIcon" class="right-icon" [name]="config.rightIcon"></ion-icon>
 </button>

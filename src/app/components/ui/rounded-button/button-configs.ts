@@ -30,6 +30,13 @@ export const BUTTON_CANCEL_CONFIG: IRoundedButtonConfig = {
     style: 'SECONDARY'
 }
 
+export const BUTTON_BACK_CONFIG: IRoundedButtonConfig = {
+    text: 'Volver',
+    type: 'button',
+    style: 'PRIMARY',
+    leftIcon: 'arrow-back-outline'
+}
+
 export const BUTTON_CLOSE_CONFIG: IRoundedButtonConfig = {
     text: 'Cerrar',
     type: 'button',

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, Input, HostListener } from '@angular/core';
+import { NavigationService } from 'src/app/services/navigation.service';
 import { LOGOS_URLS, SECTION_TYPES } from 'src/constants/items';
 import { SwiperComponent } from 'swiper/angular';
 
@@ -24,7 +25,7 @@ export class MySwiperComponent implements OnInit {
     else if (window.innerWidth < 590) this.slidesPerView = 1;
   }
 
-  constructor() { }
+  constructor(private navigationSrv: NavigationService) { }
 
   ngOnInit() {
     this.onResize();

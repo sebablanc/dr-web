@@ -15,17 +15,12 @@ export class PushButtonComponent implements OnInit {
   logosUrls = LOGOS_URLS;
 
   constructor(
-    private navigationSrv: NavigationService,
-    private sectionSrv: SectionService) { }
+    private navigationSrv: NavigationService) { }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   goTo(){
-    this.sectionSrv.setSectionActive(this.item.categoria == this.sectionsTypes.ADULTOS ? this.sectionsTypes.ADULTOS : this.sectionsTypes.KIDS);
-    const link = this.item.categoria == this.sectionsTypes.ADULTOS ? 'dr-computers' : 'dr-kids';
-    this.navigationSrv.goTo(`${link}/${this.item.id}`);
+    this.navigationSrv.goToCursoDetail(this.item);
   }
 
 }

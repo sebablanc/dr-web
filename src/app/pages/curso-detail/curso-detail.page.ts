@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ROUND_BUTTON_DELETE_CONFIG, ROUND_BUTTON_EDIT_CONFIG } from 'src/app/components/ui/round-button/round-button-configs';
 import { IRoundButtonConfig } from 'src/app/components/ui/round-button/round-button.component';
+import { BUTTON_BACK_CONFIG } from 'src/app/components/ui/rounded-button/button-configs';
+import { IRoundedButtonConfig } from 'src/app/components/ui/rounded-button/rounded-button.component';
 import { ICursoData } from 'src/app/interfaces/cursoData';
 import { CursosListService } from 'src/app/services/cursos-list.service';
 import { CursosService } from 'src/app/services/cursos.service';
@@ -21,6 +23,7 @@ export class CursoDetailPage implements OnInit {
 
   editRoundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_EDIT_CONFIG;
   deleteRoundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_DELETE_CONFIG;
+  buttonCancelConfig: IRoundedButtonConfig = BUTTON_BACK_CONFIG;
   sectionsTypes = SECTION_TYPES;
   logosUrls = LOGOS_URLS;
   curso: ICursoData = null;
@@ -50,7 +53,7 @@ export class CursoDetailPage implements OnInit {
     this.cursos$ = this.cursosListSrv.getCursos$();
     this.cursos$.subscribe(cursos => {
       this.curso = cursos.find(c => c.id == cursoId);
-      if(!this.curso) this.navigationSrv.goBack();
+      if(!this.curso) this.goBack();
     });
   }
 
@@ -76,5 +79,9 @@ export class CursoDetailPage implements OnInit {
       const resultType = result ? RESULTS_TYPES.SUCCESS : RESULTS_TYPES.ERROR;
       await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, resultType, this.curso.nombre);
     }
+  }
+
+  goBack(){
+    this.navigationSrv.goBack();
   }
 }

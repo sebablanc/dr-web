@@ -13,7 +13,7 @@ import * as XLSX from 'xlsx';
 })
 export class CursoExcelLayoutPage implements OnInit {
   @Input() title: string;
-  
+
   constructor(
     private modalSrv: ModalService,
     private loadingSrv: LoadingService,
@@ -24,9 +24,9 @@ export class CursoExcelLayoutPage implements OnInit {
 
   async showMessagesWarning(file) {
     this.modalSrv.dismissModal(false);
-    
-    if(!file) return;
-  
+
+    if (!file) return;
+
     //muestro mensaje de advertencia para cargar el archivo
     let algo = await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.EXCEL_LOAD, RESULTS_TYPES.WARNING_EXCEL, file.name);
 
@@ -47,25 +47,24 @@ export class CursoExcelLayoutPage implements OnInit {
     fileReader.onload = async (e) => {
       const arrayBuffer = fileReader.result as (ArrayBuffer);
       var data = new Uint8Array(arrayBuffer);
-      var arr = new Array();    
-      for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+      var arr = new Array();
+      for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
       var bstr = arr.join("");
-      var workbook = XLSX.read(bstr, {type:"binary"});
+      var workbook = XLSX.read(bstr, { type: "binary" });
       var first_sheet_name = workbook.SheetNames[0];
       var worksheet = workbook.Sheets[first_sheet_name];
-      var arraylist = XLSX.utils.sheet_to_json(worksheet,{raw:true}) as Array<ICursoData>;
+      var arraylist = XLSX.utils.sheet_to_json(worksheet, { raw: true }) as Array<ICursoData>;
       arraylist.forEach(async curso => {
         let obj: ICursoData = {
-          categoria: '',
-          descripcion: '',
-          id: '',
-          nombre: '',
-          imagen: ''
+          categoria: curso.categoria.toUpperCase(),
+          descripcion: curso.descripcion,
+          id: curso.id,
+          nombre: curso.nombre,
+          imagen: curso.imagen
         }
-       Object.assign(obj, curso);
-       if(obj.categoria !== '' && obj.descripcion !== '' && obj.nombre !== ''){
-        await this.cursosSrv.crear_curso(curso);
-       }   
+        if (obj.categoria !== '' && obj.descripcion !== '' && obj.nombre !== '') {
+          await this.cursosSrv.crear_curso(curso);
+        }
       });
       setTimeout(() => {
         this.loadingSrv.dismissLoading();
