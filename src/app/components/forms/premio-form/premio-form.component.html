@@ -18,6 +18,9 @@
    <!-- H O R A R I O   E X T R A C C I O N -->
    <app-input-dr [config]="horarioExtraccionConfig" [form]="premioForm"></app-input-dr>
 
+   <!-- L I N K   N O T I C I A -->
+   <app-input-dr [config]="linkNoticiaConfig" [form]="premioForm"></app-input-dr>
+
    <!-- T I P O   S O R T E O -->
    <app-select-dr [config]="tipoSorteoConfig" [form]="premioForm" [list]="tipoSorteoList"></app-select-dr>
 
@@ -26,6 +29,7 @@
     
   <!-- P R E M I O   C O N S U E L O -->
   <app-input-dr *ngIf="tipoSorteoSelected == 'CONSUELO'" [config]="premioConsueloConfig" [form]="premioForm"></app-input-dr>
+
 
   <div class="botonera">
     <app-rounded-button [config]="buttonCancelConfig" (click)="closeForm(false)"></app-rounded-button>

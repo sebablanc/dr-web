@@ -63,6 +63,13 @@ export const PREMIO_CONSUELO_CONFIG: IInputConfig = {
     lastElement: false
 };
 
+export const LINK_NOTICIA_CONFIG: IInputConfig = {
+    formControlName: 'linkNoticia',
+    label: 'Link a la noticia',
+    type: 'text',
+    lastElement: false
+};
+
 export const FECHA_SORTEO_CONFIG: IInputConfig = {
     formControlName: 'fechaSorteo',
     label: 'Fecha de sorteo',

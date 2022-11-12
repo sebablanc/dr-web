@@ -36,6 +36,15 @@
     row-gap: 20px;
 }
 
+.nada-aqui-template {
+    text-align: center;
+
+    .binoculars-icon {
+        width: 250px;
+        animation: binoculars-lookup 2s infinite ease-out ;
+    }
+}
+
 @media screen and (max-width: 1450px) {
     .premio-cuota-container {
         grid-template-columns: repeat(2, calc(50% - 10px));
@@ -56,11 +65,24 @@
 
 .premio-pc-container {
     margin: 20px 0 15px;
-    ::ng-deep .premio-card{
-        .ganaste-label{
+
+    ::ng-deep .premio-card {
+        .ganaste-label {
             font-size: 30px;
             transform: translateY(4%) rotate(45deg) !important;
             top: 50px !important;
         }
+    }
+}
+
+@keyframes binoculars-lookup {
+    0%{
+        transform: skew(-17deg, 7deg);
+    }
+    50%{
+        transform: skew(17deg, -7deg);
+    }
+    100%{
+        transform: skew(-17deg, 7deg);
     }
 }

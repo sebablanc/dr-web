@@ -21,5 +21,10 @@
         <app-premio-card *ngFor="let premioConsuelo of premiosConsuelo" [premio]="premioConsuelo" [showBotonera]="userLogged"></app-premio-card>
     </div>
 
-    <ng-template #nadaAqui>Mmm... parece que no hay nada que mostrar aquí</ng-template>
+    <ng-template #nadaAqui>
+        <div class="nada-aqui-template">
+            <img class="binoculars-icon" src="assets/images/icons/binoculars-icon.svg" />
+            <div>Mmm... parece que no hay nada que mostrar aquí</div>
+        </div>
+    </ng-template>
 </app-layout-big-card>
