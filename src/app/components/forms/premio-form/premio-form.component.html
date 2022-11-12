@@ -21,7 +21,13 @@
    <!-- T I P O   S O R T E O -->
    <app-select-dr [config]="tipoSorteoConfig" [form]="premioForm" [list]="tipoSorteoList"></app-select-dr>
 
-   <div class="botonera">
+  <!-- I M A G E N -->
+  <app-input-dr *ngIf="tipoSorteoSelected == 'COMPUTADORA'" [config]="imagenUrlConfig" [form]="premioForm"></app-input-dr>
+    
+  <!-- P R E M I O   C O N S U E L O -->
+  <app-input-dr *ngIf="tipoSorteoSelected == 'CONSUELO'" [config]="premioConsueloConfig" [form]="premioForm"></app-input-dr>
+
+  <div class="botonera">
     <app-rounded-button [config]="buttonCancelConfig" (click)="closeForm(false)"></app-rounded-button>
     <app-rounded-button class="save-btn" [config]="buttonSendConfig" [disableButton]="!premioForm.valid"></app-rounded-button>
   </div>

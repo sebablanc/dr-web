@@ -41,20 +41,22 @@ export const MESES_ITEMS = [
     {value: 7, label: 'Julio'},
     {value: 8, label: 'Agosto'},
     {value: 9, label: 'Septiembre'},
-    {value: 10, label: 'Agosto'},
+    {value: 10, label: 'Octubre'},
     {value: 11, label: 'Noviembre'},
     {value: 12, label: 'Diciembre'}
 ]
 
 export const SORTEOS_TYPE = {
     CUOTA: 'CUOTA',
-    COMPUTADORA: 'COMPUTADORA'
+    COMPUTADORA: 'COMPUTADORA',
+    CONSUELO: 'CONSUELO'
 }
 
 export const TIPO_SORTEO_LIST = [
     {value: '', label: '-- Seleccione un tipo de sorteo --'},
     {value: 'CUOTA', label: 'Cuota'},
     {value: 'COMPUTADORA', label: 'Computadora'},
+    {value: 'CONSUELO', label: 'Premio Consuelo' }
 ]
 
 export const LOGOS_URLS = {

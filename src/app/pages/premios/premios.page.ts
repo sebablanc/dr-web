@@ -31,6 +31,7 @@ export class PremiosPage implements OnInit {
   
   premiosCuotas: Array<IPremioData>;
   premioComputadora: IPremioData;
+  premiosConsuelo: Array<IPremioData>;
   private premios$: Observable<IPremioData[]>;
 
   constructor(
@@ -74,6 +75,7 @@ export class PremiosPage implements OnInit {
     this.premios$.subscribe(premios => {
       this.premiosCuotas = premios.filter(p => p.tipoSorteo == SORTEOS_TYPE.CUOTA);
       this.premioComputadora = premios.find(p => p.tipoSorteo == SORTEOS_TYPE.COMPUTADORA);
+      this.premiosConsuelo = premios.filter(p => p.tipoSorteo == SORTEOS_TYPE.CONSUELO);
     });
   }
 

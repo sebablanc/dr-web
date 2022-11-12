@@ -4,9 +4,10 @@
     <div class="alumno-favorecido">{{ premio.nombreFavorecido }}</div>
     <div class="mes-label">{{ premio.mes | meses }}</div>
     <div class="alumno-retiro">Retiró: {{ premio.nombreRetiro }}</div>
-    <div class="horario-label">Horario: {{ premio.horarioExtraccion }}hs</div>
+    <div class="horario-label">Horario: {{ premio.horarioExtraccion }}</div>
+    <div *ngIf="premio.tipoSorteo == tiposSorteo.CONSUELO" class="horario-label">Se ganó: <b>{{ premio.premioConsuelo }}</b></div>
   </div>
-  <img *ngIf="showPC" class="pc-winner" src="assets/images/PC-Escritorio.png">
+  <img *ngIf="showPC" class="pc-winner" [src]="premio && premio.imagen ? premio.imagen : 'assets/images/PC-Escritorio.png'" />
   <div class="ganaste-label">¡¡ Ganaste !!</div>
   <app-small-botonera *ngIf="showBotonera" class="premio-card-botonera" (leftButtonClicked)="openEditModal()" (rightButtonClicked)="openDeleteModal()"></app-small-botonera>
 </div>

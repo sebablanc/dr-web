@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MESES_ITEMS, TIPO_SORTEO_LIST } from 'src/constants/items';
-import { HORARIO_EXTRACCION_CONFIG, NOMBRE_FAVORECIDO_CONFIG, NOMBRE_RETIRO_CONFIG, NUMERO_CUPON_CONFIG } from '../../ui/input-dr/input-configs';
+import { HORARIO_EXTRACCION_CONFIG, IMAGEN_URL_CONFIG, NOMBRE_FAVORECIDO_CONFIG, NOMBRE_RETIRO_CONFIG, NUMERO_CUPON_CONFIG, PREMIO_CONSUELO_CONFIG } from '../../ui/input-dr/input-configs';
 import { IInputConfig } from '../../ui/input-dr/input-dr.component';
 import { BUTTON_SAVE_CONFIG, BUTTON_CANCEL_CONFIG } from '../../ui/rounded-button/button-configs';
 import { IRoundedButtonConfig } from '../../ui/rounded-button/rounded-button.component';
@@ -24,34 +24,46 @@ export class PremioFormComponent implements OnInit {
   nombreFavorecidoConfig: IInputConfig = NOMBRE_FAVORECIDO_CONFIG;
   nombreRetiroConfig: IInputConfig = NOMBRE_RETIRO_CONFIG;
   horarioExtraccionConfig: IInputConfig = HORARIO_EXTRACCION_CONFIG;
+  imagenUrlConfig: IInputConfig = IMAGEN_URL_CONFIG;
+  premioConsueloConfig: IInputConfig = PREMIO_CONSUELO_CONFIG;
   tipoSorteoConfig: ISelectConfig = TIPO_SORTEO_CONFIG;
   buttonSendConfig: IRoundedButtonConfig = BUTTON_SAVE_CONFIG;
   buttonCancelConfig: IRoundedButtonConfig = BUTTON_CANCEL_CONFIG;
-  yearsList = [{value: 0, label: '-- Seleccione un año --'}];
+  yearsList: Array<IYearList> = [{value: '', label: '-- Seleccione un año --'}];
   mesesList = MESES_ITEMS;
   tipoSorteoList = TIPO_SORTEO_LIST;
+  tipoSorteoSelected: string = '';
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.tipoSorteoSelected = this.premio && this.premio.tipoSorteo ? this.premio.tipoSorteo : '';
     this.createForm();
     const year = new Date().getFullYear();
     for (let index = year; index > 1996; index--) {
       this.yearsList.push({value: index, label: index.toString()});
     }
+
+    this.subscribeToTipoSorteoChange();
   }
 
   createForm(){
     this.premioForm = this.fb.group({
       id: [this.premio && this.premio.id ? this.premio.id : null],
-      year: [this.premio && this.premio.year ? this.premio.year : 0, [Validators.required, Validators.min(1997)]],
+      year: [this.premio && this.premio.year ? this.premio.year : '', Validators.required],
       mes: [this.premio && this.premio.mes ? this.premio.mes : '', Validators.required],
       numeroCupon: [this.premio && this.premio.numeroCupon ? this.premio.numeroCupon : '', Validators.required],
       nombreFavorecido: [this.premio && this.premio.nombreFavorecido ? this.premio.nombreFavorecido : '', Validators.required],
       nombreRetiro: [this.premio && this.premio.nombreRetiro ? this.premio.nombreRetiro : '', Validators.required],
       horarioExtraccion: [this.premio && this.premio.horarioExtraccion ? this.premio.horarioExtraccion : '', Validators.required],
       tipoSorteo: [this.premio && this.premio.tipoSorteo ? this.premio.tipoSorteo : '', Validators.required],
+      imagen: [this.premio && this.premio.imagen ? this.premio.imagen : ''],
+      premioConsuelo: [this.premio && this.premio.premioConsuelo ? this.premio.premioConsuelo : '']
     })
+  }
+
+  subscribeToTipoSorteoChange(){
+    return this.premioForm.controls.tipoSorteo.valueChanges.subscribe(data => this.tipoSorteoSelected = data);
   }
 
   closeForm(create: boolean){
@@ -59,4 +71,9 @@ export class PremioFormComponent implements OnInit {
     this.emitData.emit(data);
   }
 
+}
+
+interface IYearList {
+  value: number|string,
+  label: string
 }

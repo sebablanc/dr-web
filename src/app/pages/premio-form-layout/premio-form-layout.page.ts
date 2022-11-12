@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IPremioData } from 'src/app/interfaces/premioData';
+import { MesesPipe } from 'src/app/pipes/meses.pipe';
 import { LoadingService } from 'src/app/services/loading.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { PremiosService } from 'src/app/services/premios.service';
@@ -9,6 +10,7 @@ import { OPERATION_TYPES, RESULTS_TYPES } from '../delete-messages/delete-messag
   selector: 'app-premio-form-layout',
   templateUrl: './premio-form-layout.page.html',
   styleUrls: ['./premio-form-layout.page.scss'],
+  providers: [MesesPipe]
 })
 export class PremioFormLayoutPage implements OnInit {
   @Input() title: string = '';
@@ -17,7 +19,8 @@ export class PremioFormLayoutPage implements OnInit {
   constructor(
     private modalSrv: ModalService,
     private loadingSrv: LoadingService,
-    private permioSrv: PremiosService) { }
+    private permioSrv: PremiosService,
+    private mesesPipe: MesesPipe) { }
 
   ngOnInit() {
   }
@@ -39,7 +42,7 @@ export class PremioFormLayoutPage implements OnInit {
       let operationResult = success ? RESULTS_TYPES.SUCCESS : RESULTS_TYPES.ERROR; 
       setTimeout(() => {
         this.loadingSrv.dismissLoading();
-        this.modalSrv.showDeleteMessagesModal(operationType, operationResult, event.mes + ' de ' + event.year);
+        this.modalSrv.showDeleteMessagesModal(operationType, operationResult, this.mesesPipe.transform(event.mes) + ' de ' + event.year);
       }, 10);
     } catch(e){
       this.loadingSrv.dismissLoading();

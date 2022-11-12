@@ -8,6 +8,7 @@ import { PremioFormLayoutPageRoutingModule } from './premio-form-layout-routing.
 
 import { PremioFormLayoutPage } from './premio-form-layout.page';
 import { MyFormsModule } from 'src/app/components/forms/my-forms.module';
+import { MesesPipe } from 'src/app/pipes/meses.pipe';
 
 @NgModule({
   imports: [
@@ -17,6 +18,9 @@ import { MyFormsModule } from 'src/app/components/forms/my-forms.module';
     PremioFormLayoutPageRoutingModule,
     MyFormsModule
   ],
-  declarations: [PremioFormLayoutPage]
+  declarations: [PremioFormLayoutPage],
+  providers: [
+    MesesPipe
+  ]
 })
 export class PremioFormLayoutPageModule {}

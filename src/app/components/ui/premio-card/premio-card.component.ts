@@ -4,6 +4,7 @@ import { OPERATION_TYPES, RESULTS_TYPES } from 'src/app/pages/delete-messages/de
 import { MesesPipe } from 'src/app/pipes/meses.pipe';
 import { ModalService } from 'src/app/services/modal.service';
 import { PremiosService } from 'src/app/services/premios.service';
+import { SORTEOS_TYPE } from 'src/constants/items';
 
 @Component({
   selector: 'app-premio-card',
@@ -14,6 +15,7 @@ export class PremioCardComponent implements OnInit {
   @Input() showPC: boolean = false;
   @Input() showBotonera: boolean = false;
   @Input() premio: IPremioData;
+  tiposSorteo = SORTEOS_TYPE;
 
   constructor(
     private modalSrv: ModalService,

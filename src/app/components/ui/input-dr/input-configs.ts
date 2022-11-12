@@ -56,6 +56,13 @@ export const IMAGEN_URL_CONFIG: IInputConfig = {
     lastElement: false
 };
 
+export const PREMIO_CONSUELO_CONFIG: IInputConfig = {
+    formControlName: 'premioConsuelo',
+    label: 'Premio recibido',
+    type: 'text',
+    lastElement: false
+};
+
 export const FECHA_SORTEO_CONFIG: IInputConfig = {
     formControlName: 'fechaSorteo',
     label: 'Fecha de sorteo',
@@ -87,6 +94,6 @@ export const NOMBRE_RETIRO_CONFIG: IInputConfig = {
 export const HORARIO_EXTRACCION_CONFIG: IInputConfig = {
     formControlName: 'horarioExtraccion',
     label: 'Horario en que se extrajo el cupón',
-    type: 'time',
+    type: 'text',
     lastElement: false
 };

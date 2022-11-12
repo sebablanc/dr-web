@@ -7,13 +7,19 @@
         <img alt="logoDRKids" class="header-logos" src="assets/images/logos/logoDRKids.png">
     </div>
 
-    <div class="premios-header-container premios-subtitle dr-font">Estas personas ganaron una cuota</div>
     <app-select-dr [config]="yearConfig" [form]="premiosForm" [list]="years"></app-select-dr>
-    <div class="premio-cuota-container">
+    <div *ngIf="premiosCuotas && premiosCuotas.length > 0" class="premios-header-container premios-subtitle dr-font">Estas personas ganaron una cuota</div>
+    <div *ngIf="premiosCuotas && premiosCuotas.length > 0 else nadaAqui" class="premio-cuota-container">
         <app-premio-card *ngFor="let premio of premiosCuotas" [premio]="premio" [showBotonera]="userLogged"></app-premio-card>
       </div>
-    <div class="premios-header-container premios-subtitle dr-font">Y esta persona se ganó una compu</div>
-    <div class="premio-pc-container">
+    <div *ngIf="premioComputadora" class="premios-header-container premios-subtitle dr-font">Y esta persona se ganó una compu</div>
+    <div *ngIf="premioComputadora" class="premio-pc-container">
         <app-premio-card [premio]="premioComputadora" [showPC]="true" [showBotonera]="userLogged"></app-premio-card>
     </div>
+    <div *ngIf="premiosConsuelo && premiosConsuelo.length > 0" class="premios-header-container premios-subtitle dr-font">...Y hubo más premios</div>
+    <div *ngIf="premiosConsuelo && premiosConsuelo.length > 0" class="premio-cuota-container">
+        <app-premio-card *ngFor="let premioConsuelo of premiosConsuelo" [premio]="premioConsuelo" [showBotonera]="userLogged"></app-premio-card>
+    </div>
+
+    <ng-template #nadaAqui>Mmm... parece que no hay nada que mostrar aquí</ng-template>
 </app-layout-big-card>
