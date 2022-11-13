@@ -53,8 +53,8 @@ export class BoletinInformativoExcelLayoutPage implements OnInit {
       var workbook = XLSX.read(bstr, { type: "binary" });
       var first_sheet_name = workbook.SheetNames[0];
       var worksheet = workbook.Sheets[first_sheet_name];
-      var arraylist = XLSX.utils.sheet_to_json(worksheet, { raw: true }) as Array<INovedadData>;
-      arraylist.forEach(async novedad => {
+      var arrayNovedades = XLSX.utils.sheet_to_json(worksheet, { raw: true }) as Array<INovedadData>;
+      arrayNovedades.forEach(async novedad => {
         if (novedad && novedad.titulo !== '' && novedad.mensaje !== '') {
           let obj: INovedadData = {
             id: '',
@@ -63,11 +63,11 @@ export class BoletinInformativoExcelLayoutPage implements OnInit {
             titulo: novedad.titulo
           }
           await this.novedadesSrv.crear_novedad(obj);
-        });
+        }
+      });
     }
     setTimeout(() => {
       this.loadingSrv.dismissLoading();
     }, 1000)
   }
-}
 }
