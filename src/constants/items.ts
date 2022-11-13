@@ -27,7 +27,8 @@ export const ROUNDED_BUTTONS_ICONS = {
     CREATE: 'add',
     CREATE_MULTIPLE: 'document-text',
     EDIT: 'pencil',
-    DELETE: 'trash'
+    DELETE: 'trash',
+    ARROW_BACK: 'arrow-back-outline'
 }
 
 export const MESES_ITEMS = [

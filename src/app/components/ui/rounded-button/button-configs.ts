@@ -1,3 +1,4 @@
+import { ROUNDED_BUTTONS_ICONS } from "src/constants/items";
 import { IRoundedButtonConfig } from "./rounded-button.component";
 
 export const BUTTON_ASK_CONFIG: IRoundedButtonConfig = {
@@ -34,7 +35,7 @@ export const BUTTON_BACK_CONFIG: IRoundedButtonConfig = {
     text: 'Volver',
     type: 'button',
     style: 'PRIMARY',
-    leftIcon: 'arrow-back-outline'
+    leftIcon: ROUNDED_BUTTONS_ICONS.ARROW_BACK
 }
 
 export const BUTTON_CLOSE_CONFIG: IRoundedButtonConfig = {
