@@ -55,15 +55,15 @@ export class CursoExcelLayoutPage implements OnInit {
       var worksheet = workbook.Sheets[first_sheet_name];
       var arraylist = XLSX.utils.sheet_to_json(worksheet, { raw: true }) as Array<ICursoData>;
       arraylist.forEach(async curso => {
-        let obj: ICursoData = {
-          categoria: curso.categoria.toUpperCase(),
-          descripcion: curso.descripcion,
-          id: curso.id,
-          nombre: curso.nombre,
-          imagen: curso.imagen
-        }
-        if (obj.categoria !== '' && obj.descripcion !== '' && obj.nombre !== '') {
-          await this.cursosSrv.crear_curso(curso);
+        if (curso.categoria !== '' && curso.descripcion !== '' && curso.nombre !== '') {
+          let cursoToAdd: ICursoData = {
+            categoria: curso.categoria.toUpperCase(),
+            descripcion: curso.descripcion,
+            id: curso.id,
+            nombre: curso.nombre,
+            imagen: curso.imagen
+          }
+          await this.cursosSrv.crear_curso(cursoToAdd);
         }
       });
       setTimeout(() => {

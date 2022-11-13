@@ -13,7 +13,7 @@ import { IPremioData } from 'src/app/interfaces/premioData';
 })
 export class PremioExcelLayoutPage implements OnInit {
   @Input() title: string;
-  
+
 
   constructor(
     private modalSrv: ModalService,
@@ -25,9 +25,9 @@ export class PremioExcelLayoutPage implements OnInit {
 
   async showMessagesWarning(file) {
     this.modalSrv.dismissModal(false);
-    
-    if(!file) return;
-  
+
+    if (!file) return;
+
     //muestro mensaje de advertencia para cargar el archivo
     let algo = await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.EXCEL_LOAD, RESULTS_TYPES.WARNING_EXCEL, file.name);
 
@@ -48,15 +48,37 @@ export class PremioExcelLayoutPage implements OnInit {
     fileReader.onload = async (e) => {
       const arrayBuffer = fileReader.result as (ArrayBuffer);
       var data = new Uint8Array(arrayBuffer);
-      var arr = new Array();    
-      for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+      var arr = new Array();
+      for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
       var bstr = arr.join("");
-      var workbook = XLSX.read(bstr, {type:"binary"});
+      var workbook = XLSX.read(bstr, { type: "binary" });
       var first_sheet_name = workbook.SheetNames[0];
       var worksheet = workbook.Sheets[first_sheet_name];
-      var arraylist = XLSX.utils.sheet_to_json(worksheet,{raw:true}) as Array<IPremioData>;
-      arraylist.forEach(async el => {
-        await this.premiosSrv.crear_premio(el);
+      var premiosList = XLSX.utils.sheet_to_json(worksheet, { raw: true }) as Array<IPremioData>;
+      premiosList.forEach(async premio => {
+        if (
+          premio.horarioExtraccion !== '' &&
+          premio.mes !== '' &&
+          premio.nombreFavorecido !== '' &&
+          premio.nombreRetiro !== '' &&
+          premio.numeroCupon < 1 &&
+          premio.tipoSorteo !== '' &&
+          premio.year < 1997) {
+          let premioToAdd: IPremioData = {
+            id: '',
+            year: premio && premio.horarioExtraccion ? premio.year : new Date().getFullYear(),
+            mes: premio && premio.mes ? premio.mes : '',
+            numeroCupon: premio && premio.numeroCupon ? premio.numeroCupon : 0,
+            nombreFavorecido: premio && premio.nombreFavorecido ? premio.nombreFavorecido : '',
+            nombreRetiro: premio && premio.nombreRetiro ? premio.nombreRetiro : '',
+            horarioExtraccion: premio && premio.horarioExtraccion ? premio.horarioExtraccion : '',
+            tipoSorteo: premio && premio.horarioExtraccion ? premio.tipoSorteo.toUpperCase() : '',
+            imagen: premio && premio.imagen ? premio.imagen : '',
+            premioConsuelo: premio && premio.premioConsuelo ? premio.premioConsuelo : '',
+            linkNoticia: premio && premio.linkNoticia ? premio.linkNoticia : ''
+          }
+          await this.premiosSrv.crear_premio(premioToAdd);
+        }
       });
       await this.premiosSrv.obtener_premios(2022);
       setTimeout(() => {

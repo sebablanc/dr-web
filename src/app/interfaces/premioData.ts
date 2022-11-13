@@ -7,4 +7,7 @@ export interface IPremioData {
     nombreRetiro: string,
     horarioExtraccion: string,
     tipoSorteo: string,
+    imagen: string,
+    premioConsuelo: string,
+    linkNoticia: string
 }
