@@ -13,7 +13,7 @@ import { OPERATION_TYPES, RESULTS_TYPES } from '../delete-messages/delete-messag
 })
 export class BoletinInformativoExcelLayoutPage implements OnInit {
   @Input() title: string;
-  
+
   constructor(
     private modalSrv: ModalService,
     private loadingSrv: LoadingService,
@@ -24,9 +24,9 @@ export class BoletinInformativoExcelLayoutPage implements OnInit {
 
   async showMessagesWarning(file) {
     this.modalSrv.dismissModal(false);
-    
-    if(!file) return;
-  
+
+    if (!file) return;
+
     //muestro mensaje de advertencia para cargar el archivo
     let algo = await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.EXCEL_LOAD, RESULTS_TYPES.WARNING_EXCEL, file.name);
 
@@ -47,28 +47,27 @@ export class BoletinInformativoExcelLayoutPage implements OnInit {
     fileReader.onload = async (e) => {
       const arrayBuffer = fileReader.result as (ArrayBuffer);
       var data = new Uint8Array(arrayBuffer);
-      var arr = new Array();    
-      for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+      var arr = new Array();
+      for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
       var bstr = arr.join("");
-      var workbook = XLSX.read(bstr, {type:"binary"});
+      var workbook = XLSX.read(bstr, { type: "binary" });
       var first_sheet_name = workbook.SheetNames[0];
       var worksheet = workbook.Sheets[first_sheet_name];
-      var arraylist = XLSX.utils.sheet_to_json(worksheet,{raw:true}) as Array<INovedadData>;
+      var arraylist = XLSX.utils.sheet_to_json(worksheet, { raw: true }) as Array<INovedadData>;
       arraylist.forEach(async novedad => {
-        let obj: INovedadData = {
-          id: '',
-          link: '',
-          mensaje: '',
-          titulo: ''
-        }
-       Object.assign(obj, novedad);
-       if(obj.titulo !== '' && obj.mensaje !== ''){
-        await this.novedadesSrv.crear_novedad(obj);
-       }   
-      });
-      setTimeout(() => {
-        this.loadingSrv.dismissLoading();
-      }, 1000)
+        if (novedad && novedad.titulo !== '' && novedad.mensaje !== '') {
+          let obj: INovedadData = {
+            id: '',
+            link: novedad.link || '',
+            mensaje: novedad.mensaje,
+            titulo: novedad.titulo
+          }
+          await this.novedadesSrv.crear_novedad(obj);
+        });
     }
+    setTimeout(() => {
+      this.loadingSrv.dismissLoading();
+    }, 1000)
   }
+}
 }
