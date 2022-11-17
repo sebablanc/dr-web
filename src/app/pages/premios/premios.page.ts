@@ -6,6 +6,7 @@ import { IRoundButtonConfig } from 'src/app/components/ui/round-button/round-but
 import { YEAR_CONFIG } from 'src/app/components/ui/select-dr/select-configs';
 import { ISelectConfig } from 'src/app/components/ui/select-dr/select-dr.component';
 import { IPremioData } from 'src/app/interfaces/premioData';
+import { LoadingService } from 'src/app/services/loading.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { PremiosListService } from 'src/app/services/premios-list.service';
 import { PremiosService } from 'src/app/services/premios.service';
@@ -32,7 +33,6 @@ export class PremiosPage implements OnInit {
   userLogged: boolean;
   private userLogged$: Observable<boolean>;
 
-  allPremios: Array<IPremioData>;
   premiosCuotas: Array<IPremioData>;
   premioComputadora: IPremioData;
   premiosConsuelo: Array<IPremioData>;
@@ -45,7 +45,8 @@ export class PremiosPage implements OnInit {
     private userLoggedSrv: UserLoggedService,
     private fb: FormBuilder,
     private premiosListSrv: PremiosListService,
-    private premiosSrv: PremiosService) { }
+    private premiosSrv: PremiosService,
+    private loadingSrv: LoadingService) { }
 
   ngOnInit() {
     this.editingButtonsConfig();
@@ -80,7 +81,6 @@ export class PremiosPage implements OnInit {
   gettingPremios() {
     this.premios$ = this.premiosListSrv.getPremios$();
     this.premios$.subscribe(premios => {
-      this.allPremios = premios;
       this.premiosCuotas = premios.filter(p => p.tipoSorteo == SORTEOS_TYPE.CUOTA);
       this.premioComputadora = premios.find(p => p.tipoSorteo == SORTEOS_TYPE.COMPUTADORA);
       this.premiosConsuelo = premios.filter(p => p.tipoSorteo == SORTEOS_TYPE.CONSUELO);
@@ -101,7 +101,9 @@ export class PremiosPage implements OnInit {
   }
 
   checkAllPremios() {
-    if (this.allPremios.length === this.premiosChecked.length) {
+    let premioComputadoraLength = this.premioComputadora !== null ? 1 : 0;
+    let cantidadTotal = premioComputadoraLength + this.premiosCuotas.length + this.premiosConsuelo.length;
+    if (cantidadTotal === this.premiosChecked.length) {
       this.checkedAll = false;
     } else {
       this.checkedAll = true;
@@ -119,10 +121,22 @@ export class PremiosPage implements OnInit {
   async deleteAllPremios() {
     const cantPremios = this.premiosChecked.length;
     if (cantPremios < 1) {
-      await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, RESULTS_TYPES.ERROR, `${cantPremios + ' ' + (cantPremios > 1 ? 'premios' : 'premio')}`);
+      await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.MULTIPLE_DELETE, RESULTS_TYPES.NO_ELEMENTS, '');
       return;
     }
-    await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, RESULTS_TYPES.WARNING, `${cantPremios + ' ' + (cantPremios > 1 ? 'premios' : 'premio')}`);
-
+    
+    let cantPremiosMsg = `${cantPremios + ' premio' + (cantPremios > 1 ? 's' : '')}`;
+    let response = await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, RESULTS_TYPES.WARNING, cantPremiosMsg);
+    if(response.role === 'confirm'){
+      this.loadingSrv.showDRLoading();
+      this.premiosChecked.forEach(id => {
+        this.premiosSrv.eliminar_premio(id);
+      })
+      setTimeout(() => {
+        this.premiosChecked = [];
+        this.checkedAll = false;
+        this.loadingSrv.dismissLoading();
+      }, 1000);
+    }
   }
 }

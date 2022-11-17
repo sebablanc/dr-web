@@ -8,7 +8,8 @@ export const OPERATION_TYPES = {
   SAVE: 'SAVE',
   MODIFY: 'MODIFY',
   RESET_PASSWORD: 'RESET_PASSWORD',
-  EXCEL_LOAD: 'EXCEL_LOAD'
+  EXCEL_LOAD: 'EXCEL_LOAD',
+  MULTIPLE_DELETE: 'MULTIPLE_DELETE'
 }
 
 export const  RESULTS_TYPES = {
@@ -16,7 +17,8 @@ export const  RESULTS_TYPES = {
   WARNING_EXCEL: 'WARNING_EXCEL',
   SUCCESS: 'SUCCESS',
   ERROR: 'ERROR',
-  MODIFY: 'MODIFY'
+  MODIFY: 'MODIFY',
+  NO_ELEMENTS: 'NO_ELEMENTS'
 }
 
 const TITLES = {
@@ -24,7 +26,8 @@ const TITLES = {
   WARNING_EXCEL: '¡Cuidado!',
   SUCCESS: '¡Genial!',
   ERROR: '¡Lo sentimos!',
-  MODIFY: '¡Excelente!'
+  MODIFY: '¡Excelente!',
+  NO_ELEMENTS: '¡Atención!'
 }
 
 const MESSAGES = {
@@ -37,12 +40,14 @@ const MESSAGES = {
   RESET_PASSWORD_ERROR: 'Tuvimos un error al intentar reestablecer tu contraseña. Intentalo más tarde',
   MODIFY_SUCCESS: 'Se editó <b>{{ toDelete }}</b> exitosamente.',
   MODIFY_ERROR: 'Tuvimos un error al intentar editar <b>{{ toDelete }}</b>. Intentalo más tarde',
-  EXCEL_LOAD_WARNING_EXCEL: '¿Seguro desea cargar el archivo <b>{{ toDelete }}</b>?'
+  EXCEL_LOAD_WARNING_EXCEL: '¿Seguro desea cargar el archivo <b>{{ toDelete }}</b>?',
+  MULTIPLE_DELETE_NO_ELEMENTS: 'No has seleccionado ningún elemento. Primero debés seleccionar alguno y volver a reintentar la operación.',
 }
 
 const ICONS = {
   WARNING: 'alert-icon.svg',
   WARNING_EXCEL: 'alert-icon.svg',
+  NO_ELEMENTS: 'alert-icon.svg',
   SUCCESS: 'confirm-icon.svg',
   ERROR: 'cancel-icon.svg'
 }
@@ -51,7 +56,8 @@ const BUTTONS = {
   WARNING: ['cancel', 'send'],
   WARNING_EXCEL: ['cancel', 'upload'],
   SUCCESS: ['close'],
-  ERROR: ['close']
+  ERROR: ['close'],
+  NO_ELEMENTS: ['close']
 }
 
 @Component({
