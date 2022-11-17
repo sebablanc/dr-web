@@ -1,7 +1,9 @@
 <app-layout-big-card>
   <div *ngIf="userLogged" class="float-botonera">
-    <app-round-button *ngIf="userLogged" [config]="roundButtonConfig" (roundButtonClicked)="showCreateModal()"></app-round-button>
-    <app-round-button *ngIf="userLogged" [config]="excelButtonConfig" (roundButtonClicked)="showExcelModal()"></app-round-button>
+    <app-round-button [config]="roundButtonConfig" (roundButtonClicked)="showCreateModal()"></app-round-button>
+    <app-round-button [config]="excelButtonConfig" (roundButtonClicked)="showExcelModal()"></app-round-button>
+    <app-round-button [config]="checkAllRoundButtonConfig" (roundButtonClicked)="checkAllCursos()"></app-round-button>
+    <app-round-button [config]="deleteAllRoundButtonConfig" (roundButtonClicked)="deleteAllCursos()"></app-round-button>
   </div>
   <div class="dr-like-title dr-font">
     <div class="dr dr-font">DR</div> Kids
@@ -21,5 +23,12 @@
       seguimiento sobre el chico y al finalizar el año se la entrega con su diploma.<br><br>
     </div><img alt="" src="assets/images/logos/logoDRKids.png">
   </div>
-  <app-push-button-keypad [items]="cursosKids"></app-push-button-keypad>
+  <div class="pbkeypad-container">
+    <app-push-button
+      *ngFor="let curso of cursosKids"
+      [curso]="curso"
+      (cursoChecked)="addToCheckedList($event)"
+      [isChecked]="checkedAll"
+    ></app-push-button>
+  </div>
 </app-layout-big-card>

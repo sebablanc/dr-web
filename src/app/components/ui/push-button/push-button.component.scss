@@ -15,6 +15,9 @@
         align-items: center;
         justify-content: space-between;
 
+        .item-checkbox{
+            align-self: end;
+        }
         img {
             max-width: 100px;
             min-width: 100px;
@@ -24,6 +27,9 @@
 
 @media screen and (max-width: 591px) {
     .push-button {
+        .item-checkbox{
+            align-self: center;
+        }
         .push-button-container {
             flex-direction: row;
             justify-content: space-evenly;

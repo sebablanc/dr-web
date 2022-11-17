@@ -59,8 +59,8 @@ export class BoletinInformativoExcelLayoutPage implements OnInit {
           let obj: INovedadData = {
             id: '',
             link: novedad.link || '',
-            mensaje: novedad.mensaje,
-            titulo: novedad.titulo
+            mensaje: novedad.mensaje || '',
+            titulo: novedad.titulo || ''
           }
           await this.novedadesSrv.crear_novedad(obj);
         }

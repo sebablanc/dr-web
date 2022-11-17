@@ -6,6 +6,8 @@ import { MesesPipe } from 'src/app/pipes/meses.pipe';
 import { ModalService } from 'src/app/services/modal.service';
 import { PremiosService } from 'src/app/services/premios.service';
 import { SORTEOS_TYPE } from 'src/constants/items';
+import { Observable } from 'rxjs';
+import { UserLoggedService } from 'src/app/services/user-logged.service';
 
 @Component({
   selector: 'app-premio-card',
@@ -19,13 +21,23 @@ export class PremioCardComponent implements OnInit {
   @Input() premio: IPremioData;
   @Output() premioChecked: EventEmitter<{checked: boolean, premioId: string}> = new EventEmitter();
   tiposSorteo = SORTEOS_TYPE;
+  userLogged: boolean;
+  private userLogged$: Observable<boolean>;
 
   constructor(
     private modalSrv: ModalService,
     private premioSrv: PremiosService,
-    private mesesPipe: MesesPipe) { }
+    private mesesPipe: MesesPipe,
+    private userLoggedSrv: UserLoggedService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.checkingUserLogged();
+  }
+
+  checkingUserLogged(){
+    this.userLogged$ = this.userLoggedSrv.isUserLogged$();
+    this.userLogged$.subscribe(isLogged => this.userLogged = isLogged);
+  }
 
   async openEditModal() {
     await this.modalSrv.showPremioModal('Editar sorteo', this.premio);

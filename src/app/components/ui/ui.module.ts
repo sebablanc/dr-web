@@ -5,7 +5,6 @@ import { HeaderLinkKeypadComponent } from './header-link-keypad/header-link-keyp
 import { MySwiperComponent } from './swiper/my-swiper.component';
 import { HomeCarouselComponent } from './home-carousel/home-carousel.component';
 import { PushButtonComponent } from './push-button/push-button.component';
-import { PushButtonKeypadComponent } from './push-button-keypad/push-button-keypad.component';
 import { NovedadCardComponent } from './novedad-card/novedad-card.component';
 import { InputDrComponent } from './input-dr/input-dr.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -27,7 +26,6 @@ import { MesesPipe } from 'src/app/pipes/meses.pipe';
     MySwiperComponent,
     HomeCarouselComponent,
     PushButtonComponent,
-    PushButtonKeypadComponent,
     NovedadCardComponent,
     InputDrComponent,
     TextAreaDrComponent,
@@ -42,7 +40,6 @@ import { MesesPipe } from 'src/app/pipes/meses.pipe';
     MySwiperComponent,
     HomeCarouselComponent,
     PushButtonComponent,
-    PushButtonKeypadComponent,
     NovedadCardComponent,
     InputDrComponent,
     TextAreaDrComponent,

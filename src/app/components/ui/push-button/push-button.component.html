@@ -1,6 +1,7 @@
-<div *ngIf="item" class="push-button" (click)="goTo()">
+<div *ngIf="curso" class="push-button">
   <div class="push-button-container">
-    <img [src]="item && item.imagen ? item.imagen : logosUrls[item.categoria]" />
-    <div class="push-button-text">{{ item.nombre }}</div>
+    <ion-checkbox *ngIf="userLogged" class="item-checkbox" slot="end" [checked]="isChecked" (ionChange)="emitCursoChecked($event)"></ion-checkbox>
+    <img [src]="curso && curso.imagen ? curso.imagen : logosUrls[curso.categoria]" (click)="goTo()"/>
+    <div class="push-button-text" (click)="goTo()">{{ curso.nombre }}</div>
   </div>
 </div>

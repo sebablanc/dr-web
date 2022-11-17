@@ -8,7 +8,7 @@
     <div *ngIf="premio.tipoSorteo == tiposSorteo.CONSUELO" class="horario-label">Se ganó: <b>{{ premio.premioConsuelo
     }}</b></div>
   </div>
-  <ion-checkbox class="item-checkbox" slot="end" [checked]="isChecked" (ionChange)="itemChecked($event)"></ion-checkbox>
+  <ion-checkbox *ngIf="userLogged" class="item-checkbox" slot="end" [checked]="isChecked" (ionChange)="itemChecked($event)"></ion-checkbox>
   <img *ngIf="showPC" class="pc-winner"
     [src]="premio && premio.imagen ? premio.imagen : 'assets/images/PC-Escritorio.png'" />
   <div class="ganaste-label">¡¡ Ganaste !!</div>

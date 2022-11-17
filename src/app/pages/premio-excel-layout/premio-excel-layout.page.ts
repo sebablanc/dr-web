@@ -57,6 +57,7 @@ export class PremioExcelLayoutPage implements OnInit {
       var premiosList = XLSX.utils.sheet_to_json(worksheet, { raw: true }) as Array<IPremioData>;
       premiosList.forEach(async premio => {
         if (
+          premio &&
           premio.horarioExtraccion !== '' &&
           premio.mes !== '' &&
           premio.nombreFavorecido !== '' &&
@@ -66,16 +67,16 @@ export class PremioExcelLayoutPage implements OnInit {
           premio.year > 1997) {
           let premioToAdd: IPremioData = {
             id: '',
-            year: premio && premio.horarioExtraccion ? premio.year : new Date().getFullYear(),
-            mes: premio && premio.mes ? premio.mes : '',
-            numeroCupon: premio && premio.numeroCupon ? premio.numeroCupon : 0,
-            nombreFavorecido: premio && premio.nombreFavorecido ? premio.nombreFavorecido : '',
-            nombreRetiro: premio && premio.nombreRetiro ? premio.nombreRetiro : '',
-            horarioExtraccion: premio && premio.horarioExtraccion ? premio.horarioExtraccion : '',
-            tipoSorteo: premio && premio.horarioExtraccion ? premio.tipoSorteo.toUpperCase() : '',
-            imagen: premio && premio.imagen ? premio.imagen : '',
-            premioConsuelo: premio && premio.premioConsuelo ? premio.premioConsuelo : '',
-            linkNoticia: premio && premio.linkNoticia ? premio.linkNoticia : ''
+            year: premio.year || new Date().getFullYear(),
+            mes: premio.mes || '',
+            numeroCupon: premio.numeroCupon || 0,
+            nombreFavorecido: premio.nombreFavorecido || '',
+            nombreRetiro: premio.nombreRetiro || '',
+            horarioExtraccion: premio.horarioExtraccion || '',
+            tipoSorteo: premio.tipoSorteo.toUpperCase() || '',
+            imagen: premio.imagen || '',
+            premioConsuelo: premio.premioConsuelo || '',
+            linkNoticia: premio.linkNoticia || ''
           }
           await this.premiosSrv.crear_premio(premioToAdd);
         }
