@@ -61,9 +61,9 @@ export class PremioExcelLayoutPage implements OnInit {
           premio.mes !== '' &&
           premio.nombreFavorecido !== '' &&
           premio.nombreRetiro !== '' &&
-          premio.numeroCupon < 1 &&
+          premio.numeroCupon > 1 &&
           premio.tipoSorteo !== '' &&
-          premio.year < 1997) {
+          premio.year > 1997) {
           let premioToAdd: IPremioData = {
             id: '',
             year: premio && premio.horarioExtraccion ? premio.year : new Date().getFullYear(),
@@ -80,7 +80,7 @@ export class PremioExcelLayoutPage implements OnInit {
           await this.premiosSrv.crear_premio(premioToAdd);
         }
       });
-      await this.premiosSrv.obtener_premios(2022);
+      await this.premiosSrv.obtener_premios(null);
       setTimeout(() => {
         this.loadingSrv.dismissLoading();
       }, 1000)

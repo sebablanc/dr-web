@@ -5,24 +5,7 @@
     height: 45px;
     padding: 6px;
     box-shadow: 2px 2px grey;
-    position: fixed;
-    z-index: 99;
-}
-
-.right-float-button{
-    position: fixed;
-    left: calc(100% - 70px);
-    top: 129px;
-}
-
-.left-float-button{
-    position: fixed;
-    left: 10px;
-    top: 129px;
-}
-
-.second-button{
-    top: 190px;
+    position: relative;
 }
 
 .small-botonera-button{
@@ -41,15 +24,13 @@
     border-radius: 0 50% 50% 0;
 }
 
-@media screen and (max-width: 1050px) {
-    .right-float-button{
-        top: 160px;
-    }
-
-    .second-button{
-        top: 221px;
-    }
+.round-button-img{
+    width: 60%;
+    left: calc(50% - (24px/2));
+    position: absolute;
+    top: calc(50% - (28px/2));
 }
+
 
 @media screen and (max-width: 515px) {
     .header-container {

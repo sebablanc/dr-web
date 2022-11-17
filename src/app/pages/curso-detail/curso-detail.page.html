@@ -1,6 +1,8 @@
 <app-layout-big-card>
-  <app-round-button *ngIf="userLogged && curso" [config]="editRoundButtonConfig" (roundButtonClicked)="showEditModal()"></app-round-button>
-  <app-round-button *ngIf="userLogged && curso" [config]="deleteRoundButtonConfig" (roundButtonClicked)="deleteCurso()"></app-round-button>
+  <div *ngIf="userLogged && curso" class="float-botonera">
+    <app-round-button [config]="editRoundButtonConfig" (roundButtonClicked)="showEditModal()"></app-round-button>
+    <app-round-button [config]="deleteRoundButtonConfig" (roundButtonClicked)="deleteCurso()"></app-round-button>
+  </div>
   <div *ngIf="curso" class="info-container">
     <div class="dr-like-title dr-font">{{ curso.nombre }}</div>
     <div class="img-container">

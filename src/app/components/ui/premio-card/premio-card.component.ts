@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CheckboxCustomEvent } from '@ionic/angular';
 import { IPremioData } from 'src/app/interfaces/premioData';
 import { OPERATION_TYPES, RESULTS_TYPES } from 'src/app/pages/delete-messages/delete-messages.page';
 import { MesesPipe } from 'src/app/pipes/meses.pipe';
@@ -14,7 +15,9 @@ import { SORTEOS_TYPE } from 'src/constants/items';
 export class PremioCardComponent implements OnInit {
   @Input() showPC: boolean = false;
   @Input() showBotonera: boolean = false;
+  @Input() isChecked: boolean = false;
   @Input() premio: IPremioData;
+  @Output() premioChecked: EventEmitter<{checked: boolean, premioId: string}> = new EventEmitter();
   tiposSorteo = SORTEOS_TYPE;
 
   constructor(
@@ -36,6 +39,11 @@ export class PremioCardComponent implements OnInit {
       const resultType = result ? RESULTS_TYPES.SUCCESS : RESULTS_TYPES.ERROR;
       await this.modalSrv.showDeleteMessagesModal(OPERATION_TYPES.DELETE, resultType, title);
     }
+  }
+
+  itemChecked(event: CheckboxCustomEvent){
+    this.isChecked = event.detail.checked;
+    this.premioChecked.emit({checked: this.isChecked, premioId: this.premio.id});
   }
 
 }

@@ -1,3 +1,4 @@
-<div class="round-button button right-float-button {{ config.extraClass }}" [ngClass]="{'button-primary': !config.secondaryButton, 'second-button': config.lowerButton}" (click)="roundButtonClicked.emit(true)">
-  <ion-icon [name]="config.iconName"></ion-icon>
+<div class="round-button button {{ config.extraClass }}" [ngClass]="{'button-primary': !config.secondaryButton, 'second-button': config.lowerButton}" (click)="roundButtonClicked.emit(true)">
+  <ion-icon *ngIf="!config.iconName.includes('.')" [name]="config.iconName"></ion-icon>
+  <img *ngIf="config.iconName.includes('.')" class="round-button-img" [src]="config.iconName" />
 </div>

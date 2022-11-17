@@ -5,9 +5,13 @@
     <div class="mes-label">{{ premio.mes | meses }}</div>
     <div class="alumno-retiro">Retiró: {{ premio.nombreRetiro }}</div>
     <div class="horario-label">Horario: {{ premio.horarioExtraccion }}</div>
-    <div *ngIf="premio.tipoSorteo == tiposSorteo.CONSUELO" class="horario-label">Se ganó: <b>{{ premio.premioConsuelo }}</b></div>
+    <div *ngIf="premio.tipoSorteo == tiposSorteo.CONSUELO" class="horario-label">Se ganó: <b>{{ premio.premioConsuelo
+    }}</b></div>
   </div>
-  <img *ngIf="showPC" class="pc-winner" [src]="premio && premio.imagen ? premio.imagen : 'assets/images/PC-Escritorio.png'" />
+  <ion-checkbox class="item-checkbox" slot="end" [checked]="isChecked" (ionChange)="itemChecked($event)"></ion-checkbox>
+  <img *ngIf="showPC" class="pc-winner"
+    [src]="premio && premio.imagen ? premio.imagen : 'assets/images/PC-Escritorio.png'" />
   <div class="ganaste-label">¡¡ Ganaste !!</div>
-  <app-small-botonera *ngIf="showBotonera" class="premio-card-botonera" (leftButtonClicked)="openEditModal()" (rightButtonClicked)="openDeleteModal()"></app-small-botonera>
+  <app-small-botonera *ngIf="showBotonera" class="premio-card-botonera" (leftButtonClicked)="openEditModal()"
+    (rightButtonClicked)="openDeleteModal()"></app-small-botonera>
 </div>

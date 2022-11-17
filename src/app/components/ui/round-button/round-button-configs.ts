@@ -29,3 +29,17 @@ export const ROUND_BUTTON_EDIT_CONFIG: IRoundButtonConfig = {
     lowerButton: false,
     secondaryButton: false
 }
+
+export const ROUND_BUTTON_CHECK_ALL_CONFIG: IRoundButtonConfig = {
+    iconName: ROUNDED_BUTTONS_ICONS.CHECK_ALL,
+    extraClass: null,
+    lowerButton: false,
+    secondaryButton: false
+}
+
+export const ROUND_BUTTON_DELETE_ALL_CONFIG: IRoundButtonConfig = {
+    iconName: ROUNDED_BUTTONS_ICONS.DELETE_ALL,
+    extraClass: null,
+    lowerButton: false,
+    secondaryButton: false
+}

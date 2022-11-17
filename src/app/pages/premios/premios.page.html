@@ -1,6 +1,10 @@
 <app-layout-big-card [title]="titlePage">
-    <app-round-button *ngIf="userLogged" [config]="roundButtonConfig" (roundButtonClicked)="showCreateModal()"></app-round-button>
-    <app-round-button *ngIf="userLogged" [config]="excelButtonConfig" (roundButtonClicked)="showExcelModal()"></app-round-button>
+    <div *ngIf="userLogged" class="float-botonera">
+        <app-round-button [config]="roundButtonConfig" (roundButtonClicked)="showCreateModal()"></app-round-button>
+        <app-round-button [config]="excelButtonConfig" (roundButtonClicked)="showExcelModal()"></app-round-button>
+        <app-round-button [config]="checkAllRoundButtonConfig" (roundButtonClicked)="checkAllPremios()"></app-round-button>
+        <app-round-button [config]="deleteAllRoundButtonConfig" (roundButtonClicked)="deleteAllPremios()"></app-round-button>
+    </div>
     <div class="premios-header-container premios-header">
         <img alt="logoDR" class="header-logos" src="assets/images/logos/logoDR.png">
         <span class="dr-font premios-title">¡¡Nuestros ganadores!!</span>
@@ -8,17 +12,36 @@
     </div>
 
     <app-select-dr [config]="yearConfig" [form]="premiosForm" [list]="years"></app-select-dr>
-    <div *ngIf="premiosCuotas && premiosCuotas.length > 0" class="premios-header-container premios-subtitle dr-font">Estas personas ganaron una cuota</div>
+    <div *ngIf="premiosCuotas && premiosCuotas.length > 0" class="premios-header-container premios-subtitle dr-font">
+        Estas personas ganaron una cuota</div>
     <div *ngIf="premiosCuotas && premiosCuotas.length > 0 else nadaAqui" class="premio-cuota-container">
-        <app-premio-card *ngFor="let premio of premiosCuotas" [premio]="premio" [showBotonera]="userLogged"></app-premio-card>
-      </div>
-    <div *ngIf="premioComputadora" class="premios-header-container premios-subtitle dr-font">Y esta persona se ganó una compu</div>
-    <div *ngIf="premioComputadora" class="premio-pc-container">
-        <app-premio-card [premio]="premioComputadora" [showPC]="true" [showBotonera]="userLogged"></app-premio-card>
+        <app-premio-card
+            *ngFor="let premio of premiosCuotas"
+            [premio]="premio"
+            [showBotonera]="userLogged"
+            (premioChecked)="addToCheckedList($event)"
+            [isChecked]="checkedAll">
+        </app-premio-card>
     </div>
-    <div *ngIf="premiosConsuelo && premiosConsuelo.length > 0" class="premios-header-container premios-subtitle dr-font">...Y hubo más premios</div>
+    <div *ngIf="premioComputadora" class="premios-header-container premios-subtitle dr-font">Y esta persona se ganó una
+        compu</div>
+    <div *ngIf="premioComputadora" class="premio-pc-container">
+        <app-premio-card
+            [premio]="premioComputadora"
+            [showPC]="true"
+            [showBotonera]="userLogged"
+            (premioChecked)="addToCheckedList($event)"
+            [isChecked]="checkedAll"></app-premio-card>
+    </div>
+    <div *ngIf="premiosConsuelo && premiosConsuelo.length > 0"
+        class="premios-header-container premios-subtitle dr-font">...Y hubo más premios</div>
     <div *ngIf="premiosConsuelo && premiosConsuelo.length > 0" class="premio-cuota-container">
-        <app-premio-card *ngFor="let premioConsuelo of premiosConsuelo" [premio]="premioConsuelo" [showBotonera]="userLogged"></app-premio-card>
+        <app-premio-card
+            *ngFor="let premioConsuelo of premiosConsuelo"
+            [premio]="premioConsuelo"
+            [showBotonera]="userLogged"
+            (premioChecked)="addToCheckedList($event)"
+            [isChecked]="checkedAll"></app-premio-card>
     </div>
 
     <ng-template #nadaAqui>
