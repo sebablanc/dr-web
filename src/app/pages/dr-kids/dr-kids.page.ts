@@ -24,7 +24,6 @@ export class DrKidsPage implements OnInit {
   deleteAllRoundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_DELETE_ALL_CONFIG;
 
   cursosChecked: Array<string> = [];
-  checkedAll: boolean = false;
 
   userLogged: boolean = false;
   private userLogged$: Observable<boolean>;
@@ -80,10 +79,12 @@ export class DrKidsPage implements OnInit {
   }
 
   checkAllCursos() {
-    if (this.cursosKids.length === this.cursosChecked.length) {
-      this.checkedAll = false;
-    } else {
-      this.checkedAll = true;
+    const checkedLength = this.cursosChecked.length;
+    this.cursosChecked = [];
+    if(checkedLength < this.cursosKids.length){
+      this.cursosKids.forEach(novedad => {
+        this.cursosChecked.push(novedad.id);
+      })
     }
   }
 
@@ -103,7 +104,6 @@ export class DrKidsPage implements OnInit {
       })
       setTimeout(() => {
         this.cursosChecked = [];
-        this.checkedAll = false;
         this.loadingSrv.dismissLoading();
       }, 1000);
     }

@@ -24,7 +24,6 @@ export class DrComputersPage implements OnInit {
   deleteAllRoundButtonConfig: IRoundButtonConfig = ROUND_BUTTON_DELETE_ALL_CONFIG;
 
   cursosChecked: Array<string> = [];
-  checkedAll: boolean = false;
 
   userLogged: boolean;
   private userLogged$: Observable<boolean>;
@@ -80,10 +79,12 @@ export class DrComputersPage implements OnInit {
   }
 
   checkAllCursos() {
-    if (this.cursosAdultos.length === this.cursosChecked.length) {
-      this.checkedAll = false;
-    } else {
-      this.checkedAll = true;
+    const checkedLength = this.cursosChecked.length;
+    this.cursosChecked = [];
+    if(checkedLength < this.cursosAdultos.length){
+      this.cursosAdultos.forEach(novedad => {
+        this.cursosChecked.push(novedad.id);
+      })
     }
   }
 
@@ -103,7 +104,6 @@ export class DrComputersPage implements OnInit {
       })
       setTimeout(() => {
         this.cursosChecked = [];
-        this.checkedAll = false;
         this.loadingSrv.dismissLoading();
       }, 1000);
     }

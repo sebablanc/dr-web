@@ -28,7 +28,7 @@
       *ngFor="let curso of cursosKids"
       [curso]="curso"
       (cursoChecked)="addToCheckedList($event)"
-      [isChecked]="checkedAll"
+      [isChecked]="cursosChecked && cursosChecked.length > 0 && cursosChecked.includes(curso.id)"
     ></app-push-button>
   </div>
 </app-layout-big-card>

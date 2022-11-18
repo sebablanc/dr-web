@@ -37,7 +37,6 @@ export class PremiosPage implements OnInit {
   premioComputadora: IPremioData;
   premiosConsuelo: Array<IPremioData>;
   premiosChecked: Array<string> = [];
-  checkedAll: boolean = false;
   private premios$: Observable<IPremioData[]>;
 
   constructor(
@@ -103,10 +102,16 @@ export class PremiosPage implements OnInit {
   checkAllPremios() {
     let premioComputadoraLength = this.premioComputadora !== null ? 1 : 0;
     let cantidadTotal = premioComputadoraLength + this.premiosCuotas.length + this.premiosConsuelo.length;
-    if (cantidadTotal === this.premiosChecked.length) {
-      this.checkedAll = false;
-    } else {
-      this.checkedAll = true;
+    const checkedLength = this.premiosChecked.length;
+    this.premiosChecked = [];
+    if(checkedLength < cantidadTotal){
+      this.premiosCuotas.forEach(novedad => {
+        this.premiosChecked.push(novedad.id);
+      });
+      this.premiosChecked.push(this.premioComputadora.id);
+      this.premiosConsuelo.forEach(novedad => {
+        this.premiosChecked.push(novedad.id);
+      });
     }
   }
 
@@ -134,7 +139,6 @@ export class PremiosPage implements OnInit {
       })
       setTimeout(() => {
         this.premiosChecked = [];
-        this.checkedAll = false;
         this.loadingSrv.dismissLoading();
       }, 1000);
     }

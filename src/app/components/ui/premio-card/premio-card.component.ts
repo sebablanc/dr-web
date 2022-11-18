@@ -17,8 +17,8 @@ import { UserLoggedService } from 'src/app/services/user-logged.service';
 export class PremioCardComponent implements OnInit {
   @Input() showPC: boolean = false;
   @Input() showBotonera: boolean = false;
-  @Input() isChecked: boolean = false;
   @Input() premio: IPremioData;
+  @Input() isChecked: boolean = false;
   @Output() premioChecked: EventEmitter<{checked: boolean, premioId: string}> = new EventEmitter();
   tiposSorteo = SORTEOS_TYPE;
   userLogged: boolean;

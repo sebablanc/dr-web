@@ -1,4 +1,5 @@
 <div class="novedad-card-container">
+  <ion-checkbox *ngIf="userLogged" class="item-checkbox" slot="end" [checked]="isChecked" (ionChange)="itemChecked($event)"></ion-checkbox>
   <div class="novedad-card-title">{{ novedad.titulo }}</div>
   <div class="novedad-card-description" [innerHTML]="novedad.mensaje"></div>
   <a *ngIf="novedad && novedad.link && novedad.link !== ''" class="novedad-card-link"

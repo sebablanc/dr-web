@@ -20,7 +20,7 @@
             [premio]="premio"
             [showBotonera]="userLogged"
             (premioChecked)="addToCheckedList($event)"
-            [isChecked]="checkedAll">
+            [isChecked]="premiosChecked && premiosChecked.length > 0 && premiosChecked.includes(premio.id)">
         </app-premio-card>
     </div>
     <div *ngIf="premioComputadora" class="premios-header-container premios-subtitle dr-font">Y esta persona se ganó una
@@ -31,7 +31,7 @@
             [showPC]="true"
             [showBotonera]="userLogged"
             (premioChecked)="addToCheckedList($event)"
-            [isChecked]="checkedAll"></app-premio-card>
+            [isChecked]="premiosChecked && premiosChecked.length > 0 && premiosChecked.includes(premioComputadora.id)"></app-premio-card>
     </div>
     <div *ngIf="premiosConsuelo && premiosConsuelo.length > 0"
         class="premios-header-container premios-subtitle dr-font">...Y hubo más premios</div>
@@ -41,7 +41,7 @@
             [premio]="premioConsuelo"
             [showBotonera]="userLogged"
             (premioChecked)="addToCheckedList($event)"
-            [isChecked]="checkedAll"></app-premio-card>
+            [isChecked]="premiosChecked && premiosChecked.length > 0 && premiosChecked.includes(premioConsuelo.id)"></app-premio-card>
     </div>
 
     <ng-template #nadaAqui>

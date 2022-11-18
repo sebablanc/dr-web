@@ -2,11 +2,15 @@
     <div *ngIf="userLogged" class="float-botonera">
         <app-round-button [config]="roundButtonConfig" (roundButtonClicked)="showCreateModal()"></app-round-button>
         <app-round-button [config]="excelButtonConfig" (roundButtonClicked)="showExcelModal()"></app-round-button>
+        <app-round-button [config]="checkAllRoundButtonConfig" (roundButtonClicked)="checkAllNovedades()">
+        </app-round-button>
+        <app-round-button [config]="deleteAllRoundButtonConfig" (roundButtonClicked)="deleteAllNovedades()">
+        </app-round-button>
     </div>
     <div class="dr-like-title dr-font">Novedades</div>
     <div *ngIf="novedadesList && novedadesList.length>0 else noInfoToShow">
-        <app-novedad-card *ngFor="let novedad of novedadesList" [novedad]="novedad" [showBotonera]="userLogged">
-        </app-novedad-card>
+        <app-novedad-card *ngFor="let novedad of novedadesList" [novedad]="novedad" [showBotonera]="userLogged"
+            (novedadChecked)="addToCheckedList($event);" [isChecked]="novedadesChecked && novedadesChecked.length > 0 && novedadesChecked.includes(novedad.id)"></app-novedad-card>
     </div>
     <ng-template #noInfoToShow>
         <div no-info-to-show>No se encontraron novedades para mostrar</div>
