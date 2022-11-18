@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CheckboxCustomEvent } from '@ionic/angular';
 import { IPremioData } from 'src/app/interfaces/premioData';
 import { OPERATION_TYPES, RESULTS_TYPES } from 'src/app/pages/delete-messages/delete-messages.page';
 import { MesesPipe } from 'src/app/pipes/meses.pipe';
@@ -53,8 +52,8 @@ export class PremioCardComponent implements OnInit {
     }
   }
 
-  itemChecked(event: CheckboxCustomEvent){
-    this.isChecked = event.detail.checked;
+  itemChecked(event: Event){
+    this.isChecked = event['detail']['checked'];
     this.premioChecked.emit({checked: this.isChecked, premioId: this.premio.id});
   }
 

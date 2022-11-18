@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CheckboxCustomEvent } from '@ionic/angular';
 import { ICursoData } from 'src/app/interfaces/cursoData';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { Observable } from 'rxjs';
@@ -38,8 +37,8 @@ export class PushButtonComponent implements OnInit {
     this.navigationSrv.goToCursoDetail(this.curso);
   }
 
-  emitCursoChecked(event: CheckboxCustomEvent){
-    this.isChecked = event.detail.checked;
+  emitCursoChecked(event: Event){
+    this.isChecked = event['detail']['checked'];
     this.cursoChecked.emit({checked: this.isChecked, cursoId: this.curso.id});
   }
 

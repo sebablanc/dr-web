@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CheckboxCustomEvent } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { INovedadData } from 'src/app/interfaces/novedadData';
 import { OPERATION_TYPES, RESULTS_TYPES } from 'src/app/pages/delete-messages/delete-messages.page';
@@ -53,8 +52,8 @@ export class NovedadCardComponent implements OnInit {
     this.navigationSrv.goToExternal(link);
   }
 
-  itemChecked(event: CheckboxCustomEvent){
-    this.isChecked = event.detail.checked;
+  itemChecked(event: Event){
+    this.isChecked = event['detail']['checked'];
     this.novedadChecked.emit({checked: this.isChecked, novedadId: this.novedad.id});
   }
 
